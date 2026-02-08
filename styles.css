@@ -22,44 +22,40 @@ body {
 
 header { 
     text-align: center; 
+    padding: 40px 0 60px 0; 
     background: #fff;
-    /* Removed redundant padding, keeping it clean */
-    padding: 60px 20px;
-    margin: 0; 
 }
 
-/* --- LOGO SYSTEM START --- */
+/* --- LOGO FIX START --- */
 .logo {
-    /* ADJUST THIS VALUE TO CHANGE LOGO SIZE */
-    max-width: 300px; 
-    width: 100%;
+    /* Change this value to make it as big as you want */
+    width: 280px; 
+    max-width: 100%; /* Prevents it from breaking on tiny screens */
     height: auto;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 30px auto;
     display: block;
+    transition: transform 0.3s ease;
 }
 
-/* Ensures both <img> and <svg> tags inside the logo wrapper scale */
-.logo img, 
-.logo svg {
-    width: 100%;
-    height: auto;
-    display: block;
+.logo:hover {
+    transform: scale(1.02); /* Subtle pop when hovered */
 }
-/* --- LOGO SYSTEM END --- */
+/* --- LOGO FIX END --- */
 
 h1 { 
     font-size: 2.5rem; 
     font-weight: 700; 
-    margin-bottom: 10px; 
+    margin-bottom: 20px; 
     color: #000; 
     letter-spacing: -0.02em; 
+    line-height: 1.2;
 }
 
 .subtitle { 
     font-size: 1.25rem; 
     color: #666; 
-    max-width: 600px; 
-    margin: 0 auto; 
+    max-width: 650px; 
+    margin: 0 auto 30px auto; 
 }
 
 .demo-video { 
@@ -67,23 +63,33 @@ h1 {
     width: 100%; 
     aspect-ratio: 16/9; 
     margin: 40px 0; 
-    border-radius: 8px; 
+    border-radius: 12px; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     color: #fff; 
     overflow: hidden; 
+    border: 1px solid #eee;
 }
 
 .section { 
-    margin-bottom: 60px; 
+    margin-bottom: 80px; 
 }
 
 h2 { 
     border-bottom: 2px solid var(--light-bg); 
     padding-bottom: 10px; 
     margin-bottom: 30px; 
-    font-weight: 600; 
+    font-weight: 700; 
+    color: #000;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
 }
 
 .workflow { 
@@ -93,78 +99,79 @@ h2 {
 
 .step { 
     background: var(--light-bg); 
-    padding: 20px; 
-    border-radius: 8px; 
-    border-left: 4px solid var(--primary); 
+    padding: 25px; 
+    border-radius: 12px; 
+    border-left: 5px solid var(--primary); 
 }
 
 .step strong { 
     display: block; 
     font-size: 1.1rem; 
-    margin-bottom: 5px; 
+    margin-bottom: 8px; 
     color: var(--primary); 
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .pricing-box { 
     background: #000; 
     color: #fff; 
-    padding: 40px; 
-    border-radius: 12px; 
+    padding: 50px 40px; 
+    border-radius: 16px; 
     text-align: center; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.pricing-box h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
 }
 
 .price { 
-    font-size: 3rem; 
-    font-weight: 700; 
-    margin: 10px 0; 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    margin: 15px 0; 
 }
 
 .btn { 
     display: inline-block; 
     background: var(--primary); 
     color: #fff; 
-    padding: 15px 30px; 
-    border-radius: 6px; 
+    padding: 16px 32px; 
+    border-radius: 8px; 
     text-decoration: none; 
-    font-weight: 600; 
-    margin-top: 20px; 
-    transition: opacity 0.2s; 
+    font-weight: 700; 
+    margin-top: 10px; 
+    transition: all 0.2s ease; 
 }
 
 .btn:hover { 
     opacity: 0.9; 
+    transform: translateY(-1px);
 }
 
 .footer-note { 
     font-size: 0.9rem; 
     color: #888; 
     text-align: center; 
-    margin-top: 40px; 
-    line-height: 1.4; 
+    margin-top: 60px; 
+    line-height: 1.6; 
+    padding-bottom: 40px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .container { padding: 20px 15px; }
-    header { padding: 40px 15px; }
-    /* Logo scales slightly smaller on tablets */
-    .logo { max-width: 250px; }
-    h1 { font-size: 1.75rem; line-height: 1.2; }
-    .subtitle { font-size: 1rem; }
-    h2 { font-size: 1.5rem; }
-    .price { font-size: 2rem; }
-    .pricing-box { padding: 30px 20px; }
-    .btn { padding: 12px 24px; font-size: 0.95rem; display: block; text-align: center; }
-    .step { padding: 15px; }
-    .step strong { font-size: 1rem; }
-    .section { margin-bottom: 40px; }
+    .container { padding: 20px 20px; }
+    header { padding: 30px 0; }
+    .logo { width: 220px; }
+    h1 { font-size: 2rem; }
+    .subtitle { font-size: 1.1rem; }
+    .price { font-size: 2.75rem; }
 }
 
 @media (max-width: 480px) {
-    /* Logo stays legible but fits mobile screens */
-    .logo { max-width: 200px; margin-bottom: 15px; }
-    h1 { font-size: 1.5rem; }
-    .subtitle { font-size: 0.95rem; }
-    .price { font-size: 1.75rem; }
-    .pricing-box { padding: 25px 15px; }
+    .logo { width: 180px; }
+    h1 { font-size: 1.75rem; }
+    .pricing-box { padding: 35px 20px; }
+    .btn { width: 100%; box-sizing: border-box; }
 }
