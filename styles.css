@@ -22,25 +22,30 @@ body {
 
 header { 
     text-align: center; 
-    padding: 60px 0; 
     background: #fff;
-    margin: -40px -20px 0 -20px;
+    /* Removed redundant padding, keeping it clean */
     padding: 60px 20px;
+    margin: 0; 
 }
 
+/* --- LOGO SYSTEM START --- */
 .logo {
-    max-width: 120px !important;
-    width: 100% !important;
-    height: auto !important;
+    /* ADJUST THIS VALUE TO CHANGE LOGO SIZE */
+    max-width: 300px; 
+    width: 100%;
+    height: auto;
     margin: 0 auto 20px auto;
     display: block;
 }
 
-/* Force SVG elements inside logo to scale */
+/* Ensures both <img> and <svg> tags inside the logo wrapper scale */
+.logo img, 
 .logo svg {
     width: 100%;
     height: auto;
+    display: block;
 }
+/* --- LOGO SYSTEM END --- */
 
 h1 { 
     font-size: 2.5rem; 
@@ -141,8 +146,9 @@ h2 {
 /* Responsive Design */
 @media (max-width: 768px) {
     .container { padding: 20px 15px; }
-    header { padding: 40px 15px; margin: -20px -15px 0 -15px; }
-    .logo { max-width: 100px; margin-bottom: 15px; }
+    header { padding: 40px 15px; }
+    /* Logo scales slightly smaller on tablets */
+    .logo { max-width: 250px; }
     h1 { font-size: 1.75rem; line-height: 1.2; }
     .subtitle { font-size: 1rem; }
     h2 { font-size: 1.5rem; }
@@ -155,6 +161,7 @@ h2 {
 }
 
 @media (max-width: 480px) {
+    /* Logo stays legible but fits mobile screens */
     .logo { max-width: 200px; margin-bottom: 15px; }
     h1 { font-size: 1.5rem; }
     .subtitle { font-size: 0.95rem; }
