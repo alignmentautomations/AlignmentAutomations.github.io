@@ -155,7 +155,7 @@ h2 {
 }
 
 @media (max-width: 480px) {
-    .logo { max-width: 80px; margin-bottom: 15px; }
+    .logo { max-width: 200px; margin-bottom: 15px; }
     h1 { font-size: 1.5rem; }
     .subtitle { font-size: 0.95rem; }
     .price { font-size: 1.75rem; }
