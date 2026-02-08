@@ -170,7 +170,7 @@ ul li {
 }
 
 @media (max-width: 480px) {
-    .logo { width: 180px; }
+    .logo { width: 250px; }
     h1 { font-size: 1.75rem; }
     .pricing-box { padding: 35px 20px; }
     .btn { width: 100%; box-sizing: border-box; }
