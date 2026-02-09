@@ -1,0 +1,19 @@
+<svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hGradW" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#003D7A"/>
+      <stop offset="100%" stop-color="#0066CC"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon (keep gradient for brand pop, works on dark) -->
+  <g transform="translate(100,100)">
+    <polygon points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30" fill="url(#hGradW)"/>
+    <rect x="-4" y="-35" width="8" height="70" rx="4" fill="#ffffff"/>
+    <circle cx="0" cy="0" r="16" fill="#ffffff"/>
+    <path d="M -6 0 L -1 6 L 8 -6" stroke="#0066CC" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Text in white for dark backgrounds -->
+  <text x="200" y="115" font-family="Arial" font-size="36" font-weight="700" fill="#ffffff">ALIGNMENT AUTOMATIONS</text>
+</svg>
