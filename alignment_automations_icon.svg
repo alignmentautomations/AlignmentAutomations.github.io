@@ -1,0 +1,12 @@
+<svg viewBox="-140 -140 280 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#003D7A"/>
+      <stop offset="100%" stop-color="#0066CC"/>
+    </linearGradient>
+  </defs>
+  <polygon points="0,-120 104,-60 104,60 0,120 -104,60 -104,-60" fill="url(#iconGrad)"/>
+  <rect x="-5" y="-70" width="10" height="140" rx="5" fill="#ffffff"/>
+  <circle cx="0" cy="0" r="28" fill="#ffffff"/>
+  <path d="M -10 0 L -2 8 L 14 -10" stroke="#0066CC" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
