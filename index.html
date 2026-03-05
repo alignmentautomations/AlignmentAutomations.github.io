@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alignment Automations | Book Your Intake System Demo</title>
+  <meta name="description" content="Alignment Automations builds structured intake systems for chiropractic and massage clinics — designed for speed, reliability, and simplicity."/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS ── */
+    :root {
+      --page:    #070B14;
+      --surface: #0B1220;
+      --surface2:#0E1A2E;
+      --border:  rgba(148,163,184,0.22);
+      --ink:     #F9FAFB;
+      --muted:   #CBD5E1;
+      --muted2:  #94A3B8;
+      --blue:    #4DA3FF;
+      --blue2:   #2F86FF;
+      --deep:    #0A4C93;
+      --green:   #10B981;
+      --red:     #EF4444;
+      --amber:   #F59E0B;
+      --shadow:  0 12px 34px rgba(0,0,0,0.50);
+      --radius:  16px;
+      --max:     1100px;
+    }
+
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    html, body { margin: 0; background: var(--page); color: var(--ink); overflow-x: clip; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { color: #fff; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid rgba(147,197,253,0.65);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+    img, svg, video { max-width: 100%; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 22px; width: 100%; }
+    .section { padding: 72px 0; overflow: hidden; width: 100%; }
+    .section.soft {
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; width: 100%; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; width: 100%; }
+    .grid-2 > *, .grid-3 > * { min-width: 0; }
+
+    /* ── TYPOGRAPHY ── */
+    h1 { font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; margin: 14px 0 12px; letter-spacing: -0.03em; color: var(--ink); }
+    h2 { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.2; margin: 0 0 10px; letter-spacing: -0.02em; color: var(--ink); }
+    h3 { font-size: 16px; margin: 0 0 6px; color: var(--ink); }
+    p  { margin: 0 0 14px; color: var(--muted); font-size: 16px; }
+    p:last-child { margin-bottom: 0; }
+    li { color: var(--muted); }
+    strong, summary { color: var(--ink); }
+    .muted { color: var(--muted); }
+    .small { font-size: 14px; }
+    .lead  { font-size: 18px; margin: 0 0 22px; color: var(--muted); max-width: 820px; }
+
+    /* ── PILL ── */
+    .pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 13px; border-radius: 999px;
+      background: rgba(77,163,255,0.12);
+      border: 1px solid rgba(77,163,255,0.26);
+      font-weight: 800; font-size: 13px; color: var(--blue);
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(7,11,20,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 160ms ease;
+      width: 100%;
+    }
+    header.compact { box-shadow: var(--shadow); }
+    .navwrap {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; padding: 20px 0;
+    }
+    .logo { height: 90px; width: auto; display: block; transition: height 160ms ease; max-width: 100%; }
+    header.compact .logo { height: 68px; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a {
+      text-decoration: none; font-weight: 700; font-size: 14px;
+      color: var(--muted); padding: 8px 10px; border-radius: 10px;
+    }
+    nav a:hover { background: rgba(255,255,255,0.06); color: var(--ink); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(180deg, var(--blue), var(--blue2));
+      color: #06121F;
+      padding: 13px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700; font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 26px rgba(77,163,255,0.24);
+      white-space: nowrap; cursor: pointer;
+      transition: filter 120ms ease;
+    }
+    .btn:hover  { filter: brightness(1.06); color: #06121F; }
+    .btn:active { transform: translateY(0.5px); }
+    .btn-outline {
+      background: rgba(255,255,255,0.06);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.10); color: var(--ink); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .reassure { margin-top: 10px; font-size: 14px; color: var(--muted2); }
+    .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+    .inline-link:hover { text-decoration: underline; }
+
+    /* ── HERO ── */
+    .hero {
+      background:
+        radial-gradient(1200px 520px at 15% 15%, rgba(77,163,255,0.18), transparent 60%),
+        radial-gradient(800px 400px at 90% 60%, rgba(10,76,147,0.16), transparent 60%),
+        linear-gradient(180deg, #071B33, var(--page));
+      border-bottom: 1px solid var(--border);
+      padding: 72px 0 60px;
+      overflow: hidden; width: 100%;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 42px; align-items: center; }
+
+    /* Hero card */
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px; padding: 22px;
+    }
+    .hero-card h3 { margin: 0 0 14px; font-size: 15px; color: var(--ink); }
+    .hero-list { margin: 0; padding-left: 18px; }
+    .hero-list li { margin: 8px 0; color: var(--muted); }
+
+    /* ── FLOW DIAGRAM ── */
+    .flow { display: grid; gap: 12px; margin-top: 8px; }
+    .flow-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; }
+    .flow-box {
+      padding: 12px; border-radius: 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      min-height: 62px;
+    }
+    .flow-box strong { display: block; font-size: 13px; margin-bottom: 5px; color: var(--ink); }
+    .flow-box span   { font-size: 12px; color: var(--muted2); }
+    .arrow {
+      width: 26px; height: 26px; display: grid; place-items: center;
+      border-radius: 8px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--blue); font-weight: 800; font-size: 13px;
+      user-select: none; flex-shrink: 0;
+    }
+    .flow-footer {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 10px; flex-wrap: wrap;
+    }
+    .flow-footer a { color: var(--blue); font-weight: 700; }
+    .flow-footer a:hover { text-decoration: underline; color: var(--blue); }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px; min-width: 0; overflow: hidden;
+    }
+    .card h3 { margin: 0 0 8px; }
+    .card p  { margin: 0; }
+
+    /* ── SYSTEM TIER TAGS ── */
+    .tag {
+      display: inline-block; font-size: 12px; font-weight: 800;
+      padding: 5px 10px; border-radius: 999px; margin-bottom: 10px;
+    }
+    .tag-core   { background: rgba(77,163,255,0.14);  border: 1px solid rgba(77,163,255,0.26);  color: var(--blue); }
+    .tag-expand { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.24); color: #A78BFA; }
+    .tag-found  { background: rgba(16,185,129,0.10);  border: 1px solid rgba(16,185,129,0.24);  color: var(--green); }
+
+    ul.clean { margin: 12px 0 0 18px; padding: 0; color: var(--muted); }
+    ul.clean li { margin: 8px 0; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+    .testimonial-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C'; position: absolute; top: 14px; right: 18px;
+      font-size: 60px; line-height: 1; color: var(--blue); opacity: 0.15;
+      font-family: Georgia, serif; pointer-events: none;
+    }
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 12px; }
+    .star { color: var(--amber); font-size: 15px; }
+    .testimonial-text { font-size: 15px; line-height: 1.65; color: var(--muted); margin: 0 0 20px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--deep), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 15px; color: #fff; flex-shrink: 0;
+    }
+    .testimonial-name   { font-weight: 800; font-size: 14px; margin: 0 0 2px; color: var(--ink); }
+    .testimonial-clinic { font-size: 13px; color: var(--muted2); margin: 0; }
+
+    /* ── FIT SECTION ── */
+    .fit-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+    .fit-card { border-radius: var(--radius); padding: 28px; }
+    .fit-card.good { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.26); }
+    .fit-card.bad  { background: rgba(239,68,68,0.07);  border: 1px solid rgba(239,68,68,0.20); }
+    .fit-card h3   { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-size: 17px; }
+    .fit-icon { font-size: 20px; }
+    .fit-list { list-style: none; margin: 0; padding: 0; }
+    .fit-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 9px 0; font-size: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+    }
+    .fit-list li:first-child { padding-top: 0; }
+    .fit-list li:last-child  { border-bottom: none; padding-bottom: 0; }
+    .fit-check { font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+    .fit-card.good .fit-check { color: var(--green); }
+    .fit-card.bad  .fit-check { color: var(--red); }
+
+    /* ── FAQ ── */
+    details {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 18px;
+    }
+    details + details { margin-top: 12px; }
+    details[open] { border-color: rgba(77,163,255,0.35); }
+    summary { cursor: pointer; font-weight: 800; color: var(--ink); font-size: 15px; }
+    details p { margin: 10px 0 0; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer { padding: 36px 0; border-top: 1px solid var(--border); width: 100%; }
+    .footer-row {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .footer-row a { color: var(--muted2); }
+    .footer-row a:hover { color: var(--ink); }
+
+    /* ── MOBILE PRICING FAB ── */
+    .pricing-fab {
+      position: fixed; right: 16px; bottom: 16px; z-index: 999;
+      opacity: 0; transform: translateY(10px); pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .pricing-fab.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    @media (min-width: 641px) { .pricing-fab { display: none; } }
+    @media (max-width: 640px) { body { padding-bottom: 84px; } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 980px) {
+      .hero-grid        { grid-template-columns: 1fr; }
+      .grid-3           { grid-template-columns: 1fr; }
+      nav               { display: none; }
+      .flow-row         { grid-template-columns: 1fr; }
+      .arrow            { display: none; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .fit-grid         { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .section          { padding: 56px 0; }
+      .grid-2           { grid-template-columns: 1fr; }
+      .container        { padding: 0 16px; }
+      h1                { font-size: 34px; }
+      .btn              { width: 100%; }
+      .hero-actions     { flex-direction: column; align-items: stretch; }
+      .logo             { height: 76px; }
+      header.compact .logo { height: 58px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ── HEADER ── -->
+<header id="siteHeader">
+  <div class="container">
+    <div class="navwrap">
+      <a href="#top" aria-label="Alignment Automations Home">
+        <img src="alignment_automations_horizontal_white.svg" class="logo" alt="Alignment Automations">
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#intake-system">System</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="/pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener" style="padding:10px 16px; font-size:13px; margin-left:6px;">Book Demo</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="pill">Structured intake infrastructure for clinics</span>
+        <h1>Turn Patient Inquiries Into Booked Appointments — Automatically.</h1>
+        <p style="font-size:18px; color:var(--muted); max-width:600px;">
+          Alignment Automations builds structured intake systems for chiropractic and massage clinics — designed for speed, reliability, and simplicity.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book Your Intake System Demo</a>
+          <a class="btn btn-outline" href="/pricing">View Pricing &amp; System Options</a>
+        </div>
+        <div class="reassure">15 minutes · No pressure · Clear system options</div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Intake Flow (Core)</h3>
+        <div class="flow" aria-label="Intake flow diagram">
+          <div class="flow-row">
+            <div class="flow-box">
+              <strong>Inquiry</strong>
+              <span>Patient submits your form</span>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+            <div class="flow-box">
+              <strong>Instant Response</strong>
+              <span>Confirmation + booking link</span>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+            <div class="flow-box">
+              <strong>Booked</strong>
+              <span>Calendar sync + logged</span>
+            </div>
+          </div>
+        </div>
+        <div class="flow-footer">
+          <span class="small" style="color:var(--muted2);">Runs 24/7 · Designed for speed-to-lead</span>
+          <a href="#intake-system">See System Layers →</a>
+        </div>
+
+        <h3 style="margin-top:20px;">What you'll see in the demo</h3>
+        <ul class="hero-list">
+          <li>Online inquiry → instant response</li>
+          <li>Direct booking link + calendar sync</li>
+          <li>Internal notifications</li>
+          <li>Automatic logging (organized leads)</li>
+        </ul>
+        <p class="small" style="margin:12px 0 0; color:var(--muted2);">
+          Built around the <b style="color:var(--ink);">Core</b> automation engine. Optional Expansion (call capture) and Foundation (website) available.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ── -->
+<section class="section" id="benefits">
+  <div class="container">
+    <h2>Most Clinics Don't Have an Intake System. They Have Friction.</h2>
+    <p class="lead">Missed calls, delayed replies, and manual scheduling create avoidable drop-off. Every delay increases the chance a patient books elsewhere.</p>
+    <p class="lead" style="margin-top:-10px;"><strong>You don't need more leads.</strong> You need a structured intake system.</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Instant response</h3>
+        <p>New inquiries get an immediate confirmation and a booking link — even after hours.</p>
+      </div>
+      <div class="card">
+        <h3>Booked appointments</h3>
+        <p>Patients self-schedule right away instead of waiting for a call back.</p>
+      </div>
+      <div class="card">
+        <h3>Everything organized</h3>
+        <p>Inquiry details and bookings are logged automatically so nothing slips through the cracks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTAKE SYSTEM ── -->
+<section class="section soft" id="intake-system">
+  <div class="container">
+    <h2>The Intake System</h2>
+    <p class="lead">Built around a clear Core. Add optional layers only if your clinic needs them.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-core">Core</span>
+        <h3>Automation Engine</h3>
+        <p class="muted">Online inquiry → instant response → scheduled appointment (with logging).</p>
+        <ul class="clean">
+          <li>Immediate confirmation message</li>
+          <li>Booking link + calendar sync</li>
+          <li>Internal notifications</li>
+          <li>Automatic lead logging</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag tag-expand">Expansion</span>
+        <h3>Call Capture</h3>
+        <p class="muted">Missed call → immediate text response → booking link.</p>
+        <ul class="clean">
+          <li>Missed-call SMS response</li>
+          <li>After-hours protection</li>
+          <li>Booking link included</li>
+          <li>Optional logging/optimization</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag tag-found">Foundation</span>
+        <h3>Website Infrastructure</h3>
+        <p class="muted">If you don't have a structured website, we build a clean booking-focused foundation.</p>
+        <ul class="clean">
+          <li>Home + Services + Booking + Contact</li>
+          <li>Clear CTA structure</li>
+          <li>Mobile-first layout</li>
+          <li>Hosting &amp; basics (if needed)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero-actions" style="margin-top:22px;">
+      <a class="btn" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book Your Intake System Demo</a>
+      <a class="btn btn-outline" href="/pricing">View Pricing &amp; System Options</a>
+    </div>
+    <div class="small" style="margin-top:10px;"><a class="inline-link" href="/pricing">See pricing for each layer →</a></div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <h2>How it works</h2>
+    <p class="lead">Simple, reliable, and easy for your staff.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>1) Patient submits an inquiry</h3>
+        <p>A quick intake form captures name, contact info, and reason for visit.</p>
+      </div>
+      <div class="card">
+        <h3>2) Instant confirmation is sent</h3>
+        <p>They immediately receive a message with a "book now" link.</p>
+      </div>
+      <div class="card">
+        <h3>3) Patient books a time</h3>
+        <p>They choose a time that works — no back-and-forth.</p>
+      </div>
+      <div class="card">
+        <h3>4) Logged automatically</h3>
+        <p>Everything is tracked so your clinic stays organized and in control.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px;">
+      <strong>Transparency-first:</strong>
+      <span class="muted"> Your clinic owns the accounts and data. I'm added as an admin to set up and maintain everything.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section soft" id="testimonials">
+  <div class="container">
+    <h2>What chiropractors are saying</h2>
+    <p class="lead">Real results from clinics already using the system.</p>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">
+          "Within the first week, we had two new patients book without us doing anything. We didn't change anything — it just worked."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SM</div>
+          <div>
+            <p class="testimonial-name">Dr. Sarah Meilen</p>
+            <p class="testimonial-clinic">Meilen Chiropractic</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">
+          "I was skeptical, but setup was painless and now I don't think about it. New patients just show up on the calendar."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JT</div>
+          <div>
+            <p class="testimonial-name">Dr. James Thorpe</p>
+            <p class="testimonial-clinic">Spine &amp; Motion Clinic</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IS THIS RIGHT FOR YOU ── -->
+<section class="section" id="fit">
+  <div class="container">
+    <h2>Is this right for you?</h2>
+    <p class="lead">This system works well for some clinics and isn't the right fit for others. Here's an honest look.</p>
+
+    <div class="fit-grid">
+      <div class="fit-card good">
+        <h3><span class="fit-icon">✅</span> A great fit if…</h3>
+        <ul class="fit-list">
+          <li><span class="fit-check">✓</span> You get new patient inquiries online (website, Google, social)</li>
+          <li><span class="fit-check">✓</span> You're losing patients to slow follow-up</li>
+          <li><span class="fit-check">✓</span> You want to reduce front desk burden</li>
+          <li><span class="fit-check">✓</span> You're open to a simple, tool-based setup</li>
+        </ul>
+      </div>
+      <div class="fit-card bad">
+        <h3><span class="fit-icon">🚫</span> Not a great fit if…</h3>
+        <ul class="fit-list">
+          <li><span class="fit-check">✗</span> You rely entirely on walk-ins or phone calls</li>
+          <li><span class="fit-check">✗</span> You need a full EHR or billing system</li>
+          <li><span class="fit-check">✗</span> You want to manage everything in-house</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING BRIDGE ── -->
+<section class="section soft" id="pricing-bridge">
+  <div class="container" style="max-width:900px;">
+    <h2>Clear Structure. Transparent Pricing.</h2>
+    <p class="lead">
+      Pricing is structured around the Core intake system, with optional Expansion and Foundation layers.
+      View the full breakdown on the pricing page.
+    </p>
+    <div class="hero-actions" style="margin-top:16px;">
+      <a class="btn btn-outline" href="/pricing">View Full Pricing</a>
+      <a class="btn" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book Your Intake System Demo</a>
+    </div>
+    <div class="reassure" style="margin-top:12px;">No long-term contracts · Clinics own their accounts &amp; data</div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section soft" id="faq">
+  <div class="container">
+    <h2>Common Questions</h2>
+
+    <details>
+      <summary>Is this a full practice management system?</summary>
+      <p>No — it's focused specifically on online inquiry response and appointment booking. It doesn't replace your EHR or billing software.</p>
+    </details>
+    <details>
+      <summary>What software does it use?</summary>
+      <p>Typically a form tool (like Tally or Typeform), a scheduling tool (like Calendly), and an automation layer (like Make or Zapier). You're not locked in — tools can be swapped if needed.</p>
+    </details>
+    <details>
+      <summary>Do you run ads?</summary>
+      <p>No. We build intake infrastructure that converts the leads you already receive.</p>
+    </details>
+    <details>
+      <summary>Can we add Call Capture or a website later?</summary>
+      <p>Yes. The system is modular — start with the Core and add layers when your clinic is ready.</p>
+    </details>
+    <details>
+      <summary>Who owns the accounts?</summary>
+      <p>Your clinic does. You create the accounts; Alignment Automations is added as an admin to build and manage everything. This means you're never locked in — you can take over or work with someone else at any time.</p>
+    </details>
+    <details>
+      <summary>Does this replace my front desk?</summary>
+      <p>No — it reduces repetitive follow-up so your staff can focus on patients already in the clinic. It handles new online inquiries automatically.</p>
+    </details>
+    <details>
+      <summary>How long does setup take?</summary>
+      <p>Most setups are complete within 5–7 business days after your clinic provides access and approves the flow.</p>
+    </details>
+    <details>
+      <summary>What if we want to cancel?</summary>
+      <p>Cancel any time. Since you own the accounts, you keep everything — forms, calendar, and data.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section" id="contact">
+  <div class="container" style="text-align:center; max-width:620px;">
+    <h2>Ready to see it in action?</h2>
+    <p class="lead" style="margin-bottom:22px;">
+      Book a 15-minute demo — see how the Intake System converts inquiries into booked appointments automatically.
+    </p>
+    <a class="btn" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener" style="font-size:16px; padding:16px 28px;">Book Your Intake System Demo</a>
+    <div class="reassure" style="margin-top:12px;">No pressure · 15 minutes · Cancel anytime</div>
+    <p class="small" style="margin-top:18px; color:var(--muted2);">
+      Prefer email? <a href="/cdn-cgi/l/email-protection#c0b3a1aca5b380a1aca9a7aeada5aeb4a1b5b4afada1b4a9afaeb3eea3afad" style="color:var(--blue);"><span class="__cf_email__" data-cfemail="6211030e071122030e0b050c0f070c160317160d0f03160b0d0c114c010d0f">[email&#160;protected]</span></a>
+    </p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="small" style="color:var(--muted2);">© <span id="year"></span> Alignment Automations. All rights reserved.</div>
+      <div class="small"><a href="/cdn-cgi/l/email-protection#3340525f564073525f5a545d5e565d475246475c5e52475a5c5d401d505c5e"><span class="__cf_email__" data-cfemail="7a091b161f093a1b16131d14171f140e1b0f0e15171b0e1315140954191517">[email&#160;protected]</span></a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── MOBILE PRICING FAB ── -->
+<div class="pricing-fab" id="pricingFab">
+  <a class="btn" href="/pricing" style="font-size:13px; padding:11px 16px;">View Pricing →</a>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decod

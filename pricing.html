@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | Alignment Automations</title>
+  <meta name="description" content="Clear, structured pricing built around your clinic's intake system. Configure only what you need." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS (identical to main site) ── */
+    :root {
+      --page:    #070B14;
+      --surface: #0B1220;
+      --surface2:#0E1A2E;
+      --border:  rgba(148,163,184,0.22);
+      --ink:     #F9FAFB;
+      --muted:   #CBD5E1;
+      --muted2:  #94A3B8;
+      --blue:    #4DA3FF;
+      --blue2:   #2F86FF;
+      --deep:    #0A4C93;
+      --green:   #10B981;
+      --red:     #EF4444;
+      --purple:  #A78BFA;
+      --shadow:  0 12px 34px rgba(0,0,0,0.50);
+      --radius:  16px;
+      --max:     1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    html, body { margin: 0; background: var(--page); color: var(--ink); overflow-x: clip; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { color: #fff; }
+    a:focus-visible, summary:focus-visible {
+      outline: 3px solid rgba(147,197,253,0.65);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+    img { max-width: 100%; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 22px; width: 100%; }
+    .section { padding: 72px 0; overflow: hidden; width: 100%; }
+    .section.soft {
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h1 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; margin: 14px 0 12px; letter-spacing: -0.03em; color: var(--ink); }
+    h2 { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.02em; color: var(--ink); }
+    h3 { font-size: 15px; margin: 0 0 6px; color: var(--ink); font-weight: 700; }
+    p  { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+    li { color: var(--muted); font-size: 14px; }
+    strong, summary { color: var(--ink); }
+    .muted  { color: var(--muted); }
+    .muted2 { color: var(--muted2); }
+    .small  { font-size: 13px; }
+    .lead   { font-size: 17px; color: var(--muted); max-width: 680px; margin: 0 0 10px; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(7,11,20,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 160ms ease;
+      width: 100%;
+    }
+    header.compact { box-shadow: var(--shadow); }
+    .navwrap {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; padding: 20px 0;
+    }
+    .logo { height: 90px; width: auto; display: block; transition: height 160ms ease; max-width: 100%; }
+    header.compact .logo { height: 68px; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a {
+      text-decoration: none; font-weight: 700; font-size: 14px;
+      color: var(--muted); padding: 8px 10px; border-radius: 10px;
+    }
+    nav a:hover { background: rgba(255,255,255,0.06); color: var(--ink); }
+    nav a.active { color: var(--blue); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(180deg, var(--blue), var(--blue2));
+      color: #06121F;
+      padding: 13px 20px; border-radius: 12px;
+      text-decoration: none; font-weight: 700; font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 26px rgba(77,163,255,0.24);
+      white-space: nowrap; cursor: pointer;
+      transition: filter 120ms ease;
+    }
+    .btn:hover  { filter: brightness(1.06); color: #06121F; }
+    .btn:active { transform: translateY(0.5px); }
+    .btn-outline {
+      background: rgba(255,255,255,0.06);
+      color: var(--ink); border: 1px solid var(--border); box-shadow: none;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.10); color: var(--ink); }
+    .btn-full { width: 100%; justify-content: center; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 60px 0 52px;
+      background:
+        radial-gradient(900px 400px at 10% 50%, rgba(77,163,255,0.14), transparent 60%),
+        linear-gradient(180deg, #071B33, var(--page));
+      border-bottom: 1px solid var(--border);
+      width: 100%;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 13px; border-radius: 999px;
+      background: rgba(77,163,255,0.12); border: 1px solid rgba(77,163,255,0.26);
+      font-weight: 800; font-size: 12px; color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    /* ── TIER TAGS ── */
+    .tag {
+      display: inline-block; font-size: 11px; font-weight: 800;
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 12px;
+      letter-spacing: 0.03em; text-transform: uppercase;
+    }
+    .tag-core   { background: rgba(77,163,255,0.14);  border: 1px solid rgba(77,163,255,0.28);  color: var(--blue); }
+    .tag-found  { background: rgba(16,185,129,0.10);  border: 1px solid rgba(16,185,129,0.26);  color: var(--green); }
+    .tag-call   { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.26); color: var(--purple); }
+    .tag-bundle { background: rgba(249,115,22,0.10);  border: 1px solid rgba(249,115,22,0.26);  color: #FB923C; }
+
+    /* ── PRICING CARDS ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+    }
+    .pricing-grid.three {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      display: flex; flex-direction: column;
+      gap: 0;
+      transition: border-color 200ms ease;
+    }
+    .price-card:hover { border-color: rgba(77,163,255,0.35); }
+    .price-card.featured {
+      border-color: rgba(77,163,255,0.40);
+      background: linear-gradient(160deg, rgba(77,163,255,0.07), var(--surface));
+      position: relative;
+    }
+    .featured-badge {
+      position: absolute; top: -1px; right: 20px;
+      background: linear-gradient(180deg, var(--blue), var(--blue2));
+      color: #06121F; font-size: 11px; font-weight: 800;
+      padding: 4px 12px; border-radius: 0 0 10px 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .price-amount {
+      margin: 10px 0 4px;
+    }
+    .price-number {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.04em; color: var(--ink);
+    }
+    .price-period { font-size: 14px; color: var(--muted2); font-weight: 600; }
+    .price-monthly {
+      font-size: 14px; color: var(--muted); margin: 0 0 16px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border);
+    }
+    .price-monthly strong { color: var(--ink); }
+
+    .price-desc {
+      font-size: 14px; color: var(--muted); margin: 0 0 18px; line-height: 1.5;
+    }
+
+    .feature-list { list-style: none; margin: 0; padding: 0; flex: 1; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 7px 0; font-size: 14px; color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list .check { color: var(--green); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    .card-cta { margin-top: 22px; }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 24px;
+    }
+    .section-label h2 { margin: 0; }
+    .section-label-line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── BUNDLE CARDS ── */
+    .bundle-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+    }
+    .bundle-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      transition: border-color 200ms ease;
+    }
+    .bundle-card:hover { border-color: rgba(249,115,22,0.35); }
+    .bundle-card.full {
+      border-color: rgba(249,115,22,0.30);
+      background: linear-gradient(160deg, rgba(249,115,22,0.05), var(--surface));
+    }
+    .bundle-includes {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin: 12px 0 16px;
+    }
+    .bundle-chip {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .bundle-price-row {
+      display: flex; align-items: baseline; gap: 10px;
+      margin: 4px 0 16px; flex-wrap: wrap;
+    }
+    .bundle-setup { font-size: 22px; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; }
+    .bundle-mo    { font-size: 15px; color: var(--muted); }
+    .bundle-mo strong { color: var(--ink); }
+
+    /* ── OWNERSHIP NOTE ── */
+    .ownership-note {
+      margin-top: 48px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .ownership-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .ownership-note p { margin: 0; font-size: 14px; color: var(--muted); }
+    .ownership-note strong { color: var(--ink); }
+
+    /* ── FAQ ── */
+    details {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 18px;
+    }
+    details + details { margin-top: 10px; }
+    details[open] { border-color: rgba(77,163,255,0.35); }
+    summary { cursor: pointer; font-weight: 800; color: var(--ink); font-size: 15px; }
+    details p { margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      text-align: center; padding: 72px 0;
+    }
+    .cta-strip h2 { margin-bottom: 10px; }
+    .cta-strip p  { margin-bottom: 24px; }
+    .cta-actions  { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .reassure { margin-top: 12px; font-size: 13px; color: var(--muted2); }
+
+    /* ── FOOTER ── */
+    footer { padding: 36px 0; border-top: 1px solid var(--border); width: 100%; }
+    .footer-row {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .footer-row a { color: var(--muted2); font-size: 13px; }
+    .footer-row a:hover { color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .pricing-grid, .pricing-grid.three, .bundle-grid { grid-template-columns: 1fr; }
+      nav { display: none; }
+    }
+    @media (max-width: 520px) {
+      .section  { padding: 52px 0; }
+      .container { padding: 0 16px; }
+      h1 { font-size: 30px; }
+      .btn { width: 100%; }
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .logo { height: 44px; }
+      header.compact .logo { height: 58px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header id="siteHeader">
+  <div class="container">
+    <div class="navwrap">
+      <a href="/" aria-label="Alignment Automations Home">
+        <img src="alignment_automations_horizontal_white.svg" class="logo" alt="Alignment Automations">
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/#how-it-works">How It Works</a>
+        <a href="/#intake-system">System</a>
+        <a href="/#testimonials">Testimonials</a>
+        <a href="/pricing" class="active">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a class="btn" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener" style="padding:10px 16px; font-size:13px; margin-left:6px;">Book Demo</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="container">
+    <div class="pill">Pricing</div>
+    <h1>Clear, Structured Pricing.<br>Configure Only What You Need.</h1>
+    <p class="lead">
+      Every clinic starts at a different layer. We build around your situation and integrate everything into one reliable intake system.
+    </p>
+    <p class="small muted2" style="margin-top:16px;">No long-term contracts · Clinics retain full ownership of all accounts and data</p>
+  </div>
+</div>
+
+<!-- ── AUTOMATION CORE ── -->
+<section class="section" id="core">
+  <div class="container">
+    <div class="section-label">
+      <h2>Automation Core</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="lead" style="margin-bottom:28px;">For clinics with an existing website that need structured automation in place.</p>
+
+    <div class="price-card featured" style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+      <div class="featured-badge">Most Popular</div>
+      <div>
+        <span class="tag tag-core">Core</span>
+        <h2>Automation Engine</h2>
+        <div class="price-amount">
+          <span class="price-number">$900</span>
+          <span class="price-period"> due today</span>
+        </div>
+        <p class="price-monthly">then <strong>$150</strong> / month</p>
+        <p class="price-breakdown">$750 setup + $150 first month</p>
+        <p class="price-desc">For clinics with an existing website that need structured automation in place. Online inquiry → instant response → scheduled appointment, with full logging.</p>
+        <div class="card-cta">
+          <a class="btn btn-full" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book a Demo</a>
+        </div>
+      </div>
+      <div>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> Intake form configuration</li>
+          <li><span class="check">✓</span> Instant confirmation messaging</li>
+          <li><span class="check">✓</span> Booking calendar integration</li>
+          <li><span class="check">✓</span> Lead logging</li>
+          <li><span class="check">✓</span> Internal notifications</li>
+          <li><span class="check">✓</span> Ongoing monitoring &amp; system maintenance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTAKE FOUNDATION ── -->
+<section class="section soft" id="foundation">
+  <div class="container">
+    <div class="section-label">
+      <h2>Intake Foundation</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="lead" style="margin-bottom:28px;">Creates the digital entry point your automation system runs on — if you need it.</p>
+
+    <div class="price-card" style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+      <div>
+        <span class="tag tag-found">Foundation</span>
+        <h2>Website Infrastructure</h2>
+        <div class="price-amount">
+          <span class="price-number">$1,000</span>
+          <span class="price-period"> due today</span>
+        </div>
+        <p class="price-monthly">then <strong>$59</strong> / month</p>
+        <p class="price-breakdown">$950 setup + $59 first month</p>
+        <p class="price-desc">A clean, conversion-focused website built to run your intake automation on top of.</p>
+        <div class="card-cta">
+          <a class="btn btn-outline btn-full" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book a Demo</a>
+        </div>
+      </div>
+      <div>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> Conversion-focused website</li>
+          <li><span class="check">✓</span> Booking integration</li>
+          <li><span class="check">✓</span> Intake form configuration</li>
+          <li><span class="check">✓</span> Secure hosting</li>
+          <li><span class="check">✓</span> Minor content updates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CALL CAPTURE LAYER ── -->
+<section class="section" id="call-capture">
+  <div class="container">
+    <div class="section-label">
+      <h2>Call Capture Layer</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="lead" style="margin-bottom:28px;">For clinics losing patients to missed calls and after-hours gaps.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span class="tag tag-call">Call Protection</span>
+        <h2>Call Protection</h2>
+        <div class="price-amount">
+          <span class="price-number">$490</span>
+          <span class="price-period"> due today</span>
+        </div>
+        <p class="price-monthly">then <strong>$90</strong> / month</p>
+        <p class="price-breakdown">$400 setup + $90 first month</p>
+        <p class="price-desc">A reliable safety net that turns missed calls into booking opportunities.</p>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> Missed call trigger</li>
+          <li><span class="check">✓</span> Instant SMS response</li>
+          <li><span class="check">✓</span> Booking link included</li>
+          <li><span class="check">✓</span> Basic interaction logging</li>
+        </ul>
+        <div class="card-cta">
+          <a class="btn btn-outline btn-full" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book a Demo</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <span class="tag tag-call">Full Intake Channel</span>
+        <h2>Call Capture</h2>
+        <div class="price-amount">
+          <span class="price-number">$630</span>
+          <span class="price-period"> due today</span>
+        </div>
+        <p class="price-monthly">then <strong>$130</strong> / month</p>
+        <p class="price-breakdown">$500 setup + $130 first month</p>
+        <p class="price-desc">A complete call-based intake channel with smart routing and ongoing optimization.</p>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> Smart routing logic</li>
+          <li><span class="check">✓</span> After-hours automation</li>
+          <li><span class="check">✓</span> Booking recovery messaging</li>
+          <li><span class="check">✓</span> CRM logging</li>
+          <li><span class="check">✓</span> Ongoing optimization</li>
+        </ul>
+        <div class="card-cta">
+          <a class="btn btn-outline btn-full" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book a Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BUNDLED PRICING ── -->
+<section class="section soft" id="bundles">
+  <div class="container">
+    <div class="section-label">
+      <h2>Bundled System Pricing</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="lead" style="margin-bottom:28px;">Everything integrated into one system, at a better price.</p>
+
+    <div style="display:grid; gap:18px;">
+
+      <div class="price-card" style="display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:start;">
+        <div>
+          <span class="tag tag-bundle">Bundle</span>
+          <h2>Core + Call Protection</h2>
+          <div class="price-amount">
+            <span class="price-number">$1,265</span>
+            <span class="price-period"> due today</span>
+          </div>
+          <p class="price-monthly">then <strong>$215</strong> / month</p>
+          <p class="price-breakdown">$1,050 setup + $215 first month</p>
+          <p class="price-desc">The most common starting point — online inquiry automation plus a missed-call safety net.</p>
+          <div class="card-cta">
+            <a class="btn btn-outline btn-full" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book a Demo</a>
+          </div>
+        </div>
+        <div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span> Intake form + instant confirmation</li>
+            <li><span class="check">✓</span> Booking calendar integration</li>
+            <li><span class="check">✓</span> Lead logging + internal notifications</li>
+            <li><span class="check">✓</span> Missed-call SMS response</li>
+            <li><span class="check">✓</span> Booking link included</li>
+            <li><span class="check">✓</span> Ongoing monitoring &amp; maintenance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="price-card" style="display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:start;">
+        <div>
+          <span class="tag tag-bundle">Bundle</span>
+          <h2>Foundation + Core</h2>
+          <div class="price-amount">
+            <span class="price-number">$1,690</span>
+            <span class="price-period"> due today</span>
+          </div>
+          <p class="price-monthly">then <strong>$190</strong> / month</p>
+          <p class="price-breakdown">$1,500 setup + $190 first month</p>
+          <p class="price-desc">For clinics that need a website built and automated intake set up together from the start.</p>
+          <div class="card-cta">
+            <a class="btn btn-outline btn-full" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book a Demo</a>
+          </div>
+        </div>
+        <div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span> Conversion-focused website</li>
+            <li><span class="check">✓</span> Booking integration + secure hosting</li>
+            <li><span class="check">✓</span> Intake form + instant confirmation</li>
+            <li><span class="check">✓</span> Booking calendar integration</li>
+            <li><span class="check">✓</span> Lead logging + internal notifications</li>
+            <li><span class="check">✓</span> Ongoing monitoring &amp; maintenance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="price-card featured" style="display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:start;">
+        <div class="featured-badge">Full System</div>
+        <div>
+          <span class="tag tag-bundle">Bundle</span>
+          <h2>Full Intake Infrastructure</h2>
+          <div class="price-amount">
+            <span class="price-number">$2,305</span>
+            <span class="price-period"> due today</span>
+          </div>
+          <p class="price-monthly">then <strong>$305</strong> / month</p>
+          <p class="price-breakdown">$2,000 setup + $305 first month</p>
+          <p class="price-desc">A complete intake system — website, automation, and call capture — all integrated and managed together.</p>
+          <div class="card-cta">
+            <a class="btn btn-full" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener">Book a Demo</a>
+          </div>
+        </div>
+        <div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span> Conversion-focused website + hosting</li>
+            <li><span class="check">✓</span> Intake form + instant confirmation</li>
+            <li><span class="check">✓</span> Booking calendar integration</li>
+            <li><span class="check">✓</span> Lead logging + internal notifications</li>
+            <li><span class="check">✓</span> Smart call routing + after-hours automation</li>
+            <li><span class="check">✓</span> Booking recovery messaging + CRM logging</li>
+            <li><span class="check">✓</span> Ongoing monitoring, maintenance &amp; optimization</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Ownership note -->
+    <div class="ownership-note">
+      <div class="ownership-icon">🔒</div>
+      <p><strong>You own everything.</strong> No long-term contracts. Clinics retain full ownership of all accounts and data. You can take over or work with someone else at any time — nothing is locked in.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">
+      <h2>Pricing Questions</h2>
+      <div class="section-label-line"></div>
+    </div>
+
+    <details>
+      <summary>What's included in "system management"?</summary>
+      <p>Monthly system management covers ongoing monitoring, small edits as needed, workflow maintenance, and support with access or billing setup. You're not on your own after launch.</p>
+    </details>
+    <details>
+      <summary>Do I need the Foundation if I already have a website?</summary>
+      <p>No — the Automation Core works with your existing website. Foundation is only needed if you don't have a site or if your current one isn't structured for intake and booking.</p>
+    </details>
+    <details>
+      <summary>Can I start with Core and add Call Capture later?</summary>
+      <p>Yes. The system is modular — start with what your clinic needs now and add layers when you're ready. Bundled pricing applies when both are set up together.</p>
+    </details>
+    <details>
+      <summary>Are there any tool costs beyond these prices?</summary>
+      <p>Yes — the tools your system runs on (form software, scheduling, automation layer) are billed directly to your clinic. These typically run under $50/month in total and are completely transparent.</p>
+    </details>
+    <details>
+      <summary>What if I want to cancel?</summary>
+      <p>Cancel anytime. Since you own all the accounts, you keep everything — your forms, calendar, data, and website. There's no lock-in.</p>
+    </details>
+    <details>
+      <summary>How long does setup take?</summary>
+      <p>Most setups are complete within 5–7 business days after your clinic provides access and approves the flow.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="section soft">
+  <div class="container">
+    <div class="cta-strip">
+      <h2>Not sure which layer is right for you?</h2>
+      <p class="lead" style="margin: 0 auto 24px; text-align:center;">Book a 15-minute demo and we'll map the right system for your clinic — no pressure, no guesswork.</p>
+      <div class="cta-actions">
+        <a class="btn" href="https://calendly.com/alignment-automations/new-meeting" target="_blank" rel="noopener" style="font-size:15px; padding:15px 28px;">Book Your Intake System Demo</a>
+        <a class="btn btn-outline" href="/">Back to Home</a>
+      </div>
+      <div class="reassure">15 minutes · No pressure · Cancel anytime</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="small" style="color:var(--muted2);">© <span id="year"></span> Alignment Automations. All rights reserved.</div>
+      <div class="small"><a href="/cdn-cgi/l/email-protection#6310020f061023020f0a040d0e060d170216170c0e02170a0c0d104d000c0e"><span class="__cf_email__" data-cfemail="6211030e071122030e0b050c0f070c160317160d0f03160b0d0c114c010d0f">[email&#160;protected]</span></a></div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.getE
