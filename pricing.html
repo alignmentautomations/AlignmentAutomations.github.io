@@ -305,7 +305,6 @@
       h1 { font-size: 30px; }
       .btn { width: 100%; }
       .cta-actions { flex-direction: column; align-items: stretch; }
-      header.compact
     }
   
     /* ── LIGHT MODE ─────────────────────────────────────── */
@@ -329,6 +328,11 @@
 
     [data-theme="light"] a:hover { color: var(--ink); }
 
+    [data-theme="light"] .page-hero {
+      background:
+        radial-gradient(900px 400px at 10% 50%, rgba(26,92,200,0.07), transparent 60%),
+        linear-gradient(180deg, #DAE4F5, var(--page));
+    }
     [data-theme="light"] header {
       background: rgba(240,244,250,0.92);
     }
