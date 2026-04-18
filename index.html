@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alignment Automations | Intake Systems for Chiropractic & Massage Clinics</title>
+  <meta name="description" content="Alignment Automations builds intake systems for chiropractic and massage clinics, including online inquiry automation, missed-call text back, and booking-focused websites."/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --page:    #070B14;
+      --surface: #0B1220;
+      --surface2:#0E1A2E;
+      --border:  rgba(148,163,184,0.22);
+      --ink:     #F9FAFB;
+      --muted:   #CBD5E1;
+      --muted2:  #94A3B8;
+      --blue:    #4DA3FF;
+      --blue2:   #2F86FF;
+      --deep:    #0A4C93;
+      --green:   #10B981;
+      --red:     #EF4444;
+      --amber:   #F59E0B;
+      --shadow:  0 12px 34px rgba(0,0,0,0.50);
+      --radius:  16px;
+      --max:     1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    html, body { margin: 0; background: var(--page); color: var(--ink); overflow-x: clip; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { color: #fff; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid rgba(147,197,253,0.65);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+    img, svg, video { max-width: 100%; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 22px; width: 100%; }
+    .section { padding: 72px 0; overflow: hidden; width: 100%; }
+    .section.soft {
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; width: 100%; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; width: 100%; }
+    .grid-2 > *, .grid-3 > * { min-width: 0; }
+
+    h1 { font-size: clamp(32px, 3.8vw, 50px); line-height: 1.06; margin: 14px 0 12px; letter-spacing: -0.03em; color: var(--ink); }
+    h2 { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.2; margin: 0 0 10px; letter-spacing: -0.02em; color: var(--ink); }
+    h3 { font-size: 16px; margin: 0 0 6px; color: var(--ink); }
+    p  { margin: 0 0 14px; color: var(--muted); font-size: 16px; }
+    p:last-child { margin-bottom: 0; }
+    li { color: var(--muted); }
+    strong, summary { color: var(--ink); }
+    .muted { color: var(--muted); }
+    .small { font-size: 14px; }
+    .lead  { font-size: 18px; margin: 0 0 22px; color: var(--muted); max-width: 820px; }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 13px; border-radius: 999px;
+      background: rgba(77,163,255,0.12);
+      border: 1px solid rgba(77,163,255,0.26);
+      font-weight: 800; font-size: 13px; color: var(--blue);
+    }
+
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(7,11,20,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 160ms ease;
+      width: 100%;
+    }
+    header.compact { box-shadow: var(--shadow); }
+    .navwrap {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; padding: 20px 0;
+    }
+    .logo { height: 90px; width: auto; display: block; transition: height 160ms ease; max-width: 100%; }
+    header.compact .logo { height: 68px; }
+    nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+    nav a {
+      text-decoration: none; font-weight: 700; font-size: 14px;
+      color: var(--muted); padding: 8px 10px; border-radius: 10px;
+    }
+    nav a:hover { background: rgba(255,255,255,0.06); color: var(--ink); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(180deg, var(--blue), var(--blue2));
+      color: #06121F;
+      padding: 13px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700; font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 26px rgba(77,163,255,0.24);
+      white-space: nowrap; cursor: pointer;
+      transition: filter 120ms ease, transform 120ms ease;
+    }
+    .btn:hover  { filter: brightness(1.06); color: #06121F; }
+    .btn:active { transform: translateY(0.5px); }
+    .btn-outline {
+      background: rgba(255,255,255,0.06);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.10); color: var(--ink); }
+    .hero-actions, .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .reassure { margin-top: 10px; font-size: 14px; color: var(--muted2); }
+    .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+    .inline-link:hover { text-decoration: underline; }
+
+    .hero {
+      background:
+        radial-gradient(1200px 520px at 15% 15%, rgba(77,163,255,0.18), transparent 60%),
+        radial-gradient(800px 400px at 90% 60%, rgba(10,76,147,0.16), transparent 60%),
+        linear-gradient(180deg, #071B33, var(--page));
+      border-bottom: 1px solid var(--border);
+      padding: 72px 0 60px;
+      overflow: hidden; width: 100%;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 42px; align-items: center; }
+    .hero-copy { max-width: 700px; }
+
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px; padding: 22px;
+    }
+    .hero-card h3 { margin: 0 0 14px; font-size: 15px; color: var(--ink); }
+    .hero-list { margin: 0; padding-left: 18px; }
+    .hero-list li { margin: 8px 0; color: var(--muted); }
+
+    .trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin-top: 20px;
+    }
+    .trust-chip {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .flow { display: grid; gap: 12px; margin-top: 8px; }
+    .flow-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; }
+    .flow-box {
+      padding: 12px; border-radius: 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      min-height: 62px;
+    }
+    .flow-box strong { display: block; font-size: 13px; margin-bottom: 5px; color: var(--ink); }
+    .flow-box span   { font-size: 12px; color: var(--muted2); }
+    .arrow {
+      width: 26px; height: 26px; display: grid; place-items: center;
+      border-radius: 8px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--blue); font-weight: 800; font-size: 13px;
+      user-select: none; flex-shrink: 0;
+    }
+    .flow-footer {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 10px; flex-wrap: wrap;
+    }
+    .flow-footer a { color: var(--blue); font-weight: 700; }
+    .flow-footer a:hover { text-decoration: underline; color: var(--blue); }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px; min-width: 0; overflow: hidden;
+    }
+    .card h3 { margin: 0 0 8px; }
+    .card p  { margin: 0; }
+
+    .step-card h3 { margin-bottom: 8px; }
+    .step-num {
+      width: 34px; height: 34px; border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(77,163,255,0.14);
+      border: 1px solid rgba(77,163,255,0.26);
+      color: var(--blue); font-size: 14px; font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      display: inline-block; font-size: 12px; font-weight: 800;
+      padding: 5px 10px; border-radius: 999px; margin-bottom: 10px;
+    }
+    .tag-core   { background: rgba(77,163,255,0.14);  border: 1px solid rgba(77,163,255,0.26);  color: var(--blue); }
+    .tag-expand { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.24); color: #A78BFA; }
+    .tag-found  { background: rgba(16,185,129,0.10);  border: 1px solid rgba(16,185,129,0.24);  color: var(--green); }
+
+    ul.clean { margin: 12px 0 0 18px; padding: 0; color: var(--muted); }
+    ul.clean li { margin: 8px 0; }
+
+    .fit-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+    .fit-card { border-radius: var(--radius); padding: 28px; }
+    .fit-card.good { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.26); }
+    .fit-card.bad  { background: rgba(239,68,68,0.07);  border: 1px solid rgba(239,68,68,0.20); }
+    .fit-card h3   { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-size: 17px; }
+    .fit-icon { font-size: 20px; }
+    .fit-list { list-style: none; margin: 0; padding: 0; }
+    .fit-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 9px 0; font-size: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+    }
+    .fit-list li:first-child { padding-top: 0; }
+    .fit-list li:last-child  { border-bottom: none; padding-bottom: 0; }
+    .fit-check { font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+    .fit-card.good .fit-check { color: var(--green); }
+    .fit-card.bad  .fit-check { color: var(--red); }
+
+    .cta-final {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .cta-final p { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+    .problem-grid, .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .mini-kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .footer-brand p { max-width: 540px; }
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    details {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 18px;
+    }
+    details + details { margin-top: 12px; }
+    details[open] { border-color: rgba(77,163,255,0.35); }
+    summary { cursor: pointer; font-weight: 800; color: var(--ink); font-size: 15px; }
+    details p { margin: 10px 0 0; color: var(--muted); }
+
+    footer { padding: 36px 0; border-top: 1px solid var(--border); width: 100%; }
+    .footer-row {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .footer-row a { color: var(--muted2); }
+    .footer-row a:hover { color: var(--ink); }
+
+    .pricing-fab {
+      position: fixed; right: 16px; bottom: 16px; z-index: 999;
+      opacity: 0; transform: translateY(10px); pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .pricing-fab.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    @media (min-width: 641px) { .pricing-fab { display: none; } }
+    @media (max-width: 640px) { body { padding-bottom: 84px; } }
+
+    @media (max-width: 980px) {
+      .hero-grid  { grid-template-columns: 1fr; }
+      .grid-3     { grid-template-columns: 1fr; }
+      nav         { display: none; }
+      .flow-row   { grid-template-columns: 1fr; }
+      .arrow      { display: none; }
+      .fit-grid, .problem-grid, .flow-steps { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .section          { padding: 56px 0; }
+      .grid-2           { grid-template-columns: 1fr; }
+      .container        { padding: 0 16px; }
+      h1                { font-size: 34px; }
+      .btn              { width: 100%; }
+      .hero-actions,
+      .cta-row          { flex-direction: column; align-items: stretch; }
+      .logo             { height: 76px; }
+      header.compact .logo { height: 58px; }
+    }
+  
+    /* ── LIGHT MODE ─────────────────────────────────────── */
+    [data-theme="light"] {
+      --page:    #F0F4FA;
+      --surface: #FFFFFF;
+      --surface2:#E8EEF7;
+      --border:  rgba(30,60,120,0.14);
+      --ink:     #0D1829;
+      --muted:   #3D5270;
+      --muted2:  #5B728F;
+      --blue:    #1A5CC8;
+      --blue2:   #0D3D8E;
+      --deep:    #0A4C93;
+      --shadow:  0 12px 34px rgba(0,0,0,0.10);
+    }
+    [data-theme="light"] html,
+    [data-theme="light"] body,
+    html[data-theme="light"],
+    body[data-theme="light"] { background: var(--page); color: var(--ink); }
+
+    [data-theme="light"] a:hover { color: var(--ink); }
+
+    [data-theme="light"] header {
+      background: rgba(240,244,250,0.92);
+    }
+    [data-theme="light"] nav a:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    [data-theme="light"] .btn {
+      color: #fff;
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .btn:hover { color: #fff; }
+    [data-theme="light"] .btn-outline {
+      background: rgba(0,0,0,0.04);
+      color: var(--ink);
+      border-color: var(--border);
+    }
+    [data-theme="light"] .btn-outline:hover {
+      background: rgba(0,0,0,0.08);
+      color: var(--ink);
+    }
+    [data-theme="light"] .hero {
+      background:
+        radial-gradient(1200px 520px at 15% 15%, rgba(26,92,200,0.08), transparent 60%),
+        radial-gradient(800px 400px at 90% 60%, rgba(13,61,142,0.06), transparent 60%),
+        linear-gradient(180deg, #DAE4F5, var(--page));
+    }
+    [data-theme="light"] .hero-card {
+      background: rgba(255,255,255,0.80);
+      border-color: rgba(26,92,200,0.15);
+    }
+    [data-theme="light"] .trust-chip {
+      background: rgba(0,0,0,0.04);
+      border-color: rgba(0,0,0,0.09);
+    }
+    [data-theme="light"] .flow-box {
+      background: rgba(255,255,255,0.80);
+      border-color: rgba(26,92,200,0.15);
+    }
+    [data-theme="light"] .arrow {
+      background: rgba(0,0,0,0.04);
+    }
+    [data-theme="light"] .flow-footer {
+      border-top-color: var(--border);
+    }
+    [data-theme="light"] .pill {
+      background: rgba(26,92,200,0.09);
+      border-color: rgba(26,92,200,0.22);
+    }
+    [data-theme="light"] .step-num {
+      background: rgba(26,92,200,0.09);
+      border-color: rgba(26,92,200,0.22);
+    }
+    [data-theme="light"] .tag-core {
+      background: rgba(26,92,200,0.09);
+      border-color: rgba(26,92,200,0.22);
+    }
+    [data-theme="light"] .tag-expand {
+      background: rgba(109,40,217,0.08);
+      border-color: rgba(109,40,217,0.18);
+    }
+    [data-theme="light"] .tag-found {
+      background: rgba(5,150,105,0.08);
+      border-color: rgba(5,150,105,0.20);
+    }
+    [data-theme="light"] .fit-card.good {
+      background: rgba(5,150,105,0.07);
+      border-color: rgba(5,150,105,0.22);
+    }
+    [data-theme="light"] .fit-card.bad {
+      background: rgba(220,38,38,0.06);
+      border-color: rgba(220,38,38,0.16);
+    }
+    [data-theme="light"] .fit-list li {
+      border-bottom-color: var(--border);
+    }
+    [data-theme="light"] details {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+    [data-theme="light"] details[open] {
+      border-color: rgba(26,92,200,0.32);
+    }
+
+    /* Pricing-specific */
+    [data-theme="light"] .pkg-card {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+    [data-theme="light"] .pkg-card.featured {
+      border-color: var(--blue);
+    }
+    [data-theme="light"] .check-row {
+      border-bottom-color: var(--border);
+    }
+    [data-theme="light"] .tier-toggle {
+      background: rgba(0,0,0,0.05);
+      border-color: var(--border);
+    }
+    [data-theme="light"] .tier-btn.active {
+      background: var(--surface);
+    }
+
+    /* Form-specific */
+    [data-theme="light"] .form-card,
+    [data-theme="light"] .field-group {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+    [data-theme="light"] input,
+    [data-theme="light"] select,
+    [data-theme="light"] textarea {
+      background: #F4F7FC;
+      border-color: rgba(30,60,120,0.18);
+      color: var(--ink);
+    }
+    [data-theme="light"] input::placeholder,
+    [data-theme="light"] textarea::placeholder { color: #9BAABB; }
+
+    /* ── THEME TOGGLE BUTTON ─────────────────────────────── */
+    .theme-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      flex-shrink: 0;
+      font-size: 17px;
+      line-height: 1;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,0.12); color: var(--ink); }
+    [data-theme="light"] .theme-toggle {
+      background: rgba(0,0,0,0.05);
+      border-color: rgba(30,60,120,0.15);
+    }
+    [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.10); }
+
+  </style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="container">
+    <div class="navwrap">
+      <a href="#top" aria-label="Alignment Automations Home">
+        <img src="alignment_automations_horizontal_white.svg" class="logo" alt="Alignment Automations">
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#intake-system">System</a>
+        <a href="#fit">Fit</a>
+        <a href="/pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-outline" href="lead-gen.html">Email Sales</a>
+        <a class="btn" href="lead-gen.html">Book a Demo</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="pill">Built for chiropractic and massage clinics</span>
+        <h1>Capture more inquiries, respond faster, and make booking easier.</h1>
+        <p class="lead">
+          Alignment Automations builds simple intake systems, missed-call text back, and booking-focused websites so fewer leads slip through the cracks.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="lead-gen.html">Book a Demo</a>
+          <a class="btn btn-outline" href="lead-gen.html">Email Sales</a>
+          <a class="btn btn-outline" href="/how-it-works">See How It Works</a>
+        </div>
+        <div class="reassure">15 minutes · No pressure · Clear pricing · Month-to-month support</div>
+
+        <div class="trust-strip" aria-label="trust highlights">
+          <span class="trust-chip">Built for clinics</span>
+          <span class="trust-chip">Simple setup</span>
+          <span class="trust-chip">Clear system options</span>
+          <span class="trust-chip">No long-term contract required</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Example intake flow</h3>
+        <div class="flow" aria-label="Intake flow diagram">
+          <div class="flow-row">
+            <div class="flow-box">
+              <strong>Inquiry comes in</strong>
+              <span>Website form or online lead</span>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+            <div class="flow-box">
+              <strong>Instant response</strong>
+              <span>Confirmation + booking link</span>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+            <div class="flow-box">
+              <strong>Booked or logged</strong>
+              <span>Calendar sync + staff visibility</span>
+            </div>
+          </div>
+        </div>
+        <div class="flow-footer">
+          <span class="small" style="color:var(--muted2);">Runs 24/7 · Designed to reduce intake friction</span>
+          <a href="#intake-system">See system layers →</a>
+        </div>
+
+        <h3 style="margin-top:20px;">What you'll see in the demo</h3>
+        <ul class="hero-list">
+          <li>Online inquiry to instant response</li>
+          <li>Booking link and calendar handoff</li>
+          <li>Internal notifications for your team</li>
+          <li>Organized lead logging</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="benefits">
+  <div class="container">
+    <span class="mini-kicker">The problem</span>
+    <h2>Many clinics lose inquiries without realizing it.</h2>
+    <p class="lead">Calls go to voicemail. Contact forms sit unanswered. Potential patients move on to the next clinic that responds faster. Most clinics do not have a lead problem. They have an intake problem.</p>
+    <div class="problem-grid">
+      <div class="card">
+        <h3>Missed calls</h3>
+        <p>Calls during treatments, after hours, or during busy front-desk moments often go unanswered.</p>
+      </div>
+      <div class="card">
+        <h3>Slow follow-up</h3>
+        <p>Manual follow-up makes it harder to respond quickly when a new inquiry is ready to book.</p>
+      </div>
+      <div class="card">
+        <h3>Booking friction</h3>
+        <p>If the next step is unclear or scheduling feels difficult, potential patients often abandon the process.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="how-it-works">
+  <div class="container">
+    <span class="mini-kicker">What this looks like</span>
+    <h2>How the system works</h2>
+    <p class="lead">A simple intake flow your staff can understand and your clinic can actually use.</p>
+
+    <div class="flow-steps">
+      <div class="card step-card">
+        <div class="step-num">1</div>
+        <h3>Patient reaches out</h3>
+        <p>A new inquiry comes in through your website, phone line, or another online source.</p>
+      </div>
+      <div class="card step-card">
+        <div class="step-num">2</div>
+        <h3>Automation responds</h3>
+        <p>The system confirms the inquiry, shares the next step, and can send a booking path right away.</p>
+      </div>
+      <div class="card step-card">
+        <div class="step-num">3</div>
+        <h3>Appointment gets booked or logged</h3>
+        <p>Your clinic gets visibility into the inquiry while the patient gets a cleaner path to schedule.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:18px;">
+      <div class="card step-card">
+        <div class="step-num">4</div>
+        <h3>We map your current intake flow</h3>
+        <p>We review how leads currently reach you and identify where follow-up or booking friction is happening.</p>
+      </div>
+      <div class="card step-card">
+        <div class="step-num">5</div>
+        <h3>We build, connect, and maintain the system</h3>
+        <p>We set up the tools, connect the booking flow, and handle practical maintenance so the system stays useful.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px;">
+      <strong>Transparency first:</strong>
+      <span class="muted"> your clinic owns the accounts and data. Alignment Automations is added as an admin to help set up and maintain the system.</span>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="intake-system">
+  <div class="container">
+    <h2>Choose the layer your clinic actually needs</h2>
+    <p class="lead">Start with the core intake system. Add supporting layers only when they make sense.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-core">Core</span>
+        <h3>Online inquiry automation</h3>
+        <p class="muted">A structured path from inquiry to response to booking activity.</p>
+        <ul class="clean">
+          <li>Immediate confirmation message</li>
+          <li>Booking link and calendar handoff</li>
+          <li>Internal notifications</li>
+          <li>Automatic lead logging</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag tag-expand">Expansion</span>
+        <h3>Missed-call text back</h3>
+        <p class="muted">A second intake channel for clinics that lose opportunities when the phone is missed.</p>
+        <ul class="clean">
+          <li>Automatic SMS follow-up after missed calls</li>
+          <li>After-hours coverage</li>
+          <li>Booking link in the reply</li>
+          <li>Optional logging and routing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag tag-found">Foundation</span>
+        <h3>Booking-focused website</h3>
+        <p class="muted">A clean web presence for clinics that need a stronger foundation before automations are added.</p>
+        <ul class="clean">
+          <li>Mobile-friendly layout</li>
+          <li>Clear services and calls to action</li>
+          <li>Booking and contact paths</li>
+          <li>Simple structure that supports conversion</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero-actions" style="margin-top:22px;">
+      <a class="btn" href="lead-gen.html">Book a Demo</a>
+      <a class="btn btn-outline" href="/pricing">View Pricing</a>
+      <a class="btn btn-outline" href="lead-gen.html">Email Sales</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="fit">
+  <div class="container">
+    <h2>Is this the right fit?</h2>
+    <p class="lead">This works best for chiropractic clinics and massage practices that regularly receive new inquiries and want a simpler intake process. Here is the honest version.</p>
+
+    <div class="fit-grid">
+      <div class="fit-card good">
+        <h3><span class="fit-icon">✅</span> A strong fit if…</h3>
+        <ul class="fit-list">
+          <li><span class="fit-check">✓</span> You get online inquiries from your website, Google, or social channels</li>
+          <li><span class="fit-check">✓</span> You are losing leads to slow follow-up or missed calls</li>
+          <li><span class="fit-check">✓</span> You want a simpler system that reduces front-desk friction</li>
+          <li><span class="fit-check">✓</span> You prefer practical tools over overly complex software</li>
+        </ul>
+      </div>
+      <div class="fit-card bad">
+        <h3><span class="fit-icon">🚫</span> Probably not the best fit if…</h3>
+        <ul class="fit-list">
+          <li><span class="fit-check">✗</span> You are looking for a full EHR, billing platform, or all-in-one practice management suite</li>
+          <li><span class="fit-check">✗</span> You want a guarantee on appointment volume or revenue</li>
+          <li><span class="fit-check">✗</span> You prefer to build and maintain every part of the system internally</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="pricing-bridge">
+  <div class="container" style="max-width:900px;">
+    <h2>Clear setup. Clear pricing. Ongoing support.</h2>
+    <p class="lead">
+      Pricing is structured around the core intake system, with optional layers for missed-call text back and website support.
+      No inflated promises. Just a clean system and a clear scope.
+    </p>
+    <div class="hero-actions" style="margin-top:16px;">
+      <a class="btn" href="/pricing">View Pricing</a>
+      <a class="btn btn-outline" href="lead-gen.html">Email Sales</a>
+    </div>
+    <div class="reassure" style="margin-top:12px;">Month-to-month support available · Clinics own their accounts and data</div>
+  </div>
+</section>
+
+<section class="section soft" id="faq">
+  <div class="container">
+    <h2>Common questions</h2>
+
+    <details>
+      <summary>Is this a full practice management system?</summary>
+      <p>No. It is focused on intake flow, follow-up, and booking support. It does not replace your EHR or billing software.</p>
+    </details>
+    <details>
+      <summary>What software does it use?</summary>
+      <p>Usually a form tool, a scheduling tool, and an automation layer. The exact stack can vary based on what your clinic already uses.</p>
+    </details>
+    <details>
+      <summary>Do you run ads?</summary>
+      <p>No. Alignment Automations focuses on helping clinics handle inquiries more effectively once those inquiries already exist.</p>
+    </details>
+    <details>
+      <summary>Can we add missed-call text back or a website later?</summary>
+      <p>Yes. The system is modular, so you can start with the core layer and expand when needed.</p>
+    </details>
+    <details>
+      <summary>Who owns the accounts?</summary>
+      <p>Your clinic does. That keeps the setup portable and makes the relationship safer for you long term.</p>
+    </details>
+    <details>
+      <summary>Does this replace my front desk?</summary>
+      <p>No. It reduces repetitive intake work and helps your team respond more consistently. It is meant to support your staff, not replace them.</p>
+    </details>
+    <details>
+      <summary>What if we want to cancel?</summary>
+      <p>You can cancel support. Because the clinic owns the accounts, forms, and data, the system is not locked away from you.</p>
+    </details>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container cta-final">
+    <h2>Want a simpler way to handle new inquiries?</h2>
+    <p class="lead" style="margin-bottom:22px;">
+      Book a short demo to see how a cleaner intake system can support faster follow-up and easier booking for your clinic.
+    </p>
+    <div class="cta-row" style="justify-content:center;">
+      <a class="btn" href="lead-gen.html" style="font-size:16px; padding:16px 28px;">Book a Demo</a>
+      <a class="btn btn-outline" href="lead-gen.html" style="font-size:16px; padding:16px 28px;">Email Sales</a>
+    </div>
+    <div class="reassure" style="margin-top:12px;">No pressure · Clear options · Practical setup</div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="small" style="color:var(--muted2);">© <span id="year"></span> Alignment Automations. All rights reserved.</div>
+        <p class="small" style="margin-top:8px; color:var(--muted2);">Automation systems that help chiropractors and massage clinics capture more inquiries and book appointments more easily.</p>
+      </div>
+      <div class="footer-actions">
+        <span class="small" style="color:var(--muted2);">Questions before booking? Email us anytime.</span>
+        <a class="btn btn-outline" href="lead-gen.html">Email Sales</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="pricing-fab" id="pricingFab">
+  <a class="btn" href="/pricing" style="font-size:13px; padding:11px 16px;">View Pricing →</a>
+</div>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const pricingFab = document.getElementById('pricingFab');
+  const year = document.getElementById('year');
+
+  year.textContent = new Date().getFullYear();
+
+  function onScroll() {
+    const y = window.scrollY || 0;
+    if (y > 18) header.classList.add('compact');
+    else header.classList.remove('compact');
+
+    if (window.innerWidth <= 640 && y > 700) pricingFab.classList.add('show');
+    else pricingFab.classList.remove('show');
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+</script>
+
+  <script>
+    (function() {
+      var saved = localStorage.getItem('aa-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+      document.body && document.body.setAttribute('data-theme', saved);
+    })();
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme') || 'dark';
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      document.body.setAttribute('data-theme', next);
+      localStorage.setItem('aa-theme', next);
+      var btn = document.getElementById('themeToggle');
+      if (btn) btn.textContent = next === 'dark' ? '🌙' : '☀️';
+    }
+    // Set correct icon on load
+    document.addEventListener('DOMContentLoaded', function() {
+      var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+      var btn = document.getElementById('themeToggle');
+      if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    });
+  </script>
+
+</body>
+</html>
