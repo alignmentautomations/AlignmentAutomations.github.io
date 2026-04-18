@@ -9,11 +9,6 @@
     var saved = localStorage.getItem('aa-theme') || 'dark';
     document.documentElement.setAttribute('data-theme', saved);
   })();
-  function swapLogo(theme) {
-    var logo = document.getElementById('siteLogo');
-    if (!logo) return;
-    logo.src = theme === 'light' ? logo.dataset.light : logo.dataset.dark;
-  }
   function toggleTheme() {
     var current = document.documentElement.getAttribute('data-theme') || 'dark';
     var next = current === 'dark' ? 'light' : 'dark';
@@ -22,13 +17,11 @@
     localStorage.setItem('aa-theme', next);
     var btn = document.getElementById('themeToggle');
     if (btn) btn.textContent = next === 'dark' ? '🌙' : '☀️';
-    swapLogo(next);
   }
   document.addEventListener('DOMContentLoaded', function() {
     var theme = document.documentElement.getAttribute('data-theme') || 'dark';
     var btn = document.getElementById('themeToggle');
     if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
-    swapLogo(theme);
   });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,7 +61,14 @@
     display: flex; align-items: center; gap: 14px;
     max-width: 1140px; margin: 0 auto;
   }
-  .nav-logo-img { height: 44px; width: auto; flex-shrink: 0; display: block; }
+  .nav-brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-icon { height: 42px; width: auto; flex-shrink: 0; }
+  .nav-title {
+    font-size: 15px; font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #fff; white-space: nowrap;
+  }
+  [data-theme="light"] .nav-title { color: #0D1829; }
 
   /* HERO */
   .hero {
@@ -281,7 +281,10 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <img id="siteLogo" class="nav-logo-img" src="alignment_automations_horizontal_white.svg" data-dark="alignment_automations_horizontal_white.svg" data-light="alignment_automations_horizontal_small.png" alt="Alignment Automations">
+    <a href="/" class="nav-brand-wrap">
+      <img src="alignment_automations_icon.svg" class="nav-icon" alt="Alignment Automations icon">
+      <span class="nav-title">Alignment Automations</span>
+    </a>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">🌙</button>
   </div>
 </nav>

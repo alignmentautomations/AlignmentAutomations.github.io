@@ -88,8 +88,7 @@
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 16px; padding: 20px 0;
     }
-    .logo { height: 90px; width: auto; display: block; transition: height 160ms ease; max-width: 100%; }
-    header.compact .logo { height: 68px; }
+    header.compact
     nav { display: flex; align-items: center; gap: 4px; }
     nav a {
       text-decoration: none; font-weight: 700; font-size: 14px;
@@ -306,8 +305,7 @@
       h1 { font-size: 30px; }
       .btn { width: 100%; }
       .cta-actions { flex-direction: column; align-items: stretch; }
-      .logo { height: 76px; }
-      header.compact .logo { height: 58px; }
+      header.compact
     }
   
     /* ── LIGHT MODE ─────────────────────────────────────── */
@@ -469,9 +467,18 @@
       border-color: rgba(30,60,120,0.15);
     }
     [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.10); }
-    [data-theme="light"] .logo { filter: invert(1) brightness(0); }
 
-
+  
+    /* ── NAV BRAND ── */
+    .nav-brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-icon { height: 42px; width: auto; flex-shrink: 0; }
+    .nav-title {
+      font-size: 15px; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff;
+      white-space: nowrap;
+    }
+    [data-theme="light"] .nav-title { color: #0D1829; }
   </style>
 </head>
 <body>
@@ -480,9 +487,7 @@
 <header id="siteHeader">
   <div class="container">
     <div class="navwrap">
-      <a href="/" aria-label="Alignment Automations Home">
-        <img src="alignment_automations_horizontal_white.svg" class="logo" alt="Alignment Automations">
-      </a>
+      <a href="/" aria-label="Alignment Automations Home" class="nav-brand-wrap"><img src="alignment_automations_icon.svg" class="nav-icon" alt="Alignment Automations icon"><span class="nav-title">Alignment Automations</span></a>
       <nav aria-label="Primary navigation">
         <a href="/#how-it-works">How It Works</a>
         <a href="/#intake-system">System</a>
@@ -805,4 +810,29 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  document.getE
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<script>
+  (function() {
+    var saved = localStorage.getItem('aa-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    document.body && document.body.setAttribute('data-theme', saved);
+  })();
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    document.body.setAttribute('data-theme', next);
+    localStorage.setItem('aa-theme', next);
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = next === 'dark' ? '🌙' : '☀️';
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
+  });
+</script>
+</body>
+</html>
