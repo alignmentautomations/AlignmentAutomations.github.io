@@ -400,7 +400,8 @@
 <script>
   // ─── CONFIGURATION ───────────────────────────────────────────────
   // Paste your deployed Apps Script Web App URL here after setup
-  const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+  const WEBHOOK_URL    = 'https://app.alignmentautomations.com/api/webhook/form-inquiry';
+  const WEBHOOK_SECRET = '3d1bf78aacb08d121d0c233c67e1bde1bdc6f9e6666fd036';
   const CALENDLY_URL    = 'https://calendly.com/alignment-automations/new-meeting';
   const REDIRECT_DELAY  = 4; // seconds before redirect
   // ─────────────────────────────────────────────────────────────────
@@ -457,24 +458,25 @@
     label.textContent = 'Submitting…';
 
     const payload = {
-      firstName:  document.getElementById('fname').value.trim(),
-      lastName:   document.getElementById('lname').value.trim(),
-      clinic:     document.getElementById('clinic').value.trim(),
-      email:      document.getElementById('email').value.trim(),
-      phone:      document.getElementById('phone').value.trim() || '',
-      clinicType: document.getElementById('type').value || '',
-      challenge:  document.getElementById('challenge').value.trim() || '',
-      submittedAt: new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }),
+      first_name:  document.getElementById('fname').value.trim(),
+      last_name:   document.getElementById('lname').value.trim(),
+      clinic_name: document.getElementById('clinic').value.trim(),
+      email:       document.getElementById('email').value.trim(),
+      phone:       document.getElementById('phone').value.trim() || '',
+      clinic_type: document.getElementById('type').value || '',
+      message:     document.getElementById('challenge').value.trim() || '',
     };
 
     try {
-      await fetch(APPS_SCRIPT_URL, {
+      const res = await fetch(WEBHOOK_URL, {
         method:  'POST',
-        mode:    'no-cors', // Apps Script requires no-cors
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(payload),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-webhook-secret': WEBHOOK_SECRET,
+        },
+        body: JSON.stringify(payload),
       });
-      // no-cors means we can't read the response — assume success and proceed
+      if (!res.ok) throw new Error('Webhook error');
       showSuccess();
     } catch (err) {
       btn.disabled = false;
