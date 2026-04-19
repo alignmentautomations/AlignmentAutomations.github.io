@@ -360,6 +360,24 @@
               </div>
             </div>
             <div class="field">
+              <label>Interested In</label>
+              <select id="package">
+                <option value="" disabled selected>Select a package…</option>
+                <optgroup label="Individual">
+                  <option value="Automation Core">Automation Core</option>
+                  <option value="Intake Foundation">Intake Foundation</option>
+                  <option value="Call Protection">Call Protection</option>
+                  <option value="Call Capture">Call Capture</option>
+                </optgroup>
+                <optgroup label="Bundles">
+                  <option value="Core + Call Protection">Core + Call Protection</option>
+                  <option value="Foundation + Core">Foundation + Core</option>
+                  <option value="Full Intake Infrastructure">Full Intake Infrastructure</option>
+                </optgroup>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
               <label>Biggest Scheduling Challenge</label>
               <textarea id="challenge" placeholder="e.g. We miss calls after hours and lose new patients…"></textarea>
             </div>
@@ -480,6 +498,7 @@
       email:       document.getElementById('email').value.trim(),
       phone:       document.getElementById('phone').value.trim() || '',
       clinic_type: document.getElementById('type').value || '',
+      package:     document.getElementById('package').value || '',
       message:     document.getElementById('challenge').value.trim() || '',
       sms_consent:    document.getElementById('sms-consent').checked,
       sms_consent_at: new Date().toISOString(),
