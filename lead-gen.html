@@ -365,6 +365,14 @@
             </div>
           </div>
 
+          <div class="field" style="margin-top:12px;">
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;font-size:0.85em;color:var(--text-secondary);">
+              <input type="checkbox" id="sms-consent" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;" required>
+              <span>I agree to receive SMS messages from Alignment Automations about my inquiry. Message &amp; data rates may apply. Reply STOP at any time to unsubscribe. <span style="color:var(--error);">*</span></span>
+            </label>
+            <div class="field-error" id="sms-consent-err">You must agree to receive SMS messages to continue.</div>
+          </div>
+
           <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
             <div class="btn-inner">
               <div class="spinner"></div>
@@ -427,6 +435,14 @@
         err.classList.remove('show');
       }
     });
+    const consentBox = document.getElementById('sms-consent');
+    const consentErr = document.getElementById('sms-consent-err');
+    if (!consentBox.checked) {
+      consentErr.classList.add('show');
+      valid = false;
+    } else {
+      consentErr.classList.remove('show');
+    }
     return valid;
   }
 
@@ -465,6 +481,8 @@
       phone:       document.getElementById('phone').value.trim() || '',
       clinic_type: document.getElementById('type').value || '',
       message:     document.getElementById('challenge').value.trim() || '',
+      sms_consent:    document.getElementById('sms-consent').checked,
+      sms_consent_at: new Date().toISOString(),
     };
 
     try {
