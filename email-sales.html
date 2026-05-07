@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alignment Automations — Contact Sales</title>
+<meta name="description" content="Send a message to the Alignment Automations sales team. We'll get back to you quickly.">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script>
+  (function() {
+    var saved = localStorage.getItem('aa-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    document.body.setAttribute('data-theme', next);
+    localStorage.setItem('aa-theme', next);
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = next === 'dark' ? '🌙' : '☀️';
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
+  });
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:            #0b111e;
+    --navy:          #111d30;
+    --blue:          #3a7bfd;
+    --blue-dark:     #1a5cc8;
+    --border:        rgba(255,255,255,0.09);
+    --text:          #ffffff;
+    --muted:         rgba(255,255,255,0.55);
+    --dim:           rgba(255,255,255,0.32);
+    --pill-bg:       rgba(58,123,253,0.15);
+    --pill-border:   rgba(58,123,253,0.4);
+    --input-bg:      #1a2540;
+    --input-border:  rgba(255,255,255,0.1);
+    --input-focus:   rgba(58,123,253,0.45);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px;
+  }
+  .nav-inner {
+    display: flex; align-items: center; gap: 14px;
+    max-width: 1140px; margin: 0 auto;
+  }
+  .nav-brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-icon { height: 42px; width: auto; flex-shrink: 0; }
+  .nav-title {
+    font-size: 15px; font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #fff; white-space: nowrap;
+  }
+  [data-theme="light"] .nav-title { color: #0D1829; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(175deg, #0f1a2e 0%, #0b111e 100%);
+    padding: 44px 24px 52px;
+  }
+  .hero-inner { max-width: 1140px; margin: 0 auto; }
+  .pill {
+    display: inline-flex; align-items: center;
+    background: var(--pill-bg); border: 1px solid var(--pill-border);
+    border-radius: 999px; padding: 7px 18px;
+    font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: 34px; font-weight: 900; line-height: 1.1;
+    letter-spacing: -0.025em; color: #fff; margin-bottom: 18px;
+  }
+  [data-theme="light"] .hero h1 { color: #0D1829; }
+  .hero-desc {
+    font-size: 16px; line-height: 1.65; color: var(--muted); margin-bottom: 32px;
+  }
+  .trust-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tp {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px; padding: 8px 16px;
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.65);
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--navy); border: 1px solid var(--border);
+    border-radius: 18px; padding: 28px 22px; margin-top: 36px;
+  }
+  .form-card h2 {
+    font-size: 21px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 5px;
+  }
+  .form-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+  .fields { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .field label {
+    display: block; font-size: 10px; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 7px;
+  }
+  .field input, .field textarea {
+    width: 100%; background: var(--input-bg);
+    border: 1px solid var(--input-border); border-radius: 10px;
+    padding: 13px 14px; font-family: 'Inter', sans-serif;
+    font-size: 15px; color: #fff; outline: none;
+    transition: border-color 0.18s, box-shadow 0.18s; -webkit-appearance: none;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.18); }
+  .field input:focus, .field textarea:focus {
+    border-color: var(--blue); box-shadow: 0 0 0 3px var(--input-focus);
+  }
+  .field textarea { resize: vertical; min-height: 110px; line-height: 1.55; font-size: 14px; }
+
+  /* ERROR states */
+  .field input.error, .field textarea.error { border-color: #e05555; box-shadow: 0 0 0 3px rgba(224,85,85,0.2); }
+  .field-error { font-size: 11px; color: #e05555; margin-top: 5px; font-weight: 600; display: none; }
+  .field-error.show { display: block; }
+
+  /* SUBMIT BUTTON */
+  .btn-primary {
+    display: block; width: 100%;
+    background: var(--blue); color: #fff; border: none;
+    border-radius: 12px; padding: 16px 20px;
+    font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700;
+    cursor: pointer; letter-spacing: 0.005em;
+    transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+    box-shadow: 0 4px 22px rgba(58,123,253,0.38);
+  }
+  .btn-primary:hover { background: #5089ff; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(58,123,253,0.48); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity: 0.6; pointer-events: none; }
+  .trust-line { margin-top: 12px; font-size: 12px; color: var(--dim); text-align: center; line-height: 1.6; }
+
+  /* SUBMIT SPINNER */
+  .btn-inner { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+  .btn-primary.loading .spinner { display: block; }
+
+  /* SUCCESS */
+  .success-wrap {
+    display: none; flex-direction: column;
+    align-items: flex-start; gap: 14px;
+    animation: fadeUp 0.35s ease;
+  }
+  .success-wrap.show { display: flex; }
+  .success-check {
+    width: 54px; height: 54px;
+    background: rgba(58,123,253,0.14); border: 1px solid rgba(58,123,253,0.32);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .success-wrap h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+  .success-wrap p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+  .success-badge {
+    background: var(--pill-bg); border: 1px solid var(--pill-border);
+    border-radius: 999px; padding: 5px 16px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--blue);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--blue); font-size: 14px; font-weight: 600;
+    text-decoration: none; margin-top: 4px;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  /* ERROR BANNER */
+  .error-banner {
+    display: none; align-items: center; gap: 10px;
+    background: rgba(224,85,85,0.1); border: 1px solid rgba(224,85,85,0.3);
+    border-radius: 10px; padding: 12px 16px;
+    font-size: 13px; color: #f07070; margin-bottom: 16px; line-height: 1.5;
+  }
+  .error-banner.show { display: flex; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25%     { transform: translateX(-6px); }
+    75%     { transform: translateX(6px); }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Desktop 2-col */
+  @media (min-width: 860px) {
+    .hero { padding: 60px 40px 64px; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .hero h1 { font-size: 44px; }
+    .form-card { margin-top: 0; }
+    nav { padding: 20px 40px; }
+  }
+
+  @media (max-width: 480px) {
+    .row2 { grid-template-columns: 1fr; }
+  }
+
+  /* ── LIGHT MODE ── */
+  [data-theme="light"] {
+    --bg:           #F0F4FA;
+    --navy:         #FFFFFF;
+    --blue:         #1A5CC8;
+    --blue-dark:    #0D3D8E;
+    --border:       rgba(30,60,120,0.14);
+    --text:         #0D1829;
+    --muted:        rgba(13,24,41,0.55);
+    --dim:          rgba(13,24,41,0.40);
+    --pill-bg:      rgba(26,92,200,0.09);
+    --pill-border:  rgba(26,92,200,0.28);
+    --input-bg:     #EAF0FA;
+    --input-border: rgba(30,60,120,0.18);
+    --input-focus:  rgba(26,92,200,0.25);
+  }
+  [data-theme="light"] body { background: var(--bg); color: var(--text); }
+  [data-theme="light"] nav { background: var(--bg); }
+  [data-theme="light"] .hero { background: linear-gradient(175deg, #DAE4F5 0%, #F0F4FA 100%); }
+  [data-theme="light"] .form-card { background: var(--navy); border-color: var(--border); }
+  [data-theme="light"] input,
+  [data-theme="light"] textarea { background: var(--input-bg); border-color: var(--input-border); color: var(--text); }
+  [data-theme="light"] input::placeholder,
+  [data-theme="light"] textarea::placeholder { color: #9BAABB; }
+  [data-theme="light"] .tp { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); color: rgba(13,24,41,0.65); }
+  [data-theme="light"] .error-banner { background: rgba(220,38,38,0.07); border-color: rgba(220,38,38,0.22); }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+    font-size: 17px; line-height: 1;
+    margin-left: auto;
+    transition: background 0.15s;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,0.18); }
+  [data-theme="light"] .theme-toggle { background: rgba(0,0,0,0.07); border-color: rgba(30,60,120,0.2); }
+  [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.13); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand-wrap">
+      <img src="alignment_automations_icon.svg" class="nav-icon" alt="Alignment Automations icon">
+      <span class="nav-title">Alignment Automations</span>
+    </a>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO + FORM -->
+<div class="hero">
+  <div class="hero-inner">
+
+    <!-- Copy -->
+    <div class="hero-copy">
+      <div class="pill">Quick question or just want to reach out?</div>
+      <h1>Send us a message and we'll get back to you.</h1>
+      <p class="hero-desc">No lengthy forms. Just tell us who you are and what's on your mind. We typically respond the same day.</p>
+      <div class="trust-pills">
+        <span class="tp">No pressure</span>
+        <span class="tp">Same-day response</span>
+        <span class="tp">No commitment required</span>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div>
+      <div class="form-card">
+
+        <div id="form-wrap">
+          <h2>Email Sales</h2>
+          <p class="form-sub">Fill this out and someone from our team will follow up with you directly.</p>
+
+          <div class="error-banner" id="error-banner">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16.5"/></svg>
+            <span>Something went wrong. Please try again or email us directly at <a href="mailto:hello@alignmentautomations.com" style="color:#f07070">hello@alignmentautomations.com</a>.</span>
+          </div>
+
+          <div class="fields">
+            <div class="row2">
+              <div class="field">
+                <label>First Name *</label>
+                <input type="text" id="fname" placeholder="Jane" autocomplete="given-name">
+                <div class="field-error" id="fname-err">Required</div>
+              </div>
+              <div class="field">
+                <label>Last Name *</label>
+                <input type="text" id="lname" placeholder="Smith" autocomplete="family-name">
+                <div class="field-error" id="lname-err">Required</div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Email Address *</label>
+              <input type="email" id="email" placeholder="jane@yourclinic.com" autocomplete="email">
+              <div class="field-error" id="email-err">Enter a valid email</div>
+            </div>
+            <div class="field">
+              <label>Phone (optional)</label>
+              <input type="tel" id="phone" placeholder="(555) 000-0000" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label>Message *</label>
+              <textarea id="message" placeholder="What's on your mind? Questions about pricing, the system, or anything else…"></textarea>
+              <div class="field-error" id="message-err">Please include a message</div>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:4px; margin-bottom:20px;">
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;font-size:0.85em;color:var(--muted);text-transform:none;letter-spacing:0;">
+              <input type="checkbox" id="sms-consent" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;-webkit-appearance:checkbox;appearance:checkbox;" required>
+              <span>I agree to receive SMS messages from Alignment Automations about my inquiry. Message &amp; data rates may apply. Reply STOP at any time to unsubscribe. *</span>
+            </label>
+            <div class="field-error" id="sms-consent-err">You must agree to receive SMS messages to continue.</div>
+          </div>
+
+          <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
+            <div class="btn-inner">
+              <div class="spinner"></div>
+              <span id="btn-label">Send Message</span>
+            </div>
+          </button>
+          <p class="trust-line">No spam · We'll never share your information.</p>
+        </div>
+
+        <!-- Success -->
+        <div class="success-wrap" id="success-panel">
+          <div class="success-check">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="success-badge">Message received!</span>
+          <h3>We'll be in touch shortly.</h3>
+          <p>Thanks for reaching out. Someone from our team will follow up with you directly — usually the same day.</p>
+          <p>In the meantime, feel free to <a href="https://calendly.com/alignment-automations/new-meeting" target="_blank" style="color:var(--blue);font-weight:600;">book a demo</a> if you'd like to see the system in action.</p>
+          <a class="back-link" href="/">
+            ← Back to home
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const WEBHOOK_URL    = 'https://app.alignmentautomations.com/api/webhook/form-inquiry';
+  const WEBHOOK_SECRET = '3d1bf78aacb08d121d0c233c67e1bde1bdc6f9e6666fd036';
+
+  function validate() {
+    let valid = true;
+    const fields = [
+      { id: 'fname',   errId: 'fname-err',   check: v => v.length > 0 },
+      { id: 'lname',   errId: 'lname-err',   check: v => v.length > 0 },
+      { id: 'email',   errId: 'email-err',   check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+      { id: 'message', errId: 'message-err', check: v => v.length > 0 },
+    ];
+    fields.forEach(({ id, errId, check }) => {
+      const el  = document.getElementById(id);
+      const err = document.getElementById(errId);
+      const val = el.value.trim();
+      if (!check(val)) {
+        el.classList.add('error');
+        err.classList.add('show');
+        valid = false;
+      } else {
+        el.classList.remove('error');
+        err.classList.remove('show');
+      }
+    });
+    const consentBox = document.getElementById('sms-consent');
+    const consentErr = document.getElementById('sms-consent-err');
+    if (!consentBox.checked) {
+      consentErr.classList.add('show');
+      valid = false;
+    } else {
+      consentErr.classList.remove('show');
+    }
+    return valid;
+  }
+
+  ['fname','lname','email','message'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      document.getElementById(id).classList.remove('error');
+      const err = document.getElementById(id + '-err');
+      if (err) err.classList.remove('show');
+    });
+  });
+
+  async function handleSubmit() {
+    const banner = document.getElementById('error-banner');
+    banner.classList.remove('show');
+
+    if (!validate()) {
+      const btn = document.getElementById('submit-btn');
+      btn.style.animation = 'none'; btn.offsetHeight;
+      btn.style.animation = 'shake 0.35s ease';
+      setTimeout(() => btn.style.animation = '', 400);
+      return;
+    }
+
+    const btn   = document.getElementById('submit-btn');
+    const label = document.getElementById('btn-label');
+    btn.disabled = true;
+    btn.classList.add('loading');
+    label.textContent = 'Sending…';
+
+    const payload = {
+      first_name:     document.getElementById('fname').value.trim(),
+      last_name:      document.getElementById('lname').value.trim(),
+      clinic_name:    '',
+      email:          document.getElementById('email').value.trim(),
+      phone:          document.getElementById('phone').value.trim() || '',
+      clinic_type:    '',
+      package:        '',
+      message:        document.getElementById('message').value.trim(),
+      form_source:    'Email Sales',
+      sms_consent:    document.getElementById('sms-consent').checked,
+      sms_consent_at: new Date().toISOString(),
+    };
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method:  'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-webhook-secret': WEBHOOK_SECRET,
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Webhook error');
+      showSuccess();
+    } catch (err) {
+      btn.disabled = false;
+      btn.classList.remove('loading');
+      label.textContent = 'Send Message';
+      banner.classList.add('show');
+    }
+  }
+
+  function showSuccess() {
+    document.getElementById('form-wrap').style.display = 'none';
+    document.getElementById('success-panel').classList.add('show');
+  }
+</script>
+</body>
+</html>
