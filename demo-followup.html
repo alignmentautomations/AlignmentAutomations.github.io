@@ -168,59 +168,84 @@
       color: var(--muted2); margin-bottom: 12px;
     }
 
-    /* ── PHONE MOCKUP ── */
-    .phone-wrap { display: flex; justify-content: center; }
-    .phone-frame {
-      width: 230px;
-      background: #16162A;
-      border-radius: 34px;
-      padding: 14px 9px 18px;
-      border: 2px solid rgba(255,255,255,0.10);
-      box-shadow: 0 28px 72px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+    /* ── EMAIL MOCKUP ── */
+    .email-mockup {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.40);
+      background: #fff;
     }
-    .phone-notch {
-      width: 48px; height: 6px;
-      background: #2A2A40; border-radius: 3px;
-      margin: 0 auto 10px;
-    }
-    .phone-screen {
-      background: #F2F2F7; border-radius: 24px;
-      overflow: hidden; min-height: 300px;
-    }
-    .sms-bar {
-      background: #E8E8ED;
-      padding: 10px 12px;
-      display: flex; align-items: center; gap: 9px;
+    .email-chrome {
+      background: #F1F3F4;
+      padding: 9px 14px;
+      display: flex; align-items: center; gap: 8px;
       border-bottom: 1px solid rgba(0,0,0,0.08);
     }
-    .sms-avatar {
+    .email-chrome-dots { display: flex; gap: 5px; }
+    .email-chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .email-chrome-label {
+      flex: 1; text-align: center;
+      font-size: 11px; color: #5F6368; font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .email-header {
+      background: #fff;
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .email-subject-line {
+      font-size: 14px; font-weight: 700; color: #202124;
+      margin-bottom: 10px; line-height: 1.3;
+    }
+    .email-from-row {
+      display: flex; align-items: flex-start; gap: 9px;
+    }
+    .email-sender-avatar {
       width: 30px; height: 30px; border-radius: 50%;
       background: linear-gradient(135deg, #4DA3FF, #1A5CC8);
       display: flex; align-items: center; justify-content: center;
-      font-size: 9px; font-weight: 800; color: white; flex-shrink: 0;
+      font-size: 9px; font-weight: 800; color: #fff; flex-shrink: 0;
+      margin-top: 1px;
     }
-    .sms-contact strong { display: block; font-size: 12px; color: #1C1C1E; line-height: 1.2; }
-    .sms-contact span { font-size: 10px; color: #8E8E93; }
-    .sms-body { padding: 14px 10px 10px; display: flex; flex-direction: column; gap: 8px; }
-    .sms-bubble {
-      padding: 10px 12px;
-      border-radius: 16px 16px 4px 16px;
-      font-size: 11px; line-height: 1.55; color: #fff;
-      background: #007AFF; align-self: flex-end;
-      max-width: 95%;
+    .email-from-info { flex: 1; min-width: 0; }
+    .email-from-name {
+      font-size: 12px; font-weight: 700; color: #202124;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .sms-time { font-size: 9px; color: #8E8E93; text-align: right; }
-    .sms-link-preview {
-      margin-top: 4px;
-      padding: 8px 10px;
-      background: rgba(0,122,255,0.08);
-      border: 1px solid rgba(0,122,255,0.16);
-      border-radius: 10px;
-      font-size: 10px; color: #007AFF;
-      display: flex; align-items: center; gap: 6px;
+    .email-from-addr { font-weight: 400; color: #5F6368; }
+    .email-to-line { font-size: 11px; color: #5F6368; margin-top: 1px; }
+    .email-timestamp { font-size: 11px; color: #5F6368; flex-shrink: 0; margin-top: 1px; }
+    .email-body-area {
+      background: #fff;
+      padding: 14px 16px 16px;
+      font-size: 12px; color: #202124; line-height: 1.65;
+    }
+    .email-body-area p { margin: 0 0 8px; }
+    .email-body-area p:last-child { margin-bottom: 0; }
+    .email-cta-wrap { margin: 12px 0 10px; }
+    .email-cta-btn {
+      display: inline-block;
+      background: #1A73E8; color: #fff;
+      padding: 9px 16px; border-radius: 6px;
+      font-size: 12px; font-weight: 700;
       cursor: pointer;
     }
-    .sms-link-preview span { font-weight: 700; }
+    .email-sig {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      font-size: 11px; color: #5F6368; line-height: 1.5;
+    }
+    .email-delivered-bar {
+      background: #F8F9FA;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 7px 16px;
+      font-size: 10px; color: #5F6368;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .email-delivered-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #34A853; display: inline-block; flex-shrink: 0;
+    }
 
     /* ── BUSINESS NOTIFICATION ── */
     .notif-card {
@@ -302,7 +327,7 @@
     [data-theme="light"] .btn-outline { background: rgba(0,0,0,0.04); color: var(--ink); border-color: var(--border); }
     [data-theme="light"] .dp-step.active .dp-dot { color: #fff; }
     [data-theme="light"] .auto-note { background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.18); }
-    [data-theme="light"] .phone-frame { background: #1C1C2E; border-color: rgba(0,0,0,0.18); }
+    [data-theme="light"] .email-mockup { border-color: rgba(30,60,120,0.16); }
     [data-theme="light"] .notif-card { background: #fff; border-color: var(--border); }
 
     /* ── THEME TOGGLE ── */
@@ -368,36 +393,49 @@
     <!-- Auto note -->
     <div class="auto-note">
       <div class="auto-note-icon">⚡</div>
-      <div><strong>This happened automatically</strong> — the moment the lead was captured, your system sent a personalized response. The customer heard back in under 30 seconds.</div>
+      <div><strong>This happened automatically</strong> — the moment the lead was captured, your system sent a personalized email. The customer heard back in under 30 seconds.</div>
     </div>
 
     <!-- Two panel -->
     <div class="two-panel">
 
-      <!-- Phone SMS mockup -->
+      <!-- Email mockup -->
       <div>
-        <div class="panel-label">📱 What the customer received</div>
-        <div class="phone-wrap">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="sms-bar">
-                <div class="sms-avatar">AA</div>
-                <div class="sms-contact">
-                  <strong id="biz-name">Your Business</strong>
-                  <span>Text Message</span>
-                </div>
-              </div>
-              <div class="sms-body">
-                <div class="sms-bubble" id="sms-text">
-                  Hi Jane! Thanks for reaching out — we received your inquiry and will follow up shortly. Tap below to lock in your free estimate.
-                </div>
-                <div class="sms-time">Delivered · Just now</div>
-                <div class="sms-link-preview">
-                  📅 <span>Book your free estimate →</span>
-                </div>
-              </div>
+        <div class="panel-label">📧 What the customer received</div>
+        <div class="email-mockup">
+          <div class="email-chrome">
+            <div class="email-chrome-dots">
+              <div class="email-chrome-dot" style="background:#FF5F57;"></div>
+              <div class="email-chrome-dot" style="background:#FFBD2E;"></div>
+              <div class="email-chrome-dot" style="background:#28C840;"></div>
             </div>
+            <div class="email-chrome-label">Inbox</div>
+          </div>
+          <div class="email-header">
+            <div class="email-subject-line" id="email-subject">Your estimate request — Exterior painting</div>
+            <div class="email-from-row">
+              <div class="email-sender-avatar">AA</div>
+              <div class="email-from-info">
+                <div class="email-from-name">Your Business <span class="email-from-addr">&lt;hello@yourbusiness.com&gt;</span></div>
+                <div class="email-to-line">To: <span id="email-to">Jane Smith</span></div>
+              </div>
+              <div class="email-timestamp">Just now</div>
+            </div>
+          </div>
+          <div class="email-body-area">
+            <p id="email-greeting">Hi Jane,</p>
+            <p id="email-body-text">Thanks for reaching out about exterior painting — we've received your inquiry and will be in touch shortly.</p>
+            <p>Click below to lock in a free estimate at a time that works for you:</p>
+            <div class="email-cta-wrap">
+              <div class="email-cta-btn">📅 Book Your Free Estimate →</div>
+            </div>
+            <div class="email-sig">
+              Best,<br>
+              <strong style="color:#202124;">Your Business Team</strong>
+            </div>
+          </div>
+          <div class="email-delivered-bar">
+            <span class="email-delivered-dot"></span> Delivered · Just now
           </div>
         </div>
       </div>
@@ -450,7 +488,7 @@
       </a>
       <a class="btn btn-outline" href="demo-lead-captured.html" id="back-btn">← Back</a>
     </div>
-    <div class="micro">Next: see what happens when the customer taps the booking link.</div>
+    <div class="micro">Next: see what happens when the customer clicks the booking link.</div>
 
   </div>
 </main>
@@ -474,8 +512,12 @@
   const reason = params.get('reason') || 'Exterior painting';
   const service = reason.charAt(0).toLowerCase() + reason.slice(1);
 
-  document.getElementById('sms-text').textContent =
-    `Hi ${first}! Thanks for reaching out — we received your inquiry about ${service} and will follow up shortly. Tap below to lock in your free estimate.`;
+  document.getElementById('email-subject').textContent =
+    `Your estimate request — ${reason}`;
+  document.getElementById('email-to').textContent = name;
+  document.getElementById('email-greeting').textContent = `Hi ${first},`;
+  document.getElementById('email-body-text').textContent =
+    `Thanks for reaching out about ${service} — we've received your inquiry and will be in touch shortly.`;
   document.getElementById('notif-name').textContent   = name;
   document.getElementById('notif-phone').textContent  = phone;
   document.getElementById('notif-reason').textContent = reason;
