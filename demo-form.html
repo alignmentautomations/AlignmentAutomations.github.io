@@ -420,6 +420,40 @@
       white-space: nowrap;
     }
     [data-theme="light"] .nav-title { color: #0D1829; }
+
+    /* ── DEMO PROGRESS BAR ── */
+    .demo-progress {
+      display: flex; align-items: center; justify-content: center;
+      max-width: 520px; margin: 0 auto; padding: 32px 0 36px;
+    }
+    .dp-step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-shrink: 0; }
+    .dp-dot {
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800;
+      background: rgba(255,255,255,0.06);
+      border: 2px solid rgba(255,255,255,0.12);
+      color: var(--muted2);
+    }
+    .dp-step.active .dp-dot {
+      background: linear-gradient(180deg, var(--blue), var(--blue2));
+      border-color: var(--blue); color: #06121F;
+      box-shadow: 0 0 0 4px rgba(77,163,255,0.18);
+    }
+    .dp-step.done .dp-dot {
+      background: rgba(16,185,129,0.14);
+      border-color: var(--green); color: var(--green);
+    }
+    .dp-step > span {
+      font-size: 10px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted2); white-space: nowrap;
+    }
+    .dp-step.active > span { color: var(--blue); }
+    .dp-step.done > span { color: var(--green); }
+    .dp-line { flex: 1; height: 2px; min-width: 20px; background: rgba(255,255,255,0.08); margin-bottom: 20px; }
+    .dp-line.done { background: rgba(16,185,129,0.32); }
+    @media (max-width: 480px) { .dp-step > span { display: none; } }
   </style>
 </head>
 <body>
@@ -444,8 +478,32 @@
 
 <main class="page">
   <div class="container">
+
+    <!-- Progress Bar -->
+    <div class="demo-progress">
+      <div class="dp-step active">
+        <div class="dp-dot">1</div>
+        <span>Inquiry</span>
+      </div>
+      <div class="dp-line"></div>
+      <div class="dp-step">
+        <div class="dp-dot">2</div>
+        <span>Captured</span>
+      </div>
+      <div class="dp-line"></div>
+      <div class="dp-step">
+        <div class="dp-dot">3</div>
+        <span>Follow-Up</span>
+      </div>
+      <div class="dp-line"></div>
+      <div class="dp-step">
+        <div class="dp-dot">4</div>
+        <span>Booked</span>
+      </div>
+    </div>
+
     <section class="hero">
-      <span class="pill">Demo intake flow</span>
+      <span class="pill">Step 1 of 4 — Inquiry</span>
       <h1>New Customer Inquiry</h1>
       <p class="lead">Fill this out and you’ll be guided to the next step right away.</p>
       <p class="micro">Takes less than 30 seconds</p>
