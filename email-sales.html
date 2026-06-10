@@ -340,13 +340,6 @@
             </div>
           </div>
 
-          <div class="field" style="margin-top:4px; margin-bottom:20px;">
-            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;font-size:0.85em;color:var(--muted);text-transform:none;letter-spacing:0;">
-              <input type="checkbox" id="sms-consent" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;-webkit-appearance:checkbox;appearance:checkbox;">
-              <span>I agree to receive SMS messages from Alignment Automations about my inquiry. Message &amp; data rates may apply. Reply STOP at any time to unsubscribe.</span>
-            </label>
-          </div>
-
           <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
             <div class="btn-inner">
               <div class="spinner"></div>
@@ -440,8 +433,6 @@
       package:        '',
       message:        document.getElementById('message').value.trim(),
       form_source:    'Email Sales',
-      sms_consent:    document.getElementById('sms-consent').checked,
-      sms_consent_at: new Date().toISOString(),
     };
 
     try {

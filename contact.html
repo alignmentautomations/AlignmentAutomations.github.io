@@ -303,11 +303,11 @@
 
     <!-- Copy -->
     <div class="hero-copy">
-      <div class="pill">Built for chiropractic and massage clinics</div>
-      <h1>Capture more inquiries, respond faster, and make booking easier.</h1>
-      <p class="hero-desc">Alignment Automations builds simple intake systems, missed-call text back, and booking-focused websites so fewer leads slip through the cracks.</p>
+      <div class="pill">Built for home service contractors</div>
+      <h1>Capture more inquiries, respond faster, and book more jobs.</h1>
+      <p class="hero-desc">Alignment Automations builds automated intake systems and conversion-focused websites for home service contractors so fewer leads slip through the cracks.</p>
       <div class="trust-pills">
-        <span class="tp">Built for clinics</span>
+        <span class="tp">Built for contractors</span>
         <span class="tp">Simple setup</span>
         <span class="tp">Clear system options</span>
         <span class="tp">No long-term contract required</span>
@@ -341,13 +341,13 @@
               </div>
             </div>
             <div class="field">
-              <label>Clinic Name *</label>
-              <input type="text" id="clinic" placeholder="Peak Health Chiropractic">
+              <label>Business Name *</label>
+              <input type="text" id="clinic" placeholder="Green Valley Painting Co.">
               <div class="field-error" id="clinic-err">Required</div>
             </div>
             <div class="field">
               <label>Email Address *</label>
-              <input type="email" id="email" placeholder="jane@yourclinic.com" autocomplete="email">
+              <input type="email" id="email" placeholder="jane@yourbusiness.com" autocomplete="email">
               <div class="field-error" id="email-err">Enter a valid email</div>
             </div>
             <div class="row2">
@@ -356,12 +356,15 @@
                 <input type="tel" id="phone" placeholder="(555) 000-0000" autocomplete="tel">
               </div>
               <div class="field">
-                <label>Clinic Type</label>
+                <label>Trade / Service Type</label>
                 <select id="type">
                   <option value="" disabled selected>Select…</option>
-                  <option>Chiropractic</option>
-                  <option>Massage Therapy</option>
-                  <option>Both / Multi-service</option>
+                  <option>Painting</option>
+                  <option>HVAC</option>
+                  <option>Roofing</option>
+                  <option>Plumbing</option>
+                  <option>Electrical</option>
+                  <option>General Contracting</option>
                   <option>Other</option>
                 </select>
               </div>
@@ -371,30 +374,19 @@
               <select id="package">
                 <option value="" disabled selected>Select a package…</option>
                 <optgroup label="Individual">
-                  <option value="Automation Core">Automation Core</option>
-                  <option value="Intake Foundation">Intake Foundation</option>
-                  <option value="Call Protection">Call Protection</option>
-                  <option value="Call Capture">Call Capture</option>
+                  <option value="Automation Engine">Automation Engine</option>
+                  <option value="Website Infrastructure">Website Infrastructure</option>
                 </optgroup>
-                <optgroup label="Bundles">
-                  <option value="Core + Call Protection">Core + Call Protection</option>
-                  <option value="Foundation + Core">Foundation + Core</option>
-                  <option value="Full Intake Infrastructure">Full Intake Infrastructure</option>
+                <optgroup label="Bundle">
+                  <option value="Website Infrastructure + Automation Engine">Website Infrastructure + Automation Engine</option>
                 </optgroup>
                 <option value="Not sure yet">Not sure yet</option>
               </select>
             </div>
             <div class="field">
               <label>Biggest Scheduling Challenge</label>
-              <textarea id="challenge" placeholder="e.g. We miss calls after hours and lose new patients…"></textarea>
+              <textarea id="challenge" placeholder="e.g. We miss calls after hours and lose new customers…"></textarea>
             </div>
-          </div>
-
-          <div class="field" style="margin-top:4px; margin-bottom:20px;">
-            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;font-size:0.85em;color:var(--muted);text-transform:none;letter-spacing:0;">
-              <input type="checkbox" id="sms-consent" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;-webkit-appearance:checkbox;appearance:checkbox;">
-              <span>I agree to receive SMS messages from Alignment Automations about my inquiry. Message &amp; data rates may apply. Reply STOP at any time to unsubscribe.</span>
-            </label>
           </div>
 
           <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
@@ -498,8 +490,6 @@
       clinic_type: document.getElementById('type').value || '',
       package:     document.getElementById('package').value || '',
       message:     document.getElementById('challenge').value.trim() || '',
-      sms_consent:    document.getElementById('sms-consent').checked,
-      sms_consent_at: new Date().toISOString(),
     };
 
     try {
