@@ -9,536 +9,195 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How It Works | Alignment Automations</title>
   <meta name="description" content="See how Alignment Automations helps home service contractors turn online inquiries into booked jobs with a clean intake and booking flow."/>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --page:    #070B14;
-      --surface: #0B1220;
-      --surface2:#0E1A2E;
-      --border:  rgba(148,163,184,0.22);
-      --ink:     #F9FAFB;
-      --muted:   #CBD5E1;
-      --muted2:  #94A3B8;
-      --blue:    #4DA3FF;
-      --blue2:   #2F86FF;
-      --deep:    #0A4C93;
-      --green:   #10B981;
-      --shadow:  0 12px 34px rgba(0,0,0,0.50);
-      --radius:  16px;
-      --max:     1100px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: clip; }
-    html, body { margin: 0; background: var(--page); color: var(--ink); overflow-x: clip; }
-    body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: var(--ink); text-decoration: none; }
-    a:hover { color: #fff; }
-    a:focus-visible, button:focus-visible, summary:focus-visible, iframe:focus-visible {
-      outline: 3px solid rgba(147,197,253,0.65);
-      outline-offset: 3px;
-      border-radius: 10px;
-    }
-    img, svg, video { max-width: 100%; }
-
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 22px; width: 100%; }
-    .section { padding: 72px 0; overflow: hidden; width: 100%; }
-    .section.soft {
-      background: var(--surface2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; width: 100%; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; width: 100%; }
-    .grid-2 > *, .grid-3 > * { min-width: 0; }
-
-    h1 { font-size: clamp(34px, 4vw, 54px); line-height: 1.04; margin: 14px 0 12px; letter-spacing: -0.03em; color: var(--ink); }
-    h2 { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.2; margin: 0 0 10px; letter-spacing: -0.02em; color: var(--ink); }
-    h3 { font-size: 16px; margin: 0 0 6px; color: var(--ink); }
-    p  { margin: 0 0 14px; color: var(--muted); font-size: 16px; }
-    p:last-child { margin-bottom: 0; }
-    li { color: var(--muted); }
-    strong, summary { color: var(--ink); }
-    .small { font-size: 14px; }
-    .lead  { font-size: 18px; margin: 0 0 22px; color: var(--muted); max-width: 800px; }
-    .mini-kicker {
-      display: inline-block;
-      margin-bottom: 10px;
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-    }
-
-    .pill {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 7px 13px; border-radius: 999px;
-      background: rgba(77,163,255,0.12);
-      border: 1px solid rgba(77,163,255,0.26);
-      font-weight: 800; font-size: 13px; color: var(--blue);
-    }
-
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(7,11,20,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow 160ms ease;
-      width: 100%;
-    }
-    header.compact { box-shadow: var(--shadow); }
-    .navwrap {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px; padding: 20px 0;
-    }
-    nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
-    nav a {
-      text-decoration: none; font-weight: 700; font-size: 14px;
-      color: var(--muted); padding: 8px 10px; border-radius: 10px;
-    }
-    nav a:hover { background: rgba(255,255,255,0.06); color: var(--ink); }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      background: linear-gradient(180deg, var(--blue), var(--blue2));
-      color: #06121F;
-      padding: 13px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700; font-size: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 10px 26px rgba(77,163,255,0.24);
-      white-space: nowrap; cursor: pointer;
-      transition: filter 120ms ease, transform 120ms ease;
-    }
-    .btn:hover  { filter: brightness(1.06); color: #06121F; }
-    .btn:active { transform: translateY(0.5px); }
-    .btn-outline {
-      background: rgba(255,255,255,0.06);
-      color: var(--ink);
-      border: 1px solid var(--border);
-      box-shadow: none;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.10); color: var(--ink); }
-    .hero-actions, .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
-    .reassure { margin-top: 10px; font-size: 14px; color: var(--muted2); }
-
-    .hero {
-      background:
-        radial-gradient(1200px 520px at 15% 15%, rgba(77,163,255,0.18), transparent 60%),
-        radial-gradient(800px 400px at 90% 60%, rgba(10,76,147,0.16), transparent 60%),
-        linear-gradient(180deg, #071B33, var(--page));
-      border-bottom: 1px solid var(--border);
-      padding: 72px 0 60px;
-      overflow: hidden; width: 100%;
-    }
-    .hero-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 42px; align-items: center; }
-    .hero-copy { max-width: 720px; }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px; min-width: 0; overflow: hidden;
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px; padding: 22px;
-    }
-
-    .flow-preview {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr;
-      gap: 10px;
-      align-items: center;
-      margin-top: 14px;
-    }
-    .flow-box {
-      padding: 14px; border-radius: 12px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14);
-      min-height: 84px;
-    }
-    .flow-box strong { display: block; font-size: 13px; margin-bottom: 6px; color: var(--ink); }
-    .flow-box span { display: block; font-size: 12px; color: var(--muted2); }
-    .arrow {
-      width: 28px; height: 28px; display: grid; place-items: center;
-      border-radius: 8px; border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-      color: var(--blue); font-weight: 800; font-size: 14px;
-      user-select: none;
-    }
-
-    .video-shell {
-      position: relative;
-      width: 100%;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      aspect-ratio: 16 / 9;
-      box-shadow: var(--shadow);
-    }
-    .video-shell iframe { width: 100%; height: 100%; border: 0; display: block; }
-    .video-note {
-      margin-top: 12px;
-      color: var(--muted2);
-      font-size: 14px;
-    }
-
-    .step-card h3 { margin-bottom: 8px; }
-    .step-num {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: rgba(77,163,255,0.14);
-      border: 1px solid rgba(77,163,255,0.26);
-      color: var(--blue); font-size: 14px; font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    /* ── 4-STEP DEMO FLOW ── */
-    .demo-flow-grid {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-      gap: 0;
-      align-items: start;
-      margin: 28px 0 32px;
-    }
-    .dsf-step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 18px;
-      text-align: center;
-      transition: border-color 200ms ease;
-    }
-    .dsf-step:hover { border-color: rgba(77,163,255,0.35); }
-    .dsf-num {
-      width: 30px; height: 30px; border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: rgba(77,163,255,0.14);
-      border: 1px solid rgba(77,163,255,0.28);
-      color: var(--blue); font-size: 13px; font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .dsf-icon { font-size: 26px; display: block; margin-bottom: 8px; }
-    .dsf-step h3 { margin: 0 0 6px; font-size: 14px; color: var(--ink); }
-    .dsf-step p { margin: 0; font-size: 13px; color: var(--muted2); line-height: 1.45; }
-    .dsf-arrow {
-      display: flex; align-items: center; justify-content: center;
-      padding: 0 8px; margin-top: 52px;
-      color: var(--blue); font-size: 18px; font-weight: 800;
-      flex-shrink: 0;
-    }
-    .demo-cta-card {
-      background: rgba(77,163,255,0.06);
-      border: 1px solid rgba(77,163,255,0.18);
-      border-radius: var(--radius);
-      padding: 28px;
-      text-align: center;
-    }
-    .demo-cta-card h3 { font-size: 18px; margin: 0 0 8px; }
-    .demo-cta-card p  { margin: 0 0 18px; color: var(--muted); }
-
-    .stack { display: grid; gap: 18px; }
-
-    .tag {
-      display: inline-block; font-size: 12px; font-weight: 800;
-      padding: 5px 10px; border-radius: 999px; margin-bottom: 10px;
-      background: rgba(77,163,255,0.14);  border: 1px solid rgba(77,163,255,0.26);  color: var(--blue);
-    }
-
-    .cta-final {
-      text-align: center;
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    .cta-final p { max-width: 720px; margin-left: auto; margin-right: auto; }
-
-    footer { padding: 36px 0; border-top: 1px solid var(--border); width: 100%; }
-    .footer-row {
-      display: flex; justify-content: space-between;
-      align-items: center; gap: 16px; flex-wrap: wrap;
-    }
-    .footer-row a { color: var(--muted2); }
-    .footer-row a:hover { color: var(--ink); }
-    .footer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    .pricing-fab {
-      position: fixed; right: 16px; bottom: 16px; z-index: 999;
-      opacity: 0; transform: translateY(10px); pointer-events: none;
-      transition: opacity .18s ease, transform .18s ease;
-    }
-    .pricing-fab.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    @media (min-width: 641px) { .pricing-fab { display: none; } }
-    @media (max-width: 640px) { body { padding-bottom: 84px; } }
-
-    @media (max-width: 980px) {
-      .hero-grid, .try-grid, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-      nav { display: none; }
-      .flow-preview { grid-template-columns: 1fr; }
-      .arrow { display: none; }
-      .demo-flow-grid { grid-template-columns: 1fr 1fr; }
-      .dsf-arrow { display: none; }
-    }
-    @media (max-width: 520px) {
-      .demo-flow-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 520px) {
-      .section { padding: 56px 0; }
-      .container { padding: 0 16px; }
-      h1 { font-size: 34px; }
-      .btn { width: 100%; }
-      .hero-actions, .cta-row { flex-direction: column; align-items: stretch; }
-    }
-  
-.video-placeholder-shell {
-  display: block;
+:root{
+  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
+  --line-dark:rgba(255,255,255,.08);
+  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
+  --slate:#46536b;--slate-2:#6b7790;
+  --blue:#3a7bfd;--blue-deep:#0066CC;--blue-light:#5aa3ff;
+  --green:#34c98e;--radius:14px;
+  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
 }
-.video-placeholder-box {
-  min-height: 360px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  text-align: center;
-  padding: 24px;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img,svg,video{max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--blue-deep);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);display:inline-block}
+
+h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.015em}
+h1{font-size:clamp(34px,5vw,58px);font-weight:800;margin-bottom:22px}
+h2{font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:16px}
+h3{font-size:17.5px;font-weight:600;margin-bottom:8px}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--slate);max-width:640px;margin-bottom:28px}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo-img{height:30px;width:auto;flex:none}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:#c4ccdc;text-decoration:none;font-size:15px;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;border-radius:10px;padding:12px 22px;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:none;white-space:nowrap}
+.btn-amber{background:var(--blue);color:#fff}
+.btn-amber:hover{background:#5b8ffd;transform:translateY(-1px);box-shadow:0 8px 24px rgba(58,123,253,.35);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--ink-3);transform:translateY(-1px);color:#fff}
+.btn-outline-light{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-outline-light:hover{border-color:#aab4c8;color:var(--ink)}
+.nav .btn{padding:10px 18px;font-size:14px}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);border-radius:8px;width:42px;height:42px;color:#fff;font-size:18px;cursor:pointer;padding:0}
+
+/* Hero */
+.hero{background:var(--ink);color:#fff;padding:88px 0 72px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 75% 10%,rgba(90,163,255,.10),transparent 60%),radial-gradient(ellipse 60% 45% at 15% 90%,rgba(58,123,253,.08),transparent 60%);pointer-events:none}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black 40%,transparent 95%);pointer-events:none}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+.hero-copy{}
+.hero-pill{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:rgba(58,123,253,.15);border:1px solid rgba(58,123,253,.32);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:22px}
+.hero h1{color:#fff;max-width:660px}
+.hero .lede{color:#aab4c8}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.reassure{font-family:var(--mono);font-size:12.5px;color:#7f8aa3}
+
+/* Hero card */
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px}
+.hero-card h3{font-size:16px;color:#fff;margin-bottom:16px}
+.flow-preview{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin-bottom:14px}
+.flow-box{padding:14px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);min-height:80px}
+.flow-box strong{display:block;font-size:13px;margin-bottom:5px;color:#fff;font-weight:600}
+.flow-box span{display:block;font-size:12px;color:#94a3b8}
+.flow-arrow{width:26px;height:26px;display:grid;place-items:center;border-radius:7px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:var(--blue-light);font-weight:700;font-size:13px}
+.video-note{font-size:14px;color:#94a3b8;line-height:1.5}
+
+/* Section rhythm */
+.sect-paper{background:var(--paper)}
+.sect-white{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sect-dark{background:var(--ink);color:#fff}
+
+/* Cards */
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;transition:transform .18s,box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(11,18,32,.08);border-color:#cfd6e4}
+.card h3{color:var(--ink)}
+.card p{color:var(--slate);font-size:15.5px;margin:0}
+
+/* Grid layouts */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+
+/* Step numbering */
+.step-num{width:34px;height:34px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:rgba(58,123,253,.10);border:1px solid rgba(58,123,253,.22);color:var(--blue-deep);font-size:14px;font-weight:800;margin-bottom:14px;font-family:var(--mono)}
+
+/* Video section */
+.video-shell{position:relative;width:100%;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper);aspect-ratio:16/9;box-shadow:0 12px 40px rgba(11,18,32,.10);margin:24px 0}
+.video-shell video{width:100%;height:100%;object-fit:cover;display:block}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.video-note-light{margin-top:12px;color:var(--slate-2);font-size:14px}
+
+/* Demo flow 4-step */
+.demo-flow-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:0;align-items:start;margin:28px 0 32px}
+.dsf-step{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;text-align:center;transition:border-color .2s}
+.dsf-step:hover{border-color:rgba(58,123,253,.30)}
+.dsf-num{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(58,123,253,.10);border:1px solid rgba(58,123,253,.22);color:var(--blue-deep);font-size:13px;font-weight:800;margin-bottom:10px;font-family:var(--mono)}
+.dsf-icon{font-size:26px;display:block;margin-bottom:8px}
+.dsf-step h3{margin:0 0 6px;font-size:14px;color:var(--ink)}
+.dsf-step p{margin:0;font-size:13px;color:var(--slate-2);line-height:1.45}
+.dsf-arrow{display:flex;align-items:center;justify-content:center;padding:0 8px;margin-top:52px;color:var(--blue);font-size:18px;font-weight:800;flex-shrink:0}
+
+/* CTA demo card */
+.demo-cta-card{background:rgba(58,123,253,.06);border:1px solid rgba(58,123,253,.18);border-radius:var(--radius);padding:32px;text-align:center}
+.demo-cta-card h3{font-size:20px;margin:0 0 10px;color:var(--ink)}
+.demo-cta-card p{color:var(--slate);margin:0 0 22px}
+.demo-cta-card .micro{margin-top:14px;font-size:13px;color:var(--slate-2)}
+
+/* Final CTA */
+.final{background:var(--ink);color:#fff;text-align:center;padding:96px 0}
+.final h2{font-size:clamp(28px,4vw,42px);max-width:680px;margin:0 auto 18px;color:#fff;font-weight:700}
+.final p{color:#aab4c8;max-width:580px;margin:0 auto 30px}
+.final-note-text{margin-top:20px;font-size:14px;color:#7f8aa3;max-width:640px;margin-left:auto;margin-right:auto}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.reassure-dark{margin-top:12px;font-family:var(--mono);font-size:12.5px;color:#7f8aa3}
+
+/* Footer */
+footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 0;color:#7f8aa3;font-size:14px}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.foot-brand p{max-width:540px;margin-top:6px;color:#7f8aa3;font-size:13px}
+.foot-right{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.foot-right span{font-size:13px;color:#7f8aa3}
+
+/* Responsive */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-card{margin-top:8px}
+  .flow-preview{grid-template-columns:1fr}
+  .flow-arrow{display:none}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .demo-flow-grid{grid-template-columns:1fr 1fr}
+  .dsf-arrow{display:none}
 }
-.video-placeholder-box strong {
-  font-size: 18px;
-  color: var(--ink);
+@media(max-width:680px){
+  section{padding:68px 0}
+  .final{padding:68px 0}
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--ink);flex-direction:column;align-items:stretch;padding:14px 24px 22px;gap:4px;border-bottom:1px solid var(--line-dark)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;font-size:16px}
+  .nav-links .btn{justify-content:center;margin-top:8px}
+  .menu-btn{display:block}
+  .grid-3,.grid-2,.demo-flow-grid{grid-template-columns:1fr}
 }
-.video-placeholder-box span {
-  color: var(--muted2);
-  font-size: 14px;
-}
-
-
-    /* ── LIGHT MODE ─────────────────────────────────────── */
-    [data-theme="light"] {
-      --page:    #F0F4FA;
-      --surface: #FFFFFF;
-      --surface2:#E8EEF7;
-      --border:  rgba(30,60,120,0.14);
-      --ink:     #0D1829;
-      --muted:   #3D5270;
-      --muted2:  #5B728F;
-      --blue:    #1A5CC8;
-      --blue2:   #0D3D8E;
-      --deep:    #0A4C93;
-      --shadow:  0 12px 34px rgba(0,0,0,0.10);
-    }
-    [data-theme="light"] html,
-    [data-theme="light"] body,
-    html[data-theme="light"],
-    body[data-theme="light"] { background: var(--page); color: var(--ink); }
-
-    [data-theme="light"] a:hover { color: var(--ink); }
-
-    [data-theme="light"] header {
-      background: rgba(240,244,250,0.92);
-    }
-    [data-theme="light"] nav a:hover {
-      background: rgba(0,0,0,0.05);
-    }
-    [data-theme="light"] .btn {
-      color: #fff;
-      border-color: rgba(0,0,0,0.08);
-    }
-    [data-theme="light"] .btn:hover { color: #fff; }
-    [data-theme="light"] .btn-outline {
-      background: rgba(0,0,0,0.04);
-      color: var(--ink);
-      border-color: var(--border);
-    }
-    [data-theme="light"] .btn-outline:hover {
-      background: rgba(0,0,0,0.08);
-      color: var(--ink);
-    }
-    [data-theme="light"] .hero {
-      background:
-        radial-gradient(1200px 520px at 15% 15%, rgba(26,92,200,0.08), transparent 60%),
-        radial-gradient(800px 400px at 90% 60%, rgba(13,61,142,0.06), transparent 60%),
-        linear-gradient(180deg, #DAE4F5, var(--page));
-    }
-    [data-theme="light"] .hero-card {
-      background: rgba(255,255,255,0.80);
-      border-color: rgba(26,92,200,0.15);
-    }
-    [data-theme="light"] .trust-chip {
-      background: rgba(0,0,0,0.04);
-      border-color: rgba(0,0,0,0.09);
-    }
-    [data-theme="light"] .flow-box {
-      background: rgba(255,255,255,0.80);
-      border-color: rgba(26,92,200,0.15);
-    }
-    [data-theme="light"] .arrow {
-      background: rgba(0,0,0,0.04);
-    }
-    [data-theme="light"] .flow-footer {
-      border-top-color: var(--border);
-    }
-    [data-theme="light"] .pill {
-      background: rgba(26,92,200,0.09);
-      border-color: rgba(26,92,200,0.22);
-    }
-    [data-theme="light"] .step-num {
-      background: rgba(26,92,200,0.09);
-      border-color: rgba(26,92,200,0.22);
-    }
-    [data-theme="light"] .tag-core {
-      background: rgba(26,92,200,0.09);
-      border-color: rgba(26,92,200,0.22);
-    }
-    [data-theme="light"] .tag-expand {
-      background: rgba(109,40,217,0.08);
-      border-color: rgba(109,40,217,0.18);
-    }
-    [data-theme="light"] .tag-found {
-      background: rgba(5,150,105,0.08);
-      border-color: rgba(5,150,105,0.20);
-    }
-    [data-theme="light"] .fit-card.good {
-      background: rgba(5,150,105,0.07);
-      border-color: rgba(5,150,105,0.22);
-    }
-    [data-theme="light"] .fit-card.bad {
-      background: rgba(220,38,38,0.06);
-      border-color: rgba(220,38,38,0.16);
-    }
-    [data-theme="light"] .fit-list li {
-      border-bottom-color: var(--border);
-    }
-    [data-theme="light"] details {
-      background: var(--surface);
-      border-color: var(--border);
-    }
-    [data-theme="light"] details[open] {
-      border-color: rgba(26,92,200,0.32);
-    }
-
-    /* Pricing-specific */
-    [data-theme="light"] .pkg-card {
-      background: var(--surface);
-      border-color: var(--border);
-    }
-    [data-theme="light"] .pkg-card.featured {
-      border-color: var(--blue);
-    }
-    [data-theme="light"] .check-row {
-      border-bottom-color: var(--border);
-    }
-    [data-theme="light"] .tier-toggle {
-      background: rgba(0,0,0,0.05);
-      border-color: var(--border);
-    }
-    [data-theme="light"] .tier-btn.active {
-      background: var(--surface);
-    }
-
-    /* Form-specific */
-    [data-theme="light"] .form-card,
-    [data-theme="light"] .field-group {
-      background: var(--surface);
-      border-color: var(--border);
-    }
-    [data-theme="light"] input,
-    [data-theme="light"] select,
-    [data-theme="light"] textarea {
-      background: #F4F7FC;
-      border-color: rgba(30,60,120,0.18);
-      color: var(--ink);
-    }
-    [data-theme="light"] input::placeholder,
-    [data-theme="light"] textarea::placeholder { color: #9BAABB; }
-
-    /* ── THEME TOGGLE BUTTON ─────────────────────────────── */
-    .theme-toggle {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      color: var(--muted);
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
-      flex-shrink: 0;
-      font-size: 17px;
-      line-height: 1;
-    }
-    .theme-toggle:hover { background: rgba(255,255,255,0.12); color: var(--ink); }
-    [data-theme="light"] .theme-toggle {
-      background: rgba(0,0,0,0.05);
-      border-color: rgba(30,60,120,0.15);
-    }
-    [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.10); }
-
-  
-    /* ── NAV BRAND ── */
-    .nav-brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-icon { height: 42px; width: auto; flex-shrink: 0; }
-    .nav-title {
-      font-size: 15px; font-weight: 800;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: #fff;
-      white-space: nowrap;
-    }
-    [data-theme="light"] .nav-title { color: #0D1829; }
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
 <body>
 
-<header id="siteHeader">
-  <div class="container">
-    <div class="navwrap">
-      <a href="/" aria-label="Alignment Automations Home" class="nav-brand-wrap"><img src="alignment_automations_icon.svg" class="nav-icon" alt="Alignment Automations icon"><span class="nav-title">Alignment Automations</span></a>
-      <nav aria-label="Primary navigation">
-        <a href="#video">Overview</a>
-        <a href="#demo-flow">Demo Flow</a>
-        <a href="#what-you-see">What You See</a>
-        <a href="/pricing">Pricing</a>
-        <a class="btn btn-outline" href="email-sales.html">Email Sales</a>
-        <a class="btn" href="contact.html">Book a Demo</a>
-      </nav>
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">🌙</button>
-    </div>
+<nav class="nav" aria-label="Main">
+  <div class="wrap nav-in">
+    <a class="logo" href="/" aria-label="Alignment Automations Home">
+      <img src="alignment_automations_icon.svg" class="logo-img" alt="">
+      <span>Alignment Automations</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#video">Overview</a></li>
+      <li><a href="#demo-flow">Demo Flow</a></li>
+      <li><a href="#what-you-see">What You See</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a class="btn btn-ghost" href="email-sales.html">Email Sales</a></li>
+      <li><a class="btn btn-amber" href="contact.html">Book a Demo</a></li>
+    </ul>
   </div>
-</header>
+</nav>
 
-<section class="hero" id="top">
-  <div class="container">
+<header class="hero" id="top">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="pill">How it works</span>
+        <div class="hero-pill">How it works</div>
         <h1>See how a contractor can go from inquiry to booking without the usual delay.</h1>
-        <p class="lead">
+        <p class="lede">
           This page shows the core customer-facing experience: a short intake form, an immediate next step, and a clean handoff into booking.
         </p>
-        <div class="hero-actions">
-          <a class="btn" href="#video">Watch the Overview</a>
-          <a class="btn btn-outline" href="#demo-flow">Try the Demo Flow</a>
+        <div class="hero-ctas">
+          <a class="btn btn-amber" href="#video">Watch the Overview</a>
+          <a class="btn btn-ghost" href="#demo-flow">Try the Demo Flow</a>
         </div>
         <div class="reassure">Simple customer experience · Clear next step · Booking-focused flow</div>
       </div>
@@ -550,12 +209,12 @@
             <strong>1. Customer reaches out</strong>
             <span>Short intake form on your website</span>
           </div>
-          <div class="arrow" aria-hidden="true">→</div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
           <div class="flow-box">
             <strong>2. Immediate next step</strong>
             <span>Clear confirmation and booking prompt</span>
           </div>
-          <div class="arrow" aria-hidden="true">→</div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
           <div class="flow-box">
             <strong>3. Booking handoff</strong>
             <span>Customer chooses a time in Calendly</span>
@@ -565,33 +224,32 @@
       </div>
     </div>
   </div>
-</section>
+</header>
 
-<section class="section" id="video">
-  <div class="container">
-    <span class="mini-kicker">Overview video</span>
+<section class="sect-white" id="video">
+  <div class="wrap">
+    <p class="eyebrow">Overview video</p>
     <h2>Watch the quick walkthrough</h2>
-    <p class="lead">Watch the overview to see how a customer can move from inquiry to booking with a clear next step.</p>
+    <p class="lede">Watch the overview to see how a customer can move from inquiry to booking with a clear next step.</p>
     <div class="video-shell">
-  <video controls preload="auto" poster="video-thumbnail.png" playsinline style="width:100%; height:100%; object-fit:cover;">
-    <source src="demo.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+      <video controls preload="auto" poster="video-thumbnail.png" playsinline style="width:100%;height:100%;object-fit:cover;">
+        <source src="demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
     <div class="hero-actions">
-      <a class="btn" href="#demo-flow">Try the Demo Flow</a>
-      <a class="btn btn-outline" href="contact.html">Book a Demo</a>
+      <a class="btn btn-dark" href="#demo-flow">Try the Demo Flow</a>
+      <a class="btn btn-outline-light" href="contact.html">Book a Demo</a>
     </div>
   </div>
 </section>
 
-<section class="section soft" id="demo-flow">
-  <div class="container">
-    <span class="mini-kicker">Interactive walkthrough</span>
+<section class="sect-paper" id="demo-flow">
+  <div class="wrap">
+    <p class="eyebrow">Interactive walkthrough</p>
     <h2>See the full system in action</h2>
-    <p class="lead">Walk through all four stages — from the first inquiry to a booked estimate — and see exactly what the automation does at each step.</p>
+    <p class="lede">Walk through all four stages — from the first inquiry to a booked estimate — and see exactly what the automation does at each step.</p>
 
-    <!-- 4-step visual flow -->
     <div class="demo-flow-grid">
       <div class="dsf-step">
         <div class="dsf-num">1</div>
@@ -599,21 +257,21 @@
         <h3>Inquiry</h3>
         <p>Customer submits a short form on your website.</p>
       </div>
-      <div class="dsf-arrow">→</div>
+      <div class="dsf-arrow" aria-hidden="true">→</div>
       <div class="dsf-step">
         <div class="dsf-num">2</div>
         <span class="dsf-icon">⚡</span>
         <h3>Auto Capture</h3>
         <p>Lead logged instantly. Your team notified right away.</p>
       </div>
-      <div class="dsf-arrow">→</div>
+      <div class="dsf-arrow" aria-hidden="true">→</div>
       <div class="dsf-step">
         <div class="dsf-num">3</div>
         <span class="dsf-icon">💬</span>
         <h3>Auto Follow-Up</h3>
         <p>An email goes out automatically while you're still on the job.</p>
       </div>
-      <div class="dsf-arrow">→</div>
+      <div class="dsf-arrow" aria-hidden="true">→</div>
       <div class="dsf-step">
         <div class="dsf-num">4</div>
         <span class="dsf-icon">📅</span>
@@ -622,24 +280,23 @@
       </div>
     </div>
 
-    <!-- CTA -->
     <div class="demo-cta-card">
       <h3>Try the full walkthrough</h3>
       <p>Walk through each stage as if you were a new customer. See the mockup of every automated step as it plays out — from first form fill to booked estimate.</p>
       <div class="hero-actions" style="justify-content:center;">
-        <a class="btn" href="demo-form.html" style="font-size:15px; padding:14px 26px;">Start the Demo Flow →</a>
-        <a class="btn btn-outline" href="contact.html">Book a Real Demo</a>
+        <a class="btn btn-amber" href="demo-form.html" style="font-size:15px;padding:14px 26px;">Start the Demo Flow →</a>
+        <a class="btn btn-outline-light" href="contact.html">Book a Real Demo</a>
       </div>
-      <p class="video-note" style="margin-top:14px;">Takes about 60 seconds · No real data is sent · All mockups</p>
+      <p class="micro">Takes about 60 seconds · No real data is sent · All mockups</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="what-you-see">
-  <div class="container">
-    <span class="mini-kicker">Why this works</span>
+<section class="sect-white" id="what-you-see">
+  <div class="wrap">
+    <p class="eyebrow">Why this works</p>
     <h2>A clearer process creates a better first impression</h2>
-    <p class="lead">When the next step is obvious, customers are more likely to keep moving toward booking.</p>
+    <p class="lede">When the next step is obvious, customers are more likely to keep moving toward booking.</p>
 
     <div class="grid-3">
       <div class="card">
@@ -658,83 +315,49 @@
   </div>
 </section>
 
-<section class="section soft" id="cta">
-  <div class="container cta-final">
+<section class="final" id="cta">
+  <div class="wrap">
     <h2>Want this flow set up for your business?</h2>
-    <p class="lead" style="margin-bottom:22px;">
+    <p>
       Book a short demo to see how this structure can be adapted to your current website, scheduling setup, and intake process.
     </p>
-    <div class="cta-row" style="justify-content:center;">
-      <a class="btn" href="contact.html" style="font-size:16px; padding:16px 28px;">Book a Demo</a>
-      <a class="btn btn-outline" href="email-sales.html" style="font-size:16px; padding:16px 28px;">Email Sales</a>
+    <div class="cta-row">
+      <a class="btn btn-amber" href="contact.html" style="font-size:16px;padding:16px 28px;">Book a Demo</a>
+      <a class="btn btn-ghost" href="email-sales.html" style="font-size:16px;padding:16px 28px;">Email Sales</a>
     </div>
-    <div class="reassure" style="margin-top:12px;">No pressure · Clear system walkthrough · Practical next steps</div>
-    <p style="margin-top:20px; font-size:14px; color:var(--muted2); text-align:center; max-width:640px; margin-left:auto; margin-right:auto;">Matthew spent years in the painting trade before building Alignment Automations — so this system is designed around what contractors actually deal with, not assumptions from someone who's never been in the field.</p>
+    <p class="reassure-dark" style="margin-top:12px;">No pressure · Clear system walkthrough · Practical next steps</p>
+    <p class="final-note-text">Matthew spent years in the painting trade before building Alignment Automations — so this system is designed around what contractors actually deal with, not assumptions from someone who's never been in the field.</p>
   </div>
 </section>
 
 <footer>
-  <div class="container">
-    <div class="footer-row">
-      <div>
-        <div class="small" style="color:var(--muted2);">© <span id="year"></span> Alignment Automations. All rights reserved.</div>
-        <p class="small" style="margin-top:8px; color:var(--muted2);">Automation systems that help home service contractors capture more inquiries and book more jobs.</p>
-      </div>
-      <div class="footer-actions">
-        <span class="small" style="color:var(--muted2);">Questions before booking? Email us anytime.</span>
-        <a class="btn btn-outline" href="email-sales.html">Email Sales</a>
-      </div>
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <div style="font-size:13px;">© <span id="year"></span> Alignment Automations. All rights reserved.</div>
+      <p>Automation systems that help home service contractors capture more inquiries and book more jobs.</p>
+    </div>
+    <div class="foot-right">
+      <span>Questions before booking? Email us anytime.</span>
+      <a class="btn btn-ghost" href="email-sales.html" style="padding:9px 18px;font-size:14px;">Email Sales</a>
     </div>
   </div>
 </footer>
 
-<div class="pricing-fab" id="pricingFab">
-  <a class="btn" href="/pricing" style="font-size:13px; padding:11px 16px;">View Pricing →</a>
-</div>
-
 <script>
-  const header = document.getElementById('siteHeader');
-  const pricingFab = document.getElementById('pricingFab');
-  const year = document.getElementById('year');
-
-  year.textContent = new Date().getFullYear();
-
-  function onScroll() {
-    const y = window.scrollY || 0;
-    if (y > 18) header.classList.add('compact');
-    else header.classList.remove('compact');
-
-    if (window.innerWidth <= 640 && y > 700) pricingFab.classList.add('show');
-    else pricingFab.classList.remove('show');
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
+document.getElementById('year').textContent = new Date().getFullYear();
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+  menuBtn.textContent = open ? '✕' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn.textContent = '☰';
+}));
 </script>
-
-  <script>
-    (function() {
-      var saved = localStorage.getItem('aa-theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', saved);
-      document.body && document.body.setAttribute('data-theme', saved);
-    })();
-    function toggleTheme() {
-      var current = document.documentElement.getAttribute('data-theme') || 'dark';
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      document.body.setAttribute('data-theme', next);
-      localStorage.setItem('aa-theme', next);
-      var btn = document.getElementById('themeToggle');
-      if (btn) btn.textContent = next === 'dark' ? '🌙' : '☀️';
-    }
-    // Set correct icon and logo on load
-    document.addEventListener('DOMContentLoaded', function() {
-      var theme = document.documentElement.getAttribute('data-theme') || 'dark';
-      var btn = document.getElementById('themeToggle');
-      if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
-    });
-  </script>
 
 </body>
 </html>

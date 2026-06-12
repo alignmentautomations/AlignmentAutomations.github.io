@@ -9,537 +9,203 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing | Alignment Automations</title>
   <meta name="description" content="Clear, structured pricing built around your business's intake system. Configure only what you need." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ── DESIGN TOKENS (identical to main site) ── */
-    :root {
-      --page:    #070B14;
-      --surface: #0B1220;
-      --surface2:#0E1A2E;
-      --border:  rgba(148,163,184,0.22);
-      --ink:     #F9FAFB;
-      --muted:   #CBD5E1;
-      --muted2:  #94A3B8;
-      --blue:    #4DA3FF;
-      --blue2:   #2F86FF;
-      --deep:    #0A4C93;
-      --green:   #10B981;
-      --red:     #EF4444;
-      --purple:  #A78BFA;
-      --shadow:  0 12px 34px rgba(0,0,0,0.50);
-      --radius:  16px;
-      --max:     1100px;
-    }
+:root{
+  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
+  --line-dark:rgba(255,255,255,.08);
+  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
+  --slate:#46536b;--slate-2:#6b7790;
+  --blue:#3a7bfd;--blue-deep:#0066CC;--blue-light:#5aa3ff;
+  --green:#34c98e;--radius:14px;
+  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
 
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: clip; }
-    html, body { margin: 0; background: var(--page); color: var(--ink); overflow-x: clip; }
-    body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: var(--ink); text-decoration: none; }
-    a:hover { color: #fff; }
-    a:focus-visible, summary:focus-visible {
-      outline: 3px solid rgba(147,197,253,0.65);
-      outline-offset: 3px;
-      border-radius: 10px;
-    }
-    img { max-width: 100%; }
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
 
-    /* ── LAYOUT ── */
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 22px; width: 100%; }
-    .section { padding: 72px 0; overflow: hidden; width: 100%; }
-    .section.soft {
-      background: var(--surface2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--blue-deep);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);display:inline-block}
 
-    /* ── TYPOGRAPHY ── */
-    h1 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; margin: 14px 0 12px; letter-spacing: -0.03em; color: var(--ink); }
-    h2 { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.02em; color: var(--ink); }
-    h3 { font-size: 15px; margin: 0 0 6px; color: var(--ink); font-weight: 700; }
-    p  { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
-    p:last-child { margin-bottom: 0; }
-    li { color: var(--muted); font-size: 14px; }
-    strong, summary { color: var(--ink); }
-    .muted  { color: var(--muted); }
-    .muted2 { color: var(--muted2); }
-    .small  { font-size: 13px; }
-    .lead   { font-size: 17px; color: var(--muted); max-width: 680px; margin: 0 0 10px; }
+h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.015em}
+h1{font-size:clamp(30px,3.4vw,46px);font-weight:800;margin-bottom:18px}
+h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:16px}
+h3{font-size:17.5px;font-weight:600;margin-bottom:8px}
+.lede{font-size:clamp(16px,1.8vw,18px);color:var(--slate);max-width:680px;margin-bottom:14px}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
 
-    /* ── HEADER ── */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(7,11,20,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow 160ms ease;
-      width: 100%;
-    }
-    header.compact { box-shadow: var(--shadow); }
-    .navwrap {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px; padding: 20px 0;
-    }
-    header.compact
-    nav { display: flex; align-items: center; gap: 4px; }
-    nav a {
-      text-decoration: none; font-weight: 700; font-size: 14px;
-      color: var(--muted); padding: 8px 10px; border-radius: 10px;
-    }
-    nav a:hover { background: rgba(255,255,255,0.06); color: var(--ink); }
-    nav a.active { color: var(--blue); }
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo-img{height:30px;width:auto;flex:none}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:#c4ccdc;text-decoration:none;font-size:15px;font-weight:500;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;border-radius:10px;padding:12px 22px;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:none;white-space:nowrap}
+.btn-amber{background:var(--blue);color:#fff}
+.btn-amber:hover{background:#5b8ffd;transform:translateY(-1px);box-shadow:0 8px 24px rgba(58,123,253,.35);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--ink-3);transform:translateY(-1px);color:#fff}
+.btn-outline-light{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-outline-light:hover{border-color:#aab4c8;color:var(--ink)}
+.btn-full{width:100%;justify-content:center}
+.nav .btn{padding:10px 18px;font-size:14px}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);border-radius:8px;width:42px;height:42px;color:#fff;font-size:18px;cursor:pointer;padding:0}
 
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      background: linear-gradient(180deg, var(--blue), var(--blue2));
-      color: #06121F;
-      padding: 13px 20px; border-radius: 12px;
-      text-decoration: none; font-weight: 700; font-size: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 10px 26px rgba(77,163,255,0.24);
-      white-space: nowrap; cursor: pointer;
-      transition: filter 120ms ease;
-    }
-    .btn:hover  { filter: brightness(1.06); color: #06121F; }
-    .btn:active { transform: translateY(0.5px); }
-    .btn-outline {
-      background: rgba(255,255,255,0.06);
-      color: var(--ink); border: 1px solid var(--border); box-shadow: none;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.10); color: var(--ink); }
-    .btn-full { width: 100%; justify-content: center; }
+/* Page hero */
+.page-hero{background:var(--ink);color:#fff;padding:72px 0 64px;position:relative;overflow:hidden}
+.page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(58,123,253,.12),transparent 60%);pointer-events:none}
+.page-hero .wrap{position:relative}
+.page-hero .pill{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:rgba(58,123,253,.15);border:1px solid rgba(58,123,253,.32);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:22px}
+.page-hero h1{color:#fff;max-width:700px}
+.page-hero .lede{color:#aab4c8;max-width:680px}
+.page-hero .small-note{font-family:var(--mono);font-size:12.5px;color:#7f8aa3;margin-top:4px}
 
-    /* ── PAGE HERO ── */
-    .page-hero {
-      padding: 60px 0 52px;
-      background:
-        radial-gradient(900px 400px at 10% 50%, rgba(77,163,255,0.14), transparent 60%),
-        linear-gradient(180deg, #071B33, var(--page));
-      border-bottom: 1px solid var(--border);
-      width: 100%;
-    }
-    .pill {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 7px 13px; border-radius: 999px;
-      background: rgba(77,163,255,0.12); border: 1px solid rgba(77,163,255,0.26);
-      font-weight: 800; font-size: 12px; color: var(--blue);
-      margin-bottom: 14px;
-    }
+/* Section rhythm */
+.sect-paper{background:var(--paper)}
+.sect-white{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sect-dark{background:var(--ink);color:#fff}
 
-    /* ── TIER TAGS ── */
-    .tag {
-      display: inline-block; font-size: 11px; font-weight: 800;
-      padding: 4px 10px; border-radius: 999px; margin-bottom: 12px;
-      letter-spacing: 0.03em; text-transform: uppercase;
-    }
-    .tag-core   { background: rgba(77,163,255,0.14);  border: 1px solid rgba(77,163,255,0.28);  color: var(--blue); }
-    .tag-found  { background: rgba(16,185,129,0.10);  border: 1px solid rgba(16,185,129,0.26);  color: var(--green); }
-    .tag-call   { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.26); color: var(--purple); }
-    .tag-bundle { background: rgba(249,115,22,0.10);  border: 1px solid rgba(249,115,22,0.26);  color: #FB923C; }
+/* Section label */
+.section-label{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+.section-label h2{margin:0;white-space:nowrap}
+.section-label-line{flex:1;height:1px;background:var(--line)}
 
-    /* ── PRICING CARDS ── */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 18px;
-    }
-    .pricing-grid.three {
-      grid-template-columns: repeat(3, minmax(0,1fr));
-    }
-    .price-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 26px;
-      display: flex; flex-direction: column;
-      gap: 0;
-      transition: border-color 200ms ease;
-    }
-    .price-card:hover { border-color: rgba(77,163,255,0.35); }
-    .price-card.featured {
-      border-color: rgba(77,163,255,0.40);
-      background: linear-gradient(160deg, rgba(77,163,255,0.07), var(--surface));
-      position: relative;
-    }
-    .featured-badge {
-      position: absolute; top: -1px; right: 20px;
-      background: linear-gradient(180deg, var(--blue), var(--blue2));
-      color: #06121F; font-size: 11px; font-weight: 800;
-      padding: 4px 12px; border-radius: 0 0 10px 10px;
-      letter-spacing: 0.03em;
-    }
+/* Pricing cards */
+.price-panel{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.price-panel.featured{border-color:rgba(58,123,253,.30);background:linear-gradient(160deg,rgba(58,123,253,.05),var(--white));position:relative}
+.featured-badge{position:absolute;top:-1px;right:20px;background:var(--blue);color:#fff;font-family:var(--mono);font-size:11px;font-weight:600;padding:4px 12px;border-radius:0 0 10px 10px;letter-spacing:.06em;text-transform:uppercase}
+.price-tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:inline-block;padding:4px 10px;border-radius:6px}
+.tag-core{color:var(--blue-deep);background:rgba(58,123,253,.10);border:1px solid rgba(58,123,253,.22)}
+.tag-found{color:#059669;background:rgba(5,150,105,.10);border:1px solid rgba(5,150,105,.22)}
+.tag-bundle{color:#d97706;background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.22)}
+.price-amount{margin:12px 0 6px}
+.price-number{font-family:var(--display);font-size:40px;font-weight:900;letter-spacing:-.04em;color:var(--ink)}
+.price-period{font-size:14px;color:var(--slate-2);font-weight:600}
+.price-mo{font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin:4px 0 6px}
+.price-mo span{font-size:14px;font-weight:600;color:var(--slate-2)}
+.price-first{font-size:14.5px;color:var(--slate);padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.price-first strong{color:var(--ink)}
+.price-desc{font-size:14.5px;color:var(--slate);margin-bottom:22px;line-height:1.55}
+.feature-list{list-style:none;display:grid;gap:0}
+.feature-list li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14.5px;color:var(--slate);border-bottom:1px solid rgba(0,0,0,.05)}
+.feature-list li:last-child{border-bottom:none}
+.check{color:var(--green);font-size:14px;flex-shrink:0;margin-top:2px}
+.card-cta{margin-top:24px}
 
-    .price-amount {
-      margin: 10px 0 4px;
-    }
-    .price-number {
-      font-size: 36px; font-weight: 900; letter-spacing: -0.04em; color: var(--ink);
-    }
-    .price-period { font-size: 14px; color: var(--muted2); font-weight: 600; }
-    .price-monthly {
-      font-size: 14px; color: var(--muted); margin: 0 0 16px;
-      padding-bottom: 16px; border-bottom: 1px solid var(--border);
-    }
-    .price-monthly strong { color: var(--ink); }
+/* Ownership note */
+.own-note{margin-top:40px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;display:flex;align-items:flex-start;gap:14px}
+.own-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.own-note p{font-size:14.5px;color:var(--slate);margin:0}
+.own-note strong{color:var(--ink)}
 
-    .price-desc {
-      font-size: 14px; color: var(--muted); margin: 0 0 18px; line-height: 1.5;
-    }
+/* FAQ */
+.faq-list{max-width:760px;margin-top:32px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 4px;font-family:var(--display);font-weight:600;font-size:17px;color:var(--ink)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);font-size:20px;color:var(--blue-deep);flex:none;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 4px 24px;color:var(--slate);font-size:15.5px;max-width:660px;margin:0}
 
-    .feature-list { list-style: none; margin: 0; padding: 0; flex: 1; }
-    .feature-list li {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 7px 0; font-size: 14px; color: var(--muted);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .feature-list li:last-child { border-bottom: none; }
-    .feature-list .check { color: var(--green); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+/* Final CTA */
+.final{background:var(--ink);color:#fff;text-align:center;padding:96px 0}
+.final h2{font-size:clamp(28px,4vw,42px);max-width:680px;margin:0 auto 16px;color:#fff;font-weight:700}
+.final p{color:#aab4c8;max-width:540px;margin:0 auto 32px}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.reassure{margin-top:14px;font-family:var(--mono);font-size:12.5px;color:#7f8aa3}
 
-    .card-cta { margin-top: 22px; }
+/* Footer */
+footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 0;color:#7f8aa3;font-size:14px}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
 
-    /* ── SECTION HEADERS ── */
-    .section-label {
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 24px;
-    }
-    .section-label h2 { margin: 0; }
-    .section-label-line {
-      flex: 1; height: 1px; background: var(--border);
-    }
-
-    /* ── BUNDLE CARDS ── */
-    .bundle-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 18px;
-    }
-    .bundle-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 26px;
-      transition: border-color 200ms ease;
-    }
-    .bundle-card:hover { border-color: rgba(249,115,22,0.35); }
-    .bundle-card.full {
-      border-color: rgba(249,115,22,0.30);
-      background: linear-gradient(160deg, rgba(249,115,22,0.05), var(--surface));
-    }
-    .bundle-includes {
-      display: flex; flex-wrap: wrap; gap: 6px;
-      margin: 12px 0 16px;
-    }
-    .bundle-chip {
-      font-size: 12px; font-weight: 700;
-      padding: 4px 10px; border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-    .bundle-price-row {
-      display: flex; align-items: baseline; gap: 10px;
-      margin: 4px 0 16px; flex-wrap: wrap;
-    }
-    .bundle-setup { font-size: 22px; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; }
-    .bundle-mo    { font-size: 15px; color: var(--muted); }
-    .bundle-mo strong { color: var(--ink); }
-
-    /* ── OWNERSHIP NOTE ── */
-    .ownership-note {
-      margin-top: 48px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 26px;
-      display: flex; align-items: flex-start; gap: 14px;
-    }
-    .ownership-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-    .ownership-note p { margin: 0; font-size: 14px; color: var(--muted); }
-    .ownership-note strong { color: var(--ink); }
-
-    /* ── FAQ ── */
-    details {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 16px 18px;
-    }
-    details + details { margin-top: 10px; }
-    details[open] { border-color: rgba(77,163,255,0.35); }
-    summary { cursor: pointer; font-weight: 800; color: var(--ink); font-size: 15px; }
-    details p { margin: 10px 0 0; color: var(--muted); font-size: 14px; }
-
-    /* ── CTA STRIP ── */
-    .cta-strip {
-      text-align: center; padding: 72px 0;
-    }
-    .cta-strip h2 { margin-bottom: 10px; }
-    .cta-strip p  { margin-bottom: 24px; }
-    .cta-actions  { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .reassure { margin-top: 12px; font-size: 13px; color: var(--muted2); }
-
-    /* ── FOOTER ── */
-    footer { padding: 36px 0; border-top: 1px solid var(--border); width: 100%; }
-    .footer-row {
-      display: flex; justify-content: space-between;
-      align-items: center; gap: 16px; flex-wrap: wrap;
-    }
-    .footer-row a { color: var(--muted2); font-size: 13px; }
-    .footer-row a:hover { color: var(--ink); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .pricing-grid, .pricing-grid.three, .bundle-grid { grid-template-columns: 1fr; }
-      nav { display: none; }
-    }
-    @media (max-width: 520px) {
-      .section  { padding: 52px 0; }
-      .container { padding: 0 16px; }
-      h1 { font-size: 30px; }
-      .btn { width: 100%; }
-      .cta-actions { flex-direction: column; align-items: stretch; }
-    }
-  
-    /* ── LIGHT MODE ─────────────────────────────────────── */
-    [data-theme="light"] {
-      --page:    #F0F4FA;
-      --surface: #FFFFFF;
-      --surface2:#E8EEF7;
-      --border:  rgba(30,60,120,0.14);
-      --ink:     #0D1829;
-      --muted:   #3D5270;
-      --muted2:  #5B728F;
-      --blue:    #1A5CC8;
-      --blue2:   #0D3D8E;
-      --deep:    #0A4C93;
-      --shadow:  0 12px 34px rgba(0,0,0,0.10);
-    }
-    [data-theme="light"] html,
-    [data-theme="light"] body,
-    html[data-theme="light"],
-    body[data-theme="light"] { background: var(--page); color: var(--ink); }
-
-    [data-theme="light"] a:hover { color: var(--ink); }
-
-    [data-theme="light"] .page-hero {
-      background:
-        radial-gradient(900px 400px at 10% 50%, rgba(26,92,200,0.07), transparent 60%),
-        linear-gradient(180deg, #DAE4F5, var(--page));
-    }
-    [data-theme="light"] header {
-      background: rgba(240,244,250,0.92);
-    }
-    [data-theme="light"] nav a:hover {
-      background: rgba(0,0,0,0.05);
-    }
-    [data-theme="light"] .btn {
-      color: #fff;
-      border-color: rgba(0,0,0,0.08);
-    }
-    [data-theme="light"] .btn:hover { color: #fff; }
-    [data-theme="light"] .btn-outline {
-      background: rgba(0,0,0,0.04);
-      color: var(--ink);
-      border-color: var(--border);
-    }
-    [data-theme="light"] .btn-outline:hover {
-      background: rgba(0,0,0,0.08);
-      color: var(--ink);
-    }
-    [data-theme="light"] .hero {
-      background:
-        radial-gradient(1200px 520px at 15% 15%, rgba(26,92,200,0.08), transparent 60%),
-        radial-gradient(800px 400px at 90% 60%, rgba(13,61,142,0.06), transparent 60%),
-        linear-gradient(180deg, #DAE4F5, var(--page));
-    }
-    [data-theme="light"] .hero-card {
-      background: rgba(255,255,255,0.80);
-      border-color: rgba(26,92,200,0.15);
-    }
-    [data-theme="light"] .trust-chip {
-      background: rgba(0,0,0,0.04);
-      border-color: rgba(0,0,0,0.09);
-    }
-    [data-theme="light"] .flow-box {
-      background: rgba(255,255,255,0.80);
-      border-color: rgba(26,92,200,0.15);
-    }
-    [data-theme="light"] .arrow {
-      background: rgba(0,0,0,0.04);
-    }
-    [data-theme="light"] .flow-footer {
-      border-top-color: var(--border);
-    }
-    [data-theme="light"] .pill {
-      background: rgba(26,92,200,0.09);
-      border-color: rgba(26,92,200,0.22);
-    }
-    [data-theme="light"] .step-num {
-      background: rgba(26,92,200,0.09);
-      border-color: rgba(26,92,200,0.22);
-    }
-    [data-theme="light"] .tag-core {
-      background: rgba(26,92,200,0.09);
-      border-color: rgba(26,92,200,0.22);
-    }
-    [data-theme="light"] .tag-expand {
-      background: rgba(109,40,217,0.08);
-      border-color: rgba(109,40,217,0.18);
-    }
-    [data-theme="light"] .tag-found {
-      background: rgba(5,150,105,0.08);
-      border-color: rgba(5,150,105,0.20);
-    }
-    [data-theme="light"] .fit-card.good {
-      background: rgba(5,150,105,0.07);
-      border-color: rgba(5,150,105,0.22);
-    }
-    [data-theme="light"] .fit-card.bad {
-      background: rgba(220,38,38,0.06);
-      border-color: rgba(220,38,38,0.16);
-    }
-    [data-theme="light"] .fit-list li {
-      border-bottom-color: var(--border);
-    }
-    [data-theme="light"] details {
-      background: var(--surface);
-      border-color: var(--border);
-    }
-    [data-theme="light"] details[open] {
-      border-color: rgba(26,92,200,0.32);
-    }
-
-    /* Pricing-specific */
-    [data-theme="light"] .pkg-card {
-      background: var(--surface);
-      border-color: var(--border);
-    }
-    [data-theme="light"] .pkg-card.featured {
-      border-color: var(--blue);
-    }
-    [data-theme="light"] .check-row {
-      border-bottom-color: var(--border);
-    }
-    [data-theme="light"] .tier-toggle {
-      background: rgba(0,0,0,0.05);
-      border-color: var(--border);
-    }
-    [data-theme="light"] .tier-btn.active {
-      background: var(--surface);
-    }
-
-    /* Form-specific */
-    [data-theme="light"] .form-card,
-    [data-theme="light"] .field-group {
-      background: var(--surface);
-      border-color: var(--border);
-    }
-    [data-theme="light"] input,
-    [data-theme="light"] select,
-    [data-theme="light"] textarea {
-      background: #F4F7FC;
-      border-color: rgba(30,60,120,0.18);
-      color: var(--ink);
-    }
-    [data-theme="light"] input::placeholder,
-    [data-theme="light"] textarea::placeholder { color: #9BAABB; }
-
-    /* ── THEME TOGGLE BUTTON ─────────────────────────────── */
-    .theme-toggle {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      color: var(--muted);
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
-      flex-shrink: 0;
-      font-size: 17px;
-      line-height: 1;
-    }
-    .theme-toggle:hover { background: rgba(255,255,255,0.12); color: var(--ink); }
-    [data-theme="light"] .theme-toggle {
-      background: rgba(0,0,0,0.05);
-      border-color: rgba(30,60,120,0.15);
-    }
-    [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.10); }
-
-  
-    /* ── NAV BRAND ── */
-    .nav-brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-icon { height: 42px; width: auto; flex-shrink: 0; }
-    .nav-title {
-      font-size: 15px; font-weight: 800;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: #fff;
-      white-space: nowrap;
-    }
-    [data-theme="light"] .nav-title { color: #0D1829; }
+/* Responsive */
+@media(max-width:900px){
+  .price-panel{grid-template-columns:1fr}
+  .section-label{flex-direction:column;align-items:flex-start;gap:8px}
+  .section-label-line{display:none}
+}
+@media(max-width:680px){
+  section{padding:68px 0}
+  .final{padding:68px 0}
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--ink);flex-direction:column;align-items:stretch;padding:14px 24px 22px;gap:4px;border-bottom:1px solid var(--line-dark)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;font-size:16px}
+  .nav-links .btn{justify-content:center;margin-top:8px}
+  .menu-btn{display:block}
+  .btn-full,.cta-actions .btn{width:100%}
+  .cta-actions{flex-direction:column;align-items:stretch}
+  .price-panel{padding:22px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
-<header id="siteHeader">
-  <div class="container">
-    <div class="navwrap">
-      <a href="/" aria-label="Alignment Automations Home" class="nav-brand-wrap"><img src="alignment_automations_icon.svg" class="nav-icon" alt="Alignment Automations icon"><span class="nav-title">Alignment Automations</span></a>
-      <nav aria-label="Primary navigation">
-        <a href="/#how-it-works">How It Works</a>
-        <a href="/#intake-system">System</a>
-        <a href="/#testimonials">Testimonials</a>
-        <a href="/pricing" class="active">Pricing</a>
-        <a href="/#faq">FAQ</a>
-        <a class="btn" href="contact.html" style="padding:10px 16px; font-size:13px; margin-left:6px;">Book a Demo</a>
-      </nav>
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">🌙</button>
-    </div>
+<nav class="nav" aria-label="Main">
+  <div class="wrap nav-in">
+    <a class="logo" href="/" aria-label="Alignment Automations Home">
+      <img src="alignment_automations_icon.svg" class="logo-img" alt="">
+      <span>Alignment Automations</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#intake-system">System</a></li>
+      <li><a href="/#testimonials">Testimonials</a></li>
+      <li><a href="/pricing" class="active">Pricing</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a class="btn btn-amber" href="contact.html">Book a Demo</a></li>
+    </ul>
   </div>
-</header>
+</nav>
 
-<!-- ── PAGE HERO ── -->
 <div class="page-hero">
-  <div class="container">
+  <div class="wrap">
     <div class="pill">Pricing</div>
     <h1>Clear, Structured Pricing.<br>Configure Only What You Need.</h1>
-    <p class="lead">
+    <p class="lede">
       Every contractor starts at a different layer. We build around your situation and integrate everything into one reliable intake system.
     </p>
-    <p class="lead" style="margin-top:16px; max-width:820px; margin-bottom:10px;">Already have a website? Start with the Engine. Need one built first? Start with Foundation. Need both? The bundle saves you on setup.</p>
-    <p class="small muted2">No long-term contracts · You retain full ownership of all accounts and data</p>
+    <p class="lede" style="margin-top:10px;max-width:820px;">Already have a website? Start with the Engine. Need one built first? Start with Foundation. Need both? The bundle saves you on setup.</p>
+    <p class="small-note">No long-term contracts · You retain full ownership of all accounts and data</p>
   </div>
 </div>
 
-<!-- ── AUTOMATION ENGINE ── -->
-<section class="section" id="core">
-  <div class="container">
+<section class="sect-white" id="core">
+  <div class="wrap">
     <div class="section-label">
       <h2>Automation Engine</h2>
       <div class="section-label-line"></div>
     </div>
-    <p class="lead" style="margin-bottom:28px;">For contractors with an existing website that need structured automation in place.</p>
+    <p class="lede" style="margin-bottom:28px;">For contractors with an existing website that need structured automation in place.</p>
 
-    <div class="price-card" style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+    <div class="price-panel">
       <div>
-        <span class="tag tag-core">Automation Engine</span>
+        <span class="price-tag tag-core">Automation Engine</span>
         <h2>Automation Engine</h2>
         <div class="price-amount">
           <span class="price-number">$750</span>
           <span class="price-period"> setup</span>
         </div>
-        <p style="font-size:20px; font-weight:800; color:var(--ink); letter-spacing:-0.02em; margin:2px 0 4px;">$125 <span style="font-size:14px; font-weight:600; color:var(--muted2);">/ mo</span></p>
-        <p class="price-monthly">First payment: <strong>$875</strong> (setup + first month)</p>
+        <p class="price-mo">$125 <span>/ mo</span></p>
+        <p class="price-first">First payment: <strong>$875</strong> (setup + first month)</p>
         <p class="price-desc">For contractors with an existing website that need structured automation in place. Online inquiry → instant response → scheduled appointment, with full logging.</p>
         <div class="card-cta">
-          <a class="btn btn-full" href="contact.html">Book a Demo</a>
+          <a class="btn btn-amber btn-full" href="contact.html">Book a Demo</a>
         </div>
       </div>
       <div>
@@ -556,28 +222,27 @@
   </div>
 </section>
 
-<!-- ── WEBSITE INFRASTRUCTURE ── -->
-<section class="section soft" id="foundation">
-  <div class="container">
+<section class="sect-paper" id="foundation">
+  <div class="wrap">
     <div class="section-label">
       <h2>Website Infrastructure</h2>
       <div class="section-label-line"></div>
     </div>
-    <p class="lead" style="margin-bottom:28px;">Creates the digital entry point your automation system runs on — if you need it.</p>
+    <p class="lede" style="margin-bottom:28px;">Creates the digital entry point your automation system runs on — if you need it.</p>
 
-    <div class="price-card" style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+    <div class="price-panel">
       <div>
-        <span class="tag tag-found">Website Infrastructure</span>
+        <span class="price-tag tag-found">Website Infrastructure</span>
         <h2>Website Infrastructure</h2>
         <div class="price-amount">
           <span class="price-number">$950</span>
           <span class="price-period"> setup</span>
         </div>
-        <p style="font-size:20px; font-weight:800; color:var(--ink); letter-spacing:-0.02em; margin:2px 0 4px;">$60 <span style="font-size:14px; font-weight:600; color:var(--muted2);">/ mo</span></p>
-        <p class="price-monthly">First payment: <strong>$1,010</strong> (setup + first month)</p>
+        <p class="price-mo">$60 <span>/ mo</span></p>
+        <p class="price-first">First payment: <strong>$1,010</strong> (setup + first month)</p>
         <p class="price-desc">A clean, conversion-focused website built to run your intake automation on top of.</p>
         <div class="card-cta">
-          <a class="btn btn-outline btn-full" href="contact.html">Book a Demo</a>
+          <a class="btn btn-outline-light btn-full" href="contact.html">Book a Demo</a>
         </div>
       </div>
       <div>
@@ -593,30 +258,28 @@
   </div>
 </section>
 
-
-<!-- ── FOUNDATION + ENGINE BUNDLE ── -->
-<section class="section soft" id="bundles">
-  <div class="container">
+<section class="sect-white" id="bundles">
+  <div class="wrap">
     <div class="section-label">
       <h2>Complete System Bundle</h2>
       <div class="section-label-line"></div>
     </div>
-    <p class="lead" style="margin-bottom:28px;">Website Infrastructure and Automation Engine together — at a lower total setup cost than buying separately.</p>
+    <p class="lede" style="margin-bottom:28px;">Website Infrastructure and Automation Engine together — at a lower total setup cost than buying separately.</p>
 
-    <div class="price-card featured" style="display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:start;">
+    <div class="price-panel featured">
       <div class="featured-badge">Best Value</div>
       <div>
-        <span class="tag tag-bundle">Bundle</span>
+        <span class="price-tag tag-bundle">Bundle</span>
         <h2>Website Infrastructure + Automation Engine</h2>
         <div class="price-amount">
           <span class="price-number">$1,500</span>
           <span class="price-period"> setup</span>
         </div>
-        <p style="font-size:20px; font-weight:800; color:var(--ink); letter-spacing:-0.02em; margin:2px 0 4px;">$160 <span style="font-size:14px; font-weight:600; color:var(--muted2);">/ mo</span></p>
-        <p class="price-monthly">First payment: <strong>$1,660</strong> (setup + first month)</p>
+        <p class="price-mo">$160 <span>/ mo</span></p>
+        <p class="price-first">First payment: <strong>$1,660</strong> (setup + first month)</p>
         <p class="price-desc">For contractors that need a website built and automated intake set up together from the start.</p>
         <div class="card-cta">
-          <a class="btn btn-full" href="contact.html">Book a Demo</a>
+          <a class="btn btn-amber btn-full" href="contact.html">Book a Demo</a>
         </div>
       </div>
       <div>
@@ -631,98 +294,82 @@
       </div>
     </div>
 
-    <!-- Ownership note -->
-    <div class="ownership-note">
-      <div class="ownership-icon">🔒</div>
+    <div class="own-note">
+      <div class="own-icon">🔒</div>
       <p><strong>You own everything.</strong> No long-term contracts. You retain full ownership of all accounts and data. You can take over or work with someone else at any time — nothing is locked in.</p>
     </div>
   </div>
 </section>
 
-<!-- ── FAQ ── -->
-<section class="section" id="faq">
-  <div class="container">
+<section class="sect-paper" id="faq">
+  <div class="wrap">
     <div class="section-label">
       <h2>Pricing Questions</h2>
       <div class="section-label-line"></div>
     </div>
-
-    <details>
-      <summary>What's included in "system management"?</summary>
-      <p>Monthly system management covers ongoing monitoring, small edits as needed, workflow maintenance, and support with access or billing setup. You're not on your own after launch.</p>
-    </details>
-    <details>
-      <summary>Do I need Website Infrastructure if I already have a website?</summary>
-      <p>No — the Automation Engine works with your existing website. Website Infrastructure is only needed if you don't have a site or if your current one isn't structured for intake and booking.</p>
-    </details>
-    <details>
-      <summary>Can I start with just the Automation Engine and add a website later?</summary>
-      <p>Yes. Start with the Automation Engine if you already have a working site. When you're ready to build or rebuild your site, both can be combined under the Website Infrastructure + Automation Engine bundle at a lower total setup cost.</p>
-    </details>
-    <details>
-      <summary>Are there any tool costs beyond these prices?</summary>
-      <p>Yes — the tools your system runs on (form software, scheduling, automation layer) are billed directly to your clinic. These typically run under $50/month in total and are completely transparent.</p>
-    </details>
-    <details>
-      <summary>What if I want to cancel?</summary>
-      <p>Cancel anytime. Since you own all the accounts, you keep everything — your forms, calendar, data, and website. There's no lock-in.</p>
-    </details>
-    <details>
-      <summary>How long does setup take?</summary>
-      <p>Most setups are complete within 5–7 business days after you provide access and approve the flow.</p>
-    </details>
-  </div>
-</section>
-
-<!-- ── CTA ── -->
-<section class="section soft">
-  <div class="container">
-    <div class="cta-strip">
-      <h2>Not sure which layer is right for you?</h2>
-      <p class="lead" style="margin: 0 auto 24px; text-align:center;">Book a 15-minute demo and we'll map the right system for your business — no pressure, no guesswork.</p>
-      <div class="cta-actions">
-        <a class="btn" href="contact.html" style="font-size:15px; padding:15px 28px;">Book Your Intake System Demo</a>
-        <a class="btn btn-outline" href="/">Back to Home</a>
-      </div>
-      <div class="reassure">15 minutes · No pressure · Cancel anytime</div>
+    <div class="faq-list">
+      <details>
+        <summary>What's included in "system management"?</summary>
+        <p>Monthly system management covers ongoing monitoring, small edits as needed, workflow maintenance, and support with access or billing setup. You're not on your own after launch.</p>
+      </details>
+      <details>
+        <summary>Do I need Website Infrastructure if I already have a website?</summary>
+        <p>No — the Automation Engine works with your existing website. Website Infrastructure is only needed if you don't have a site or if your current one isn't structured for intake and booking.</p>
+      </details>
+      <details>
+        <summary>Can I start with just the Automation Engine and add a website later?</summary>
+        <p>Yes. Start with the Automation Engine if you already have a working site. When you're ready to build or rebuild your site, both can be combined under the Website Infrastructure + Automation Engine bundle at a lower total setup cost.</p>
+      </details>
+      <details>
+        <summary>Are there any tool costs beyond these prices?</summary>
+        <p>Yes — the tools your system runs on (form software, scheduling, automation layer) are billed directly to your clinic. These typically run under $50/month in total and are completely transparent.</p>
+      </details>
+      <details>
+        <summary>What if I want to cancel?</summary>
+        <p>Cancel anytime. Since you own all the accounts, you keep everything — your forms, calendar, data, and website. There's no lock-in.</p>
+      </details>
+      <details>
+        <summary>How long does setup take?</summary>
+        <p>Most setups are complete within 5–7 business days after you provide access and approve the flow.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<section class="final">
+  <div class="wrap">
+    <h2>Not sure which layer is right for you?</h2>
+    <p>Book a 15-minute demo and we'll map the right system for your business — no pressure, no guesswork.</p>
+    <div class="cta-actions">
+      <a class="btn btn-amber" href="contact.html" style="font-size:15px;padding:15px 28px;">Book Your Intake System Demo</a>
+      <a class="btn btn-ghost" href="/">Back to Home</a>
+    </div>
+    <div class="reassure">15 minutes · No pressure · Cancel anytime</div>
+  </div>
+</section>
+
 <footer>
-  <div class="container">
-    <div class="footer-row">
-      <div class="small" style="color:var(--muted2);">© <span id="year"></span> Alignment Automations. All rights reserved.</div>
-      <div class="small"><a href="/cdn-cgi/l/email-protection#6310020f061023020f0a040d0e060d170216170c0e02170a0c0d104d000c0e"><span class="__cf_email__" data-cfemail="6211030e071122030e0b050c0f070c160317160d0f03160b0d0c114c010d0f">[email&#160;protected]</span></a></div>
-    </div>
+  <div class="wrap foot-in">
+    <span>© <span id="year"></span> Alignment Automations. All rights reserved.</span>
+    <div class="small"><a data-cfemail="6211030e071122030e0b050c0f070c160317160d0f03160b0d0c114c010d0f" href="/cdn-cgi/l/email-protection"><span class="__cf_email__" data-cfemail="6211030e071122030e0b050c0f070c160317160d0f03160b0d0c114c010d0f">[email&#160;protected]</span></a></div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  (function() {
-    var saved = localStorage.getItem('aa-theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', saved);
-    document.body && document.body.setAttribute('data-theme', saved);
-  })();
-  function toggleTheme() {
-    var current = document.documentElement.getAttribute('data-theme') || 'dark';
-    var next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    document.body.setAttribute('data-theme', next);
-    localStorage.setItem('aa-theme', next);
-    var btn = document.getElementById('themeToggle');
-    if (btn) btn.textContent = next === 'dark' ? '🌙' : '☀️';
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    var theme = document.documentElement.getAttribute('data-theme') || 'dark';
-    var btn = document.getElementById('themeToggle');
-    if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
-  });
+document.getElementById('year').textContent = new Date().getFullYear();
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+  menuBtn.textContent = open ? '✕' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn.textContent = '☰';
+}));
 </script>
 </body>
 </html>

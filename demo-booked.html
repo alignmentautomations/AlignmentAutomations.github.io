@@ -12,20 +12,19 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --page:    #070B14;
       --surface: #0B1220;
-      --surface2:#0E1A2E;
       --border:  rgba(148,163,184,0.22);
       --ink:     #F9FAFB;
       --muted:   #CBD5E1;
       --muted2:  #94A3B8;
-      --blue:    #4DA3FF;
-      --blue2:   #2F86FF;
-      --green:   #10B981;
+      --blue:    #3a7bfd;
+      --blue2:   #2563eb;
+      --green:   #34c98e;
       --shadow:  0 12px 34px rgba(0,0,0,0.50);
       --radius:  16px;
       --max:     860px;
@@ -38,60 +37,55 @@
       line-height: 1.55; -webkit-font-smoothing: antialiased;
       min-height: 100vh;
       background:
-        radial-gradient(1200px 520px at 50% 10%, rgba(16,185,129,0.08), transparent 55%),
-        radial-gradient(800px 600px at 80% 70%, rgba(77,163,255,0.08), transparent 60%),
+        radial-gradient(1200px 520px at 50% 10%, rgba(52,201,142,0.08), transparent 55%),
+        radial-gradient(800px 600px at 80% 70%, rgba(58,123,253,0.08), transparent 60%),
         linear-gradient(180deg, #061A10, var(--page));
     }
     a { color: var(--ink); text-decoration: none; }
     a:hover { color: #fff; }
     .container { max-width: var(--max); margin: 0 auto; padding: 0 22px; width: 100%; }
 
-    /* ── HEADER ── */
+    /* Nav */
     header {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(7,11,20,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border); width: 100%;
+      background: rgba(7,11,20,0.90);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08); width: 100%;
     }
     .navwrap {
       display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; padding: 18px 22px;
-      max-width: var(--max); margin: 0 auto;
+      height: 68px; max-width: var(--max); margin: 0 auto; padding: 0 24px;
     }
-    .nav-brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-icon { height: 38px; width: auto; flex-shrink: 0; }
-    .nav-title {
-      font-size: 14px; font-weight: 800;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: #fff; white-space: nowrap;
-    }
-    [data-theme="light"] .nav-title { color: #0D1829; }
+    .nav-brand-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+    .nav-icon { height: 30px; width: auto; flex-shrink: 0; }
+    .nav-title { font-size: 17px; font-weight: 700; letter-spacing: -.01em; color: #fff; white-space: nowrap; }
 
-    /* ── BUTTONS ── */
+    /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      background: linear-gradient(180deg, var(--blue), var(--blue2));
-      color: #06121F; padding: 13px 22px; border-radius: 12px;
+      background: var(--blue);
+      color: #fff; padding: 13px 22px; border-radius: 12px;
       text-decoration: none; font-weight: 700; font-size: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 8px 22px rgba(77,163,255,0.24);
+      border: none;
+      box-shadow: 0 4px 22px rgba(58,123,253,0.38);
       white-space: nowrap; cursor: pointer;
-      transition: filter 120ms ease, transform 120ms ease;
+      transition: background 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+      min-height: 48px;
     }
-    .btn:hover { filter: brightness(1.06); color: #06121F; }
-    .btn:active { transform: translateY(0.5px); }
+    .btn:hover { background: #5089ff; color: #fff; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
     .btn-green {
-      background: linear-gradient(180deg, #10B981, #059669);
-      box-shadow: 0 8px 22px rgba(16,185,129,0.28);
+      background: linear-gradient(180deg, #34c98e, #059669);
+      box-shadow: 0 8px 22px rgba(52,201,142,0.28);
     }
-    .btn-green:hover { filter: brightness(1.06); color: #06121F; }
+    .btn-green:hover { filter: brightness(1.06); color: #fff; }
     .btn-outline {
       background: rgba(255,255,255,0.06); color: var(--ink);
       border: 1px solid var(--border); box-shadow: none;
     }
     .btn-outline:hover { background: rgba(255,255,255,0.10); color: var(--ink); }
 
-    /* ── PROGRESS BAR (all done) ── */
+    /* Progress Bar (all done) */
     .demo-progress {
       display: flex; align-items: center; justify-content: center;
       max-width: 520px; margin: 0 auto;
@@ -102,26 +96,27 @@
       width: 34px; height: 34px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 13px; font-weight: 800;
-      background: rgba(16,185,129,0.14);
+      background: rgba(52,201,142,0.14);
       border: 2px solid var(--green);
       color: var(--green);
     }
     .dp-step.final .dp-dot {
       background: var(--green);
       border-color: var(--green); color: #06121F;
-      box-shadow: 0 0 0 4px rgba(16,185,129,0.20);
+      box-shadow: 0 0 0 4px rgba(52,201,142,0.20);
     }
     .dp-step > span {
       font-size: 10px; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.06em;
       color: var(--green); white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
     }
-    .dp-line { flex: 1; height: 2px; min-width: 20px; background: rgba(16,185,129,0.32); margin-bottom: 20px; }
+    .dp-line { flex: 1; height: 2px; min-width: 20px; background: rgba(52,201,142,0.32); margin-bottom: 20px; }
 
-    /* ── SUCCESS BANNER ── */
+    /* Success Banner */
     .success-banner {
-      background: rgba(16,185,129,0.08);
-      border: 1px solid rgba(16,185,129,0.26);
+      background: rgba(52,201,142,0.08);
+      border: 1px solid rgba(52,201,142,0.26);
       border-radius: 22px;
       padding: 32px 28px;
       text-align: center;
@@ -129,7 +124,7 @@
     }
     .success-check {
       width: 66px; height: 66px;
-      background: rgba(16,185,129,0.15);
+      background: rgba(52,201,142,0.15);
       border: 2px solid var(--green);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -142,7 +137,7 @@
     }
     .success-banner p { font-size: 16px; color: var(--muted); margin: 0; }
 
-    /* ── BOOKING CARD ── */
+    /* Booking Card */
     .booking-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -160,8 +155,8 @@
     .booking-card-head strong { font-size: 16px; color: var(--ink); }
     .booking-status {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(16,185,129,0.12);
-      border: 1px solid rgba(16,185,129,0.26);
+      background: rgba(52,201,142,0.12);
+      border: 1px solid rgba(52,201,142,0.26);
       border-radius: 999px; padding: 5px 12px;
       font-size: 12px; font-weight: 800; color: var(--green);
     }
@@ -176,19 +171,20 @@
       font-size: 11px; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.07em;
       color: var(--muted2);
+      font-family: 'JetBrains Mono', monospace;
     }
     .booking-field .val { font-size: 14px; font-weight: 700; color: var(--ink); }
 
-    /* ── DATE DISPLAY ── */
+    /* Date Display */
     .date-display {
       display: flex; align-items: center; gap: 14px;
-      background: rgba(77,163,255,0.06);
-      border: 1px solid rgba(77,163,255,0.18);
+      background: rgba(58,123,253,0.06);
+      border: 1px solid rgba(58,123,253,0.18);
       border-radius: 14px; padding: 16px 18px;
       margin-bottom: 20px;
     }
     .date-box {
-      background: linear-gradient(180deg, var(--blue), var(--blue2));
+      background: var(--blue);
       border-radius: 12px; padding: 10px 14px;
       text-align: center; flex-shrink: 0;
       min-width: 54px;
@@ -200,7 +196,7 @@
     .date-details strong { display: block; font-size: 15px; color: var(--ink); }
     .date-details span { font-size: 13px; color: var(--muted2); }
 
-    /* ── JOURNEY RECAP ── */
+    /* Journey Recap */
     .recap-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -208,9 +204,10 @@
       margin-bottom: 28px;
     }
     .recap-title {
-      font-size: 13px; font-weight: 800;
+      font-size: 11px; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.07em;
       color: var(--muted2); margin-bottom: 18px;
+      font-family: 'JetBrains Mono', monospace;
     }
     .recap-steps { display: grid; gap: 0; }
     .recap-step {
@@ -224,16 +221,16 @@
       width: 30px; height: 30px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 12px; font-weight: 800;
-      background: rgba(16,185,129,0.14);
+      background: rgba(52,201,142,0.14);
       border: 2px solid var(--green);
       color: var(--green); flex-shrink: 0; margin-top: 1px;
     }
     .recap-content { flex: 1; }
     .recap-content strong { display: block; font-size: 14px; color: var(--ink); }
     .recap-content span { font-size: 13px; color: var(--muted2); }
-    .recap-time { font-size: 11px; color: var(--muted2); margin-top: 4px; display: block; }
+    .recap-time { font-size: 11px; color: var(--muted2); margin-top: 4px; display: block; font-family: 'JetBrains Mono', monospace; }
 
-    /* ── CTA SECTION ── */
+    /* CTA Section */
     .cta-section {
       text-align: center; padding-bottom: 52px;
     }
@@ -246,10 +243,12 @@
     .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .reassure { font-size: 13px; color: var(--muted2); margin-top: 12px; }
 
-    /* ── FOOTER ── */
-    footer { padding: 28px 0 40px; border-top: 1px solid var(--border); width: 100%; }
+    /* Footer */
+    footer { padding: 28px 0 40px; border-top: 1px solid rgba(255,255,255,.08); width: 100%; }
     .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
     .small { font-size: 13px; color: var(--muted2); }
+
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
 
     @media (max-width: 640px) {
       .booking-grid { grid-template-columns: 1fr; }
@@ -259,54 +258,17 @@
       .btn { width: 100%; }
       .cta-actions { flex-direction: column; align-items: stretch; }
     }
-
-    /* ── LIGHT MODE ── */
-    [data-theme="light"] {
-      --page: #F0F4FA; --surface: #FFFFFF; --surface2: #E8EEF7;
-      --border: rgba(30,60,120,0.14); --ink: #0D1829;
-      --muted: #3D5270; --muted2: #5B728F;
-      --blue: #1A5CC8; --blue2: #0D3D8E;
-      --shadow: 0 12px 34px rgba(0,0,0,0.10);
-    }
-    html[data-theme="light"], body[data-theme="light"] { background: var(--page); color: var(--ink); }
-    [data-theme="light"] header { background: rgba(240,244,250,0.92); }
-    [data-theme="light"] .btn { color: #fff; border-color: rgba(0,0,0,0.08); }
-    [data-theme="light"] .btn:hover { color: #fff; }
-    [data-theme="light"] .btn-outline { background: rgba(0,0,0,0.04); color: var(--ink); border-color: var(--border); }
-    [data-theme="light"] .btn-green { color: #fff; }
-    [data-theme="light"] .btn-green:hover { color: #fff; }
-    [data-theme="light"] .booking-card,
-    [data-theme="light"] .recap-card { background: #fff; border-color: var(--border); }
-    [data-theme="light"] .recap-step { border-bottom-color: var(--border); }
-    [data-theme="light"] .success-banner {
-      background: rgba(16,185,129,0.05);
-      border-color: rgba(16,185,129,0.20);
-    }
-
-    /* ── THEME TOGGLE ── */
-    .theme-toggle {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 38px; height: 38px; border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      color: var(--muted); cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-      flex-shrink: 0; font-size: 17px; line-height: 1; padding: 0;
-    }
-    .theme-toggle:hover { background: rgba(255,255,255,0.12); color: var(--ink); }
-    [data-theme="light"] .theme-toggle { background: rgba(0,0,0,0.05); border-color: rgba(30,60,120,0.15); }
-    [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.10); }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: .001s !important; transition-duration: .001s !important; } }
   </style>
 </head>
 <body>
 
 <header>
   <div class="navwrap">
-    <a href="/" class="nav-brand-wrap">
+    <a href="/" class="nav-brand-wrap" aria-label="Alignment Automations Home">
       <img src="alignment_automations_icon.svg" class="nav-icon" alt="Alignment Automations icon">
       <span class="nav-title">Alignment Automations</span>
     </a>
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">🌙</button>
   </div>
 </header>
 
@@ -500,28 +462,6 @@
     `${name} filled out a short form on your website.`;
   document.getElementById('recap-booked').textContent =
     `${first} clicked the link and chose a time. Calendar synced.`;
-</script>
-
-<script>
-  (function() {
-    var saved = localStorage.getItem('aa-theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', saved);
-    document.body && document.body.setAttribute('data-theme', saved);
-  })();
-  function toggleTheme() {
-    var c = document.documentElement.getAttribute('data-theme') || 'dark';
-    var n = c === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', n);
-    document.body.setAttribute('data-theme', n);
-    localStorage.setItem('aa-theme', n);
-    var btn = document.getElementById('themeToggle');
-    if (btn) btn.textContent = n === 'dark' ? '🌙' : '☀️';
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    var t = document.documentElement.getAttribute('data-theme') || 'dark';
-    var b = document.getElementById('themeToggle');
-    if (b) b.textContent = t === 'dark' ? '🌙' : '☀️';
-  });
 </script>
 
 </body>
