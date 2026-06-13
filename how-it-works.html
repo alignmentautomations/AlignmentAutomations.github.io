@@ -106,9 +106,6 @@ p:last-child{margin-bottom:0}
 /* Step numbering */
 .step-num{width:34px;height:34px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:rgba(58,123,253,.10);border:1px solid rgba(58,123,253,.22);color:var(--blue-deep);font-size:14px;font-weight:800;margin-bottom:14px;font-family:var(--mono)}
 
-/* Video section */
-.video-shell{position:relative;width:100%;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper);aspect-ratio:16/9;box-shadow:0 12px 40px rgba(11,18,32,.10);margin:24px 0}
-.video-shell video{width:100%;height:100%;object-fit:cover;display:block}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 .video-note-light{margin-top:12px;color:var(--slate-2);font-size:14px}
 
@@ -176,7 +173,6 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
     </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#video">Overview</a></li>
       <li><a href="#demo-flow">Demo Flow</a></li>
       <li><a href="#what-you-see">What You See</a></li>
       <li><a href="/pricing.html">Pricing</a></li>
@@ -197,8 +193,8 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
           This page shows the core customer-facing experience: a short intake form, an immediate next step, and a clean handoff into booking.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn-amber" href="#video">Watch the Overview</a>
-          <a class="btn btn-ghost" href="#demo-flow">Try the Demo Flow</a>
+          <a class="btn btn-amber" href="#demo-flow">Try the Demo Flow</a>
+          <a class="btn btn-ghost" href="contact.html">Book a Demo</a>
         </div>
         <div class="reassure">Simple customer experience · Clear next step · Booking-focused flow</div>
       </div>
@@ -226,24 +222,6 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
     </div>
   </div>
 </header>
-
-<section class="sect-white" id="video">
-  <div class="wrap">
-    <p class="eyebrow">Overview video</p>
-    <h2>Watch the quick walkthrough</h2>
-    <p class="lede">Watch the overview to see how a customer can move from inquiry to booking with a clear next step.</p>
-    <div class="video-shell">
-      <video controls preload="auto" poster="video-thumbnail.png" playsinline style="width:100%;height:100%;object-fit:cover;">
-        <source src="demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="hero-actions">
-      <a class="btn btn-dark" href="#demo-flow">Try the Demo Flow</a>
-      <a class="btn btn-outline-light" href="contact.html">Book a Demo</a>
-    </div>
-  </div>
-</section>
 
 <section class="sect-paper" id="demo-flow">
   <div class="wrap">
