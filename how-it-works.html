@@ -125,6 +125,27 @@ p:last-child{margin-bottom:0}
 .demo-cta-card p{color:var(--slate);margin:0 0 22px}
 .demo-cta-card .micro{margin-top:14px;font-size:13px;color:var(--slate-2)}
 
+/* Lead entry paths */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.path-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
+.path-card .pic{width:46px;height:46px;border-radius:12px;background:rgba(58,123,253,.10);border:1px solid rgba(58,123,253,.22);display:grid;place-items:center;margin-bottom:16px}
+.path-card h3{font-size:17px;color:var(--ink);margin-bottom:7px}
+.path-card p{font-size:15px;color:var(--slate);margin:0;line-height:1.5}
+.converge{text-align:center;margin-top:24px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--blue-deep)}
+
+/* Two sides: customer vs you */
+.sides{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+.side{border-radius:var(--radius);padding:28px 26px;border:1px solid var(--line);background:var(--white)}
+.side.you{background:var(--ink);color:#fff;border-color:var(--ink)}
+.side .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:18px;color:var(--blue-deep)}
+.side.you .lbl{color:var(--blue-light)}
+.side ul{list-style:none;display:grid;gap:12px;margin:0;padding:0}
+.side li{font-size:15px;color:var(--slate);padding-left:26px;position:relative;line-height:1.45}
+.side.you li{color:#c4ccdc}
+.side li::before{content:"";position:absolute;left:0;top:7px;width:13px;height:7px;border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);transform:rotate(-45deg)}
+.nothing{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:14.5px;color:#fff;line-height:1.5}
+.nothing strong{color:var(--green)}
+
 /* Final CTA */
 .final{background:var(--ink);color:#fff;text-align:center;padding:96px 0}
 .final h2{font-size:clamp(28px,4vw,42px);max-width:680px;margin:0 auto 18px;color:#fff;font-weight:700}
@@ -158,7 +179,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
   .nav-links a{padding:12px 4px;font-size:16px}
   .nav-links .btn{justify-content:center;margin-top:8px}
   .menu-btn{display:block}
-  .grid-3,.grid-2,.demo-flow-grid{grid-template-columns:1fr}
+  .grid-3,.grid-2,.demo-flow-grid,.paths,.sides{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
@@ -173,8 +194,9 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
     </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#demo-flow">Demo Flow</a></li>
-      <li><a href="#what-you-see">Why It Works</a></li>
+      <li><a href="#leads">Lead Paths</a></li>
+      <li><a href="#automatic">What's Automated</a></li>
+      <li><a href="#demo-flow">Try It</a></li>
       <li><a href="/pricing.html">Pricing</a></li>
       <li><a class="btn btn-ghost" href="email-sales.html">Email Sales</a></li>
       <li><a class="btn btn-amber" href="contact.html">Book a Demo</a></li>
@@ -188,46 +210,96 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
     <div class="hero-grid">
       <div class="hero-copy">
         <div class="hero-pill">How it works</div>
-        <h1>See how a contractor can go from inquiry to booking without the usual delay.</h1>
+        <h1>See your whole intake system in action.</h1>
         <p class="lede">
-          This page shows the core customer-facing experience: a short intake form, an immediate next step, and a clean handoff into booking.
+          From a missed call or a web inquiry to a booked job on your calendar — here's exactly what runs the moment a lead comes in. All automatic. You don't touch any of it.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn-amber" href="#demo-flow">Try the Demo Flow</a>
+          <a class="btn btn-amber" href="#demo-flow">Try the Demo</a>
           <a class="btn btn-ghost" href="contact.html">Book a Demo</a>
         </div>
-        <div class="reassure">Simple customer experience · Clear next step · Booking-focused flow</div>
+        <div class="reassure">Two ways leads come in · Handled in seconds · Nothing for you to do</div>
       </div>
 
       <div class="hero-card">
-        <h3>A simpler path from inquiry to booking</h3>
-        <div class="flow-preview" aria-label="How it works flow diagram">
+        <h3>Your system, at a glance</h3>
+        <div class="flow-preview" aria-label="System flow diagram">
           <div class="flow-box">
-            <strong>1. Customer reaches out</strong>
-            <span>Short intake form on your website</span>
+            <strong>Lead comes in</strong>
+            <span>Missed call or web form</span>
           </div>
           <div class="flow-arrow" aria-hidden="true">→</div>
           <div class="flow-box">
-            <strong>2. Immediate next step</strong>
-            <span>Clear confirmation and booking prompt</span>
+            <strong>Instant reply</strong>
+            <span>Text + email, with a booking link</span>
           </div>
           <div class="flow-arrow" aria-hidden="true">→</div>
           <div class="flow-box">
-            <strong>3. Booking handoff</strong>
-            <span>Customer chooses a time in Calendly</span>
+            <strong>Booked &amp; logged</strong>
+            <span>On your calendar, you're notified</span>
           </div>
         </div>
-        <p class="video-note">A cleaner intake path helps customers know what to do next and makes booking feel easier.</p>
+        <p class="video-note">The same flow runs whether they call or fill out your site — 24/7, without you lifting a finger.</p>
       </div>
     </div>
   </div>
 </header>
 
-<section class="sect-paper" id="demo-flow">
+<section class="sect-white" id="leads">
   <div class="wrap">
-    <p class="eyebrow">Interactive walkthrough</p>
-    <h2>See the full system in action</h2>
-    <p class="lede">Walk through all four stages — from the first inquiry to a booked estimate — and see exactly what the automation does at each step.</p>
+    <p class="eyebrow">Where it starts</p>
+    <h2>Two ways leads reach you — both handled automatically.</h2>
+    <p class="lede">However a customer tries to reach you, the system catches it and responds in seconds. No missed calls, no forms left sitting in an inbox.</p>
+    <div class="paths">
+      <div class="path-card">
+        <div class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <h3>They call — and you're on the job</h3>
+        <p>You can't pick up. The moment the call is missed, they get an instant text back with a link to book — so the lead stays with you instead of calling the next contractor.</p>
+      </div>
+      <div class="path-card">
+        <div class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 10h8M8 14h5"/></svg></div>
+        <h3>They fill out your website</h3>
+        <p>A quote request comes in through your site — even at 9pm on a Sunday. It's captured the instant they hit submit and gets the same fast response.</p>
+      </div>
+    </div>
+    <p class="converge">↓ &nbsp;Both feed the same automated system&nbsp; ↓</p>
+  </div>
+</section>
+
+<section class="sect-paper" id="automatic">
+  <div class="wrap">
+    <p class="eyebrow">What happens next</p>
+    <h2>The moment a lead comes in — here's what runs.</h2>
+    <p class="lede">Every lead has two sides: what your customer experiences, and what happens on your end. You handle none of it.</p>
+    <div class="sides">
+      <div class="side">
+        <div class="lbl">📱 What your customer sees</div>
+        <ul>
+          <li>An instant text and email reply — within seconds, not hours</li>
+          <li>A friendly confirmation that their request came through</li>
+          <li>A booking link to lock in an estimate at a time that works</li>
+          <li>A reminder before the appointment so they actually show</li>
+        </ul>
+      </div>
+      <div class="side you">
+        <div class="lbl">🔔 What happens on your end</div>
+        <ul>
+          <li>An instant notification with their name, number, and what they need</li>
+          <li>The lead logged automatically — nothing to write down</li>
+          <li>The booking dropped onto your calendar, synced</li>
+          <li>No-shows and follow-ups handled for you</li>
+        </ul>
+        <div class="nothing"><strong>What you do: nothing.</strong> It all runs on its own while you stay on the job.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect-white" id="demo-flow">
+  <div class="wrap">
+    <p class="eyebrow">Try it yourself</p>
+    <h2>Walk through it as if you were the customer.</h2>
+    <p class="lede">Click through a real example — a web inquiry turning into a booked estimate — and watch each automated step play out.</p>
 
     <div class="demo-flow-grid">
       <div class="dsf-step">
@@ -241,14 +313,14 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
         <div class="dsf-num">2</div>
         <span class="dsf-icon">⚡</span>
         <h3>Auto Capture</h3>
-        <p>Lead logged instantly. Your team notified right away.</p>
+        <p>Lead logged instantly. You're notified right away.</p>
       </div>
       <div class="dsf-arrow" aria-hidden="true">→</div>
       <div class="dsf-step">
         <div class="dsf-num">3</div>
         <span class="dsf-icon">💬</span>
         <h3>Auto Follow-Up</h3>
-        <p>An email goes out automatically while you're still on the job.</p>
+        <p>A reply goes out automatically while you're still on the job.</p>
       </div>
       <div class="dsf-arrow" aria-hidden="true">→</div>
       <div class="dsf-step">
@@ -261,7 +333,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
 
     <div class="demo-cta-card">
       <h3>Try the full walkthrough</h3>
-      <p>Walk through each stage as if you were a new customer. See the mockup of every automated step as it plays out — from first form fill to booked estimate.</p>
+      <p>Step through it as if you were a new customer. See the mockup of every automated step as it plays out — from first form fill to booked estimate.</p>
       <div class="hero-actions" style="justify-content:center;">
         <a class="btn btn-amber" href="demo-form.html" style="font-size:15px;padding:14px 26px;">Start the Demo Flow →</a>
         <a class="btn btn-outline-light" href="contact.html">Book a Real Demo</a>
@@ -271,41 +343,18 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
   </div>
 </section>
 
-<section class="sect-white" id="what-you-see">
-  <div class="wrap">
-    <p class="eyebrow">Why this works</p>
-    <h2>A clearer process creates a better first impression</h2>
-    <p class="lede">When the next step is obvious, customers are more likely to keep moving toward booking.</p>
-
-    <div class="grid-3">
-      <div class="card">
-        <h3>Clear first step</h3>
-        <p>A short form makes it easier for customers to start without feeling overwhelmed.</p>
-      </div>
-      <div class="card">
-        <h3>Immediate guidance</h3>
-        <p>An instant next step reduces uncertainty and helps customers know exactly what to do next.</p>
-      </div>
-      <div class="card">
-        <h3>Smoother booking</h3>
-        <p>A direct booking path reduces friction and helps turn more inquiries into booked jobs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="final" id="cta">
   <div class="wrap">
-    <h2>Want this flow set up for your business?</h2>
+    <h2>Want this running for your business?</h2>
     <p>
-      Book a short demo to see how this structure can be adapted to your current website, scheduling setup, and intake process.
+      We set up your whole system — website, missed-call text-back, follow-ups, and booking — and run it for you. One plan: $1,500 setup + $297/mo, everything included.
     </p>
     <div class="cta-row">
       <a class="btn btn-amber" href="contact.html" style="font-size:16px;padding:16px 28px;">Book a Demo</a>
-      <a class="btn btn-ghost" href="email-sales.html" style="font-size:16px;padding:16px 28px;">Email Sales</a>
+      <a class="btn btn-ghost" href="/pricing.html" style="font-size:16px;padding:16px 28px;">See Pricing</a>
     </div>
-    <p class="reassure-dark" style="margin-top:12px;">No pressure · Clear system walkthrough · Practical next steps</p>
-    <p class="final-note-text">Matthew spent years in the painting trade before building Alignment Automations — so this system is designed around what contractors actually deal with, not assumptions from someone who's never been in the field.</p>
+    <p class="reassure-dark" style="margin-top:12px;">No pressure · No lock-in · We handle the tech</p>
+    <p class="final-note-text">Matthew spent 15+ years in the family painting business before building Alignment Automations — so this is designed around what contractors actually deal with, not assumptions from someone who's never been in the field.</p>
   </div>
 </section>
 
