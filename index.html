@@ -125,23 +125,14 @@ p:last-child{margin-bottom:0}
 .stat-num.blue{color:var(--blue-deep)}
 .stat-card p{font-size:15px;color:var(--slate);line-height:1.5;margin:0}
 
-/* Services 3-col */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
-.svc{border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;background:var(--paper);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s}
-.svc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(11,18,32,.08);border-color:#cfd6e4}
-.svc.featured{background:var(--ink);color:#fff;border-color:var(--ink)}
-.svc.featured:hover{box-shadow:0 18px 44px rgba(11,18,32,.35)}
-.svc-tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--blue-deep);margin-bottom:14px}
-.svc.featured .svc-tag{color:var(--blue-light)}
-.svc h3{font-size:21px;font-weight:700;margin-bottom:10px}
-.svc>p{font-size:15px;color:var(--slate);margin-bottom:20px}
-.svc.featured>p{color:#aab4c8}
-.svc ul{list-style:none;display:grid;gap:10px;margin-bottom:26px;padding:0}
-.svc li{font-size:14.5px;color:var(--slate);padding-left:24px;position:relative}
-.svc.featured li{color:#c4ccdc}
-.svc li::before{content:"";position:absolute;left:0;top:7px;width:13px;height:7px;border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);transform:rotate(-45deg)}
-.svc .btn{margin-top:auto;justify-content:center}
-.svc-pill{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;font-weight:600;color:#fff;background:var(--blue);border-radius:99px;padding:4px 10px;margin-left:10px;vertical-align:middle;text-transform:uppercase}
+/* Services — single plan included panel */
+.incl-card{margin-top:44px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:34px 36px}
+.incl-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 32px;margin:0 0 26px;padding:0}
+.incl-list li{font-size:15.5px;color:var(--slate);padding-left:26px;position:relative;line-height:1.4}
+.incl-list li::before{content:"";position:absolute;left:0;top:7px;width:13px;height:7px;border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);transform:rotate(-45deg)}
+.incl-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);padding-top:24px}
+.incl-note{font-family:var(--mono);font-size:13px;color:var(--slate-2)}
+@media(max-width:640px){.incl-list{grid-template-columns:1fr}.incl-card{padding:26px 22px}}
 
 /* Ownership dark section */
 .own{background:var(--ink);color:#fff}
@@ -200,7 +191,6 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
   .connector.firing .pulse{animation:firepulsev .55s linear forwards}
   @keyframes firepulsev{0%{top:-40%;opacity:1}100%{top:100%;opacity:1}}
   .split{grid-template-columns:1fr;gap:40px}
-  .svc-grid{grid-template-columns:1fr}
   .own-grid{grid-template-columns:1fr}
   .proc-steps{grid-template-columns:1fr 1fr}
 }
@@ -341,48 +331,24 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
 <!-- ============ SERVICES ============ -->
 <section class="sect-white" id="services">
   <div class="wrap">
-    <p class="eyebrow">What we build</p>
-    <h2>Everything we build and run for you.</h2>
-    <p class="lede">It's all included in one done-for-you plan — we build it, run it, and keep it working. No accounts to manage, nothing technical on your end.</p>
-    <div class="svc-grid">
-      <div class="svc">
-        <p class="svc-tag">Your website</p>
-        <h3>Website Infrastructure</h3>
-        <p>A fast, professional site that turns visitors into estimate requests.</p>
-        <ul>
-          <li>Custom-built — no page builders, no templates</li>
-          <li>Loads in under a second on a job-site phone</li>
-          <li>Quote request forms that actually convert</li>
-          <li>Hosted on enterprise-grade infrastructure</li>
-          <li>Domain, hosting, and updates all handled for you</li>
-        </ul>
-        <a class="btn btn-dark" href="contact.html">Book a Demo</a>
-      </div>
-      <div class="svc featured">
-        <p class="svc-tag">Everything included<span class="svc-pill">Your plan</span></p>
-        <h3>The Full System</h3>
-        <p>Website, automation, and follow-up — built together and run for you, end to end. This is what your plan covers.</p>
-        <ul>
-          <li>Everything in both products</li>
-          <li>One build, one handoff, one point of contact</li>
-          <li>Priority build queue</li>
-          <li>One simple monthly price — everything included</li>
-          <li>30 days of post-launch tuning included</li>
-        </ul>
+    <p class="eyebrow">What's included</p>
+    <h2>One plan. Everything your intake system needs.</h2>
+    <p class="lede">No packages to compare and no add-ons. We build it, run it, and keep it working — you don't manage a thing.</p>
+    <div class="incl-card">
+      <ul class="incl-list">
+        <li>Conversion-focused website, built &amp; hosted</li>
+        <li>Domain setup &amp; configuration</li>
+        <li>Missed-call text-back</li>
+        <li>Instant confirmation + automatic follow-up emails</li>
+        <li>Online booking synced to your calendar</li>
+        <li>Lead logging + instant notifications to you</li>
+        <li>All software &amp; tool costs included</li>
+        <li>Ongoing monitoring, edits &amp; maintenance</li>
+      </ul>
+      <div class="incl-cta">
         <a class="btn btn-amber" href="contact.html">Book a Demo</a>
-      </div>
-      <div class="svc">
-        <p class="svc-tag">Your automation</p>
-        <h3>Automation Engine</h3>
-        <p>The lead-response machine behind the scenes — works with your existing site.</p>
-        <ul>
-          <li>Missed-call text-back, plus instant email on every lead</li>
-          <li>Online estimate booking, synced to your calendar</li>
-          <li>Automatic reminders and no-show follow-up</li>
-          <li>Every lead logged — nothing slips through</li>
-          <li>Set up and run for you — no accounts to manage</li>
-        </ul>
-        <a class="btn btn-dark" href="contact.html">Book a Demo</a>
+        <a class="btn btn-ghost" style="border-color:rgba(11,18,30,.25);color:var(--ink);" href="/pricing.html">See Pricing</a>
+        <span class="incl-note">$1,500 setup + $297/mo · everything included</span>
       </div>
     </div>
   </div>
