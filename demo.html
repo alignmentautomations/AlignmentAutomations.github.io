@@ -97,6 +97,14 @@ img,svg{max-width:100%}
 .bub .lnk{color:inherit;text-decoration:underline;font-weight:600}
 .bub.out.cta{background:#fff;color:#1163d6;border:1px solid #cfe0ff;font-weight:700;align-self:flex-end;text-align:center}
 .delivered{align-self:flex-end;font-size:9.5px;color:#8a8a8e;margin-top:-4px}
+.bub.typing{align-self:flex-start;display:inline-flex;gap:5px;align-items:center;padding:13px 15px;background:#e5e5ea;border-radius:18px;border-bottom-left-radius:5px}
+.bub.typing span{width:7px;height:7px;border-radius:50%;background:#9a9aa0;display:inline-block;animation:typedot 1.3s infinite ease-in-out}
+.bub.typing span:nth-child(2){animation-delay:.18s}
+.bub.typing span:nth-child(3){animation-delay:.36s}
+@keyframes typedot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.reveal{display:none}
+.reveal.show{display:block;animation:bubpop .25s ease}
+@keyframes bubpop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 /* Call screen */
 .call{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:30px 20px;background:linear-gradient(180deg,#11203a,#0a0f1c)}
@@ -275,7 +283,7 @@ const STEPS = {
   },
   text(){return{stage:1,
     head:{t:'Within seconds, your system texts them back.',ts:'+ 8 seconds · automatic',p:`Before they can look up another contractor, ${cust.first} gets a friendly text from your business — with a link to book.`},
-    solo:{screen:'light',inner:`<div class="msg-head"><div class="av">${AA}</div><div class="nm">${biz()}</div></div><div class="msg-thread"><div class="msg-time">Text Message · now</div><div class="bub in">Hi, this is ${biz()} 👋 Sorry we missed your call — we’re out on a job right now.</div><div class="bub in">Want ${cust.reason}? Grab a time that works for you here: <span class="lnk">book.${biz().toLowerCase().replace(/[^a-z0-9]+/g,'')}.com</span></div><div class="delivered">Delivered</div></div>`},
+    solo:{screen:'light',inner:`<div class="msg-head"><div class="av">${AA}</div><div class="nm">${biz()}</div></div><div class="msg-thread"><div class="msg-time">Text Message · now</div><div class="bub in reveal">Hi, this is ${biz()} 👋 Sorry we missed your call — we’re out on a job right now.</div><div class="bub in reveal">Want ${cust.reason}? Grab a time that works for you here: <span class="lnk">book.${biz().toLowerCase().replace(/[^a-z0-9]+/g,'')}.com</span></div><div class="bub typing" id="smsTyping"><span></span><span></span><span></span></div><div class="delivered reveal">Delivered</div></div>`},
     narr:[['1',`<strong>You didn’t send this.</strong> Your system did — in about 8 seconds.`],['2',`A text gets read in minutes. A voicemail usually doesn’t. This is how you win the job before a competitor calls back.`],['3',`Next: what landed on <strong>your</strong> phone at the same moment.`]]};
   },
   confirm(){return{stage:1,
@@ -391,6 +399,7 @@ function render(){
   }
   scene.innerHTML = html;
   scene.classList.remove('scene'); void scene.offsetWidth; scene.classList.add('scene');
+  if(key==='text') playSMS();
 
   // controls
   const last = state.i === state.flow.length-1;
@@ -403,6 +412,19 @@ function render(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+function playSMS(){
+  const typing = document.getElementById('smsTyping');
+  const reveals = [...document.querySelectorAll('#scene .reveal')];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ reveals.forEach(r=>r.classList.add('show')); if(typing) typing.style.display='none'; return; }
+  if(typing) typing.style.display='inline-flex';
+  let t = 1000;
+  reveals.forEach(el=>{
+    const isDelivered = el.classList.contains('delivered');
+    setTimeout(()=>{ el.classList.add('show'); if(isDelivered && typing) typing.style.display='none'; }, t);
+    t += isDelivered ? 300 : 850;
+  });
+}
 function goNext(){ if(state.i < state.flow.length-1){ state.i++; render(); } }
 function goBack(){ if(state.i > 0){ state.i--; render(); } else { renderIntro(); } }
 function replay(){ state.path=null; renderIntro(); window.scrollTo({top:0,behavior:'smooth'}); }
