@@ -278,7 +278,7 @@ const STEPS = {
   },
   form(){return{stage:0,
     head:{t:'A lead fills out your site — even at 9pm.',ts:'the moment it happens',p:`${cust.name} finds your website after hours and asks for a quote. No phone call, no waiting for business hours.`},
-    solo:{screen:'light',inner:`<div class="formv"><div class="url">🔒 ${biz().toLowerCase().replace(/[^a-z0-9]+/g,'')}.com</div><h4>Request a Free Estimate</h4><div class="lede">Tell us what you need — we’ll be right back to you.</div><div class="ff"><label>Name</label><div class="inp filled">${cust.name}</div></div><div class="ff"><label>Phone</label><div class="inp filled">${cust.phone}</div></div><div class="ff"><label>What do you need?</label><div class="inp filled">Looking for ${cust.reason} on a kitchen repaint</div></div><div class="fbtn">Send Request →</div></div>`},
+    solo:{screen:'light',inner:`<div class="formv"><div class="url">🔒 ${biz().toLowerCase().replace(/[^a-z0-9]+/g,'')}.com</div><h4>Request a Free Estimate</h4><div class="lede">Tell us what you need — we’ll be right back to you.</div><div class="ff"><label>Name</label><div class="inp filled">${cust.name}</div></div><div class="ff"><label>Phone</label><div class="inp filled">${cust.phone}</div></div><div class="ff"><label>What do you need?</label><div class="inp filled">Looking for ${cust.reason} on a project at my place</div></div><div class="fbtn">Send Request →</div></div>`},
     narr:[['1',`<strong>They hit submit.</strong> That’s the only thing that has to happen.`],['2',`No app for them to download, no account to make — just a simple request from your site.`],['3',`The instant it’s sent, your system takes over. Watch what happens next.`]]};
   },
   text(){return{stage:1,
@@ -351,7 +351,7 @@ function renderIntro(){
     </div>
     <div class="biz-field">
       <label>Your business name (optional — makes it feel real)</label>
-      <input id="bizInput" type="text" placeholder="e.g. Summit Painting" maxlength="32" value="${state.biz==='Your Business'?'':state.biz}">
+      <input id="bizInput" type="text" placeholder="e.g. Apex Home Services" maxlength="32" value="${state.biz==='Your Business'?'':state.biz}">
     </div>
     <div class="choice">
       <button class="ccard" onclick="start('call')">
