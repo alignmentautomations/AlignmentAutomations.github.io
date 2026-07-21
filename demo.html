@@ -34,6 +34,10 @@ img,svg{max-width:100%}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1080px;margin:0 auto;padding:0 22px}
 .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:16px;letter-spacing:-.01em}
 .logo-img{height:34px;width:auto;flex:none}
+.logo-text{display:flex;flex-direction:column;line-height:1.12}
+.logo-name{font-weight:700;font-size:16px;letter-spacing:-.01em}
+.logo-tag{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#8b96ae;margin-top:1px}
+@media(max-width:680px){.logo-tag{display:none}}
 .nav-exit{font-family:var(--mono);font-size:12px;color:#8b96ae;letter-spacing:.04em}
 .nav-exit:hover{color:#fff}
 
@@ -229,7 +233,7 @@ img,svg{max-width:100%}
   <div class="nav-in">
     <a class="logo" href="/" aria-label="Alignment Automations Home">
       <img src="alignment_automations_icon.svg" class="logo-img" alt="">
-      <span>Alignment Automations</span>
+      <span class="logo-text"><span class="logo-name">Alignment Automations</span><span class="logo-tag">Done-for-you lead intake</span></span>
     </a>
     <a class="nav-exit" href="/how-it-works.html">Exit demo ✕</a>
   </div>
