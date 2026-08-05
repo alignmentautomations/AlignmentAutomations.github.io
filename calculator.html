@@ -71,6 +71,10 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 .field-error{font-size:11px;color:#e05555;margin-top:5px;font-weight:600;display:none;font-family:var(--mono)}
 .field-error.show{display:block}
 
+/* Honeypot: positioned off-screen rather than display:none, so bots that skip
+   hidden fields still fill it in. No human ever sees or tabs into this. */
+.hp-field{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+
 /* Submit button */
 .btn-primary{display:block;width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:16px 20px;font-family:var(--body);font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.005em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 22px rgba(58,123,253,.38);min-height:54px}
 .btn-primary:hover{background:#5089ff;transform:translateY(-1px);box-shadow:0 8px 28px rgba(58,123,253,.48)}
@@ -200,6 +204,10 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
                 <input type="email" id="email" placeholder="jane@yourbusiness.com" autocomplete="email">
                 <div class="field-error" id="email-err">Enter a valid email</div>
               </div>
+              <div class="hp-field" aria-hidden="true">
+                <label for="fax">Fax Number</label>
+                <input type="text" id="fax" name="fax_number" tabindex="-1" autocomplete="off">
+              </div>
             </div>
 
             <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
@@ -229,8 +237,9 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 
 <script>
   // ─── CONFIGURATION ───────────────────────────────────────────────
-  const WEBHOOK_URL    = 'https://app.alignmentautomations.com/api/webhook/form-inquiry';
-  const WEBHOOK_SECRET = '3d1bf78aacb08d121d0c233c67e1bde1bdc6f9e6666fd036';
+  // No secret here by design. Anything in this file is public — the endpoint
+  // guards itself with an origin allowlist, a honeypot, and a rate limit.
+  const WEBHOOK_URL = 'https://app.alignmentautomations.com/api/webhook/form-inquiry';
   // ─────────────────────────────────────────────────────────────────
 
   let lastResult = null;
@@ -353,15 +362,13 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
       message:     lastResult
         ? `Missed Call Calculator result: ${formatCurrency(lastResult.annualLoss)}/year lost (avg job value ${formatCurrency(lastResult.jobValue)}, ${lastResult.missedCalls} missed calls/week, ${lastResult.competitorPct}% call a competitor).`
         : '',
+      fax_number:  document.getElementById('fax').value.trim(),
     };
 
     try {
       const res = await fetch(WEBHOOK_URL, {
         method:  'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-webhook-secret': WEBHOOK_SECRET,
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error('Webhook error');
