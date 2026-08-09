@@ -43,9 +43,13 @@ a{color:inherit;text-decoration:none}
 @media(min-width:860px){
   .inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
   .page{padding:72px 40px 88px}
+  .hero-copy{margin-bottom:0}
 }
 
 /* Hero copy */
+/* Stacked (mobile) the grid gap is gone, so the hero needs its own bottom
+   margin to keep the trust pills off the top of the calculator card. */
+.hero-copy{margin-bottom:40px}
 .hero-pill{display:inline-flex;align-items:center;padding:6px 16px;border-radius:999px;background:rgba(58,123,253,.15);border:1px solid rgba(58,123,253,.32);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:22px}
 h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.1;letter-spacing:-.025em;color:#fff;margin-bottom:20px}
 .hero-desc{font-size:16px;line-height:1.65;color:rgba(255,255,255,.55);margin-bottom:30px}
@@ -104,6 +108,10 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 .success-check{width:54px;height:54px;background:rgba(58,123,253,.14);border:1px solid rgba(58,123,253,.32);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .success-wrap h3{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;color:#fff}
 .success-wrap p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.65}
+.audit-next{margin-top:4px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);width:100%}
+.audit-next p{font-size:14px;margin-bottom:10px}
+.audit-link{display:inline-flex;align-items:center;gap:6px;color:var(--blue-light);font-size:14px;font-weight:700;text-decoration:none}
+.audit-link:hover{text-decoration:underline}
 .success-badge{background:rgba(58,123,253,.15);border:1px solid rgba(58,123,253,.40);border-radius:999px;padding:5px 16px;font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light)}
 
 /* Error banner */
@@ -216,7 +224,7 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
                 <span id="btn-label">Send Me My Report</span>
               </div>
             </button>
-            <p class="trust-line">No spam · We'll never share your information.</p>
+            <p class="trust-line">No spam · I'll never share your information.</p>
           </div>
         </div>
 
@@ -227,6 +235,13 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
           <span class="success-badge">Got it!</span>
           <h3 id="success-heading">Check your inbox.</h3>
           <p>I'm sending over your full breakdown and exactly what to do about it.</p>
+          <div class="audit-next">
+            <p>That number is an estimate. Want the real one for your business?</p>
+            <a class="audit-link" href="/audit.html">
+              Get the $97 intake audit
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
         </div>
 
       </div>

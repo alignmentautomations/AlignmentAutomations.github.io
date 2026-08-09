@@ -392,7 +392,7 @@ function render(){
     const c = cust;
     html += `<div class="scene-head"><div class="eyebrow">That’s the whole flow</div></div><div class="recap"><div class="recap-card">`;
     step.recapData.forEach(r=>{ html += `<div class="rstep"><div class="rdot">${r[0]}</div><div class="rc"><strong>${r[1]}</strong><span>${r[2]}</span></div><div class="rt">${r[3]}</div></div>`; });
-    html += `</div><div class="recap-punch"><h2>Your total effort: <em>none.</em></h2><p>From first contact to a booked job on your calendar — all automatic, while you stayed on the job. This is what we set up and run for you.</p></div></div>`;
+    html += `</div><div class="recap-punch"><h2>Your total effort: <em>showing up to the estimate.</em></h2><p>From first contact to a booked job on your calendar — all automatic, while you stayed on the job. This is what I set up and run for you.</p></div></div>`;
   } else {
     html += `<div class="scene-head">${step.head.ts?`<div class="tstamp">${step.head.ts}</div><br>`:''}<h1>${step.head.t}</h1><p>${step.head.p}</p></div>`;
     if(step.phones){

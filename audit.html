@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The $97 Intake Audit | Alignment Automations</title>
+  <meta name="description" content="For $97 I call your business as a customer, leave a voicemail, and fill out your own contact form, then hand you a written report showing exactly where your leads are dying and what it costs you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+:root{
+  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
+  --line-dark:rgba(255,255,255,.08);
+  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
+  --slate:#46536b;--slate-2:#6b7790;
+  --blue:#3a7bfd;--blue-deep:#0066CC;--blue-light:#5aa3ff;
+  --green:#34c98e;--radius:14px;
+  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--blue-deep);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);display:inline-block}
+
+h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.015em}
+h1{font-size:clamp(30px,3.4vw,46px);font-weight:800;margin-bottom:18px}
+h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:16px}
+h3{font-size:17.5px;font-weight:600;margin-bottom:8px}
+.lede{font-size:clamp(16px,1.8vw,18px);color:var(--slate);max-width:680px;margin-bottom:14px}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:32px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo-img{height:42px;width:auto;flex:none}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-name{font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.logo-tag{font-size:11px;font-weight:500;letter-spacing:.01em;color:#7f8aa3;margin-top:1px;white-space:nowrap}
+@media(max-width:980px){.logo-tag{display:none}}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:#c4ccdc;text-decoration:none;font-size:15px;font-weight:500;transition:color .15s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;border-radius:10px;padding:12px 22px;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:none;white-space:nowrap}
+.btn-amber{background:var(--blue);color:#fff}
+.btn-amber:hover{background:#5b8ffd;transform:translateY(-1px);box-shadow:0 8px 24px rgba(58,123,253,.35);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-full{width:100%;justify-content:center}
+.nav .btn{padding:10px 18px;font-size:14px}
+.nav-links a.btn{color:#fff}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);border-radius:8px;width:42px;height:42px;color:#fff;font-size:18px;cursor:pointer;padding:0}
+
+/* Page hero */
+.page-hero{background:var(--ink);color:#fff;padding:72px 0 64px;position:relative;overflow:hidden}
+.page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(58,123,253,.12),transparent 60%);pointer-events:none}
+.page-hero .wrap{position:relative}
+.page-hero .pill{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:rgba(58,123,253,.15);border:1px solid rgba(58,123,253,.32);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:22px}
+.page-hero h1{color:#fff;max-width:760px}
+.page-hero .lede{color:#aab4c8;max-width:700px}
+.page-hero .small-note{font-family:var(--mono);font-size:12.5px;color:#7f8aa3;margin-top:4px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+/* Section rhythm */
+.sect-paper{background:var(--paper)}
+.sect-white{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sect-dark{background:var(--ink);color:#fff}
+.sect-dark h2{color:#fff}
+.sect-dark .lede{color:#aab4c8}
+
+/* Section label */
+.section-label{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+.section-label h2{margin:0;white-space:nowrap}
+.section-label-line{flex:1;height:1px;background:var(--line)}
+.sect-dark .section-label-line{background:var(--line-dark)}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:34px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
+.step-num{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--blue-deep);background:rgba(58,123,253,.10);border:1px solid rgba(58,123,253,.22);border-radius:6px;padding:4px 10px;display:inline-block;margin-bottom:14px}
+.step h3{font-size:19px;margin-bottom:10px}
+.step p{font-size:15px;color:var(--slate);margin:0}
+
+/* Deliverables panel */
+.deliver-panel{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;background:var(--white);border:1px solid rgba(58,123,253,.30);background:linear-gradient(160deg,rgba(58,123,253,.05),var(--white));border-radius:var(--radius);padding:32px;max-width:900px;margin:0 auto}
+.price-tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:inline-block;padding:4px 10px;border-radius:6px;color:var(--blue-deep);background:rgba(58,123,253,.10);border:1px solid rgba(58,123,253,.22)}
+.price-amount{margin:12px 0 6px}
+.price-number{font-family:var(--display);font-size:40px;font-weight:900;letter-spacing:-.04em;color:var(--ink)}
+.price-period{font-size:14px;color:var(--slate-2);font-weight:600}
+.price-first{font-size:14.5px;color:var(--slate);padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.price-first strong{color:var(--ink)}
+.feature-list{list-style:none;display:grid;gap:0}
+.feature-list li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;font-size:14.5px;color:var(--slate);border-bottom:1px solid rgba(0,0,0,.05);line-height:1.55}
+.feature-list li:last-child{border-bottom:none}
+.check{color:var(--green);font-size:14px;flex-shrink:0;margin-top:3px}
+.card-cta{margin-top:24px}
+.keep-line{margin-top:12px;font-size:13px;color:var(--slate);line-height:1.5;text-align:center}
+.keep-line strong{color:var(--ink)}
+
+/* Straight talk block */
+.straight{max-width:720px}
+.straight p{color:#aab4c8;font-size:16.5px}
+.straight strong{color:#fff}
+
+/* Form card */
+.form-shell{max-width:620px;margin:0 auto}
+.form-card{background:#111d30;border:1px solid var(--line-dark);border-radius:18px;padding:28px 24px;text-align:left}
+.form-card h3{font-family:var(--display);font-size:21px;font-weight:800;letter-spacing:-.015em;color:#fff;margin-bottom:5px}
+.form-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.5}
+.fields{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field label{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:7px;font-family:var(--mono)}
+.field input,.field select,.field textarea{width:100%;background:#1a2540;border:1px solid rgba(255,255,255,.10);border-radius:10px;padding:13px 14px;font-family:var(--body);font-size:15px;color:#fff;outline:none;transition:border-color .18s,box-shadow .18s;-webkit-appearance:none}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.18)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(58,123,253,.30)}
+.field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.field select option{background:#1a2540}
+.field textarea{resize:vertical;min-height:80px;line-height:1.55;font-size:14px}
+.field input.error,.field select.error{border-color:#e05555;box-shadow:0 0 0 3px rgba(224,85,85,.20)}
+.field-error{font-size:11px;color:#e05555;margin-top:5px;font-weight:600;display:none;font-family:var(--mono)}
+.field-error.show{display:block}
+
+/* Honeypot: positioned off-screen rather than display:none, so bots that skip
+   hidden fields still fill it in. No human ever sees or tabs into this. */
+.hp-field{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+
+.btn-primary{display:block;width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:16px 20px;font-family:var(--body);font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.005em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 22px rgba(58,123,253,.38);min-height:54px}
+.btn-primary:hover{background:#5089ff;transform:translateY(-1px);box-shadow:0 8px 28px rgba(58,123,253,.48)}
+.btn-primary:active{transform:translateY(0)}
+.btn-primary:disabled{opacity:.6;pointer-events:none}
+.trust-line{margin-top:12px;font-size:12px;color:rgba(255,255,255,.32);text-align:center;line-height:1.6;font-family:var(--mono)}
+
+.btn-inner{display:flex;align-items:center;justify-content:center;gap:10px}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+.btn-primary.loading .spinner{display:block}
+
+.success-wrap{display:none;flex-direction:column;align-items:flex-start;gap:14px;animation:fadeUp .35s ease}
+.success-wrap.show{display:flex}
+.success-check{width:54px;height:54px;background:rgba(58,123,253,.14);border:1px solid rgba(58,123,253,.32);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.success-wrap h3{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;color:#fff;margin:0}
+.success-wrap p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.65}
+.success-badge{background:rgba(58,123,253,.15);border:1px solid rgba(58,123,253,.40);border-radius:999px;padding:5px 16px;font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light)}
+
+.error-banner{display:none;align-items:center;gap:10px;background:rgba(224,85,85,.10);border:1px solid rgba(224,85,85,.30);border-radius:10px;padding:12px 16px;font-size:13px;color:#f07070;margin-bottom:16px;line-height:1.5}
+.error-banner.show{display:flex}
+.error-banner a{color:#f07070}
+
+/* FAQ */
+.faq-list{max-width:760px;margin-top:32px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 4px;font-family:var(--display);font-weight:600;font-size:17px;color:var(--ink)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);font-size:20px;color:var(--blue-deep);flex:none;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 4px 24px;color:var(--slate);font-size:15.5px;max-width:660px;margin:0}
+
+/* Final CTA */
+.final{background:var(--ink-2);color:#fff;text-align:center;padding:96px 0;border-top:1px solid var(--line-dark)}
+.final h2{font-size:clamp(28px,4vw,42px);max-width:680px;margin:0 auto 16px;color:#fff;font-weight:700}
+.final p{color:#aab4c8;max-width:560px;margin:0 auto 32px}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.reassure{margin-top:14px;font-family:var(--mono);font-size:12.5px;color:#7f8aa3}
+
+/* Footer */
+footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 0;color:#7f8aa3;font-size:14px}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.foot-links{display:flex;gap:20px;list-style:none;flex-wrap:wrap}
+.foot-links a:hover{color:#fff}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Responsive */
+@media(max-width:900px){
+  .steps{grid-template-columns:1fr}
+  .deliver-panel{grid-template-columns:1fr}
+  .section-label{flex-direction:column;align-items:flex-start;gap:8px}
+  .section-label-line{display:none}
+}
+@media(max-width:680px){
+  section{padding:68px 0}
+  .final{padding:68px 0}
+  .btn-full,.cta-actions .btn,.hero-actions .btn{width:100%}
+  .cta-actions,.hero-actions{flex-direction:column;align-items:stretch}
+  .deliver-panel{padding:22px}
+}
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
+@media(max-width:980px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--ink);flex-direction:column;align-items:stretch;padding:14px 24px 22px;gap:4px;border-bottom:1px solid var(--line-dark)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;font-size:16px}
+  .nav-links .btn{justify-content:center;margin-top:8px}
+  .menu-btn{display:block}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.001s!important}}
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap nav-in">
+    <a class="logo" href="/" aria-label="Alignment Automations Home">
+      <img src="alignment_automations_icon.svg" class="logo-img" alt="">
+      <span class="logo-text"><span class="logo-name">Alignment Automations</span><span class="logo-tag">Done-for-you lead intake</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/calculator.html">Calculator</a></li>
+      <li><a href="/audit.html" class="active">Intake Audit</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="btn btn-amber" href="#request">Get My Audit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="pill">Intake Audit · $97</div>
+    <h1>I'll find out exactly where your leads are dying.</h1>
+    <p class="lede">
+      For $97, I become one of your customers. I call your business with a real job, leave a voicemail, and fill out your own contact form. Then I time how long each one takes to get a response, and I write down what I find.
+    </p>
+    <p class="small-note">One-time · Report in 3 business days · You keep it either way</p>
+    <div class="hero-actions">
+      <a class="btn btn-amber" href="#request">Get My Audit</a>
+      <a class="btn btn-ghost" href="#what-i-do">See what I test</a>
+    </div>
+  </div>
+</div>
+
+<section class="sect-white" id="what-i-do">
+  <div class="wrap">
+    <div class="eyebrow">The audit</div>
+    <h2>Four tests, run on your actual business.</h2>
+    <p class="lede">Nothing here is advice or opinion. It's a record of what happened when a real customer tried to give you money.</p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">TEST 01</span>
+        <h3>I call you during work hours</h3>
+        <p>A normal customer call about a normal job. I note whether anyone picks up, how many rings it takes, and what happens when nobody does. Most crews are on a ladder or under a sink, which is exactly the point.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">TEST 02</span>
+        <h3>I leave a voicemail and start a clock</h3>
+        <p>A real message, a real callback number, and a timestamp. Then I wait. That number, the hours between your customer calling and anybody calling back, is usually the single most expensive number in the report.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">TEST 03</span>
+        <h3>I fill out your own contact form</h3>
+        <p>If you have one, I submit it and time the reply. I also check whether it went anywhere at all. Broken forms that quietly drop every submission are more common than you'd think, and the owner is always the last to know.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">TEST 04</span>
+        <h3>I put a dollar figure on every leak</h3>
+        <p>Using your average job value and the number of leads you already get, each gap turns into a yearly cost. That's the difference between "you should answer faster" and "this is costing you eleven grand a year."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect-paper" id="what-you-get">
+  <div class="wrap">
+    <div class="section-label">
+      <h2>What lands in your inbox</h2>
+      <div class="section-label-line"></div>
+    </div>
+
+    <div class="deliver-panel">
+      <div>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> A written leak report, usually two to three pages, with every timestamp from the four tests</li>
+          <li><span class="check">✓</span> The receipts: screenshots, the voicemail I left, and the exact times I called and submitted</li>
+          <li><span class="check">✓</span> What each leak costs you per year, in dollars, based on your own job values</li>
+          <li><span class="check">✓</span> A fix list in priority order, including the ones you can do yourself for free</li>
+          <li><span class="check">✓</span> A 20-minute walkthrough call, so you can ask me why any of it matters</li>
+          <li><span class="check">✓</span> Delivered within three business days of payment</li>
+        </ul>
+      </div>
+      <div>
+        <span class="price-tag">Intake Audit</span>
+        <div class="price-amount">
+          <span class="price-number">$97</span>
+          <span class="price-period"> one time</span>
+        </div>
+        <p class="price-first">No subscription, no upsell required, <strong>nothing else to buy.</strong></p>
+        <div class="card-cta">
+          <a class="btn btn-amber btn-full" href="#request">Get My Audit</a>
+          <p class="keep-line"><strong>The report is yours to keep</strong> whether you ever hire me or not.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect-dark">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--blue-light)">Straight talk</div>
+    <div class="straight">
+      <h2>Why it's only $97.</h2>
+      <p>Let me name the obvious thing before you have to. <strong>Ninety-seven dollars does not pay me for an afternoon of work.</strong> It doesn't come close.</p>
+      <p>I run the audit because I'm confident about what it turns up. Once you see the hours sitting between a customer calling you and anybody calling them back, a good number of you are going to want that fixed, and fixing it is what I actually make a living on.</p>
+      <p>If you read the report and decide to handle it yourself, that's a fine outcome. You keep every finding and every fix in it, and I'm not going to chase you. <strong>I'd rather be the guy who showed you the leak than the guy who sold you a system you weren't sure you needed.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="sect-dark" id="request" style="padding-top:0">
+  <div class="wrap">
+    <div class="form-shell">
+      <div class="form-card">
+
+        <div id="form-wrap">
+          <h3>Request your intake audit</h3>
+          <p class="form-sub">I'll email you a $97 invoice within one business day. The audit starts the moment it's paid, and your report lands within three business days after that.</p>
+
+          <div class="error-banner" id="error-banner">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16.5"/></svg>
+            <span id="error-msg">Something went wrong. Please try again or email <a href="mailto:hello@alignmentautomations.com">hello@alignmentautomations.com</a>.</span>
+          </div>
+
+          <div class="fields">
+            <div class="row2">
+              <div class="field">
+                <label for="fname">First Name *</label>
+                <input type="text" id="fname" placeholder="Jane" autocomplete="given-name">
+                <div class="field-error" id="fname-err">Required</div>
+              </div>
+              <div class="field">
+                <label for="lname">Last Name *</label>
+                <input type="text" id="lname" placeholder="Smith" autocomplete="family-name">
+                <div class="field-error" id="lname-err">Required</div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="clinic">Business Name *</label>
+              <input type="text" id="clinic" placeholder="Green Valley Home Services">
+              <div class="field-error" id="clinic-err">Required</div>
+            </div>
+            <div class="field">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" placeholder="jane@yourbusiness.com" autocomplete="email">
+              <div class="field-error" id="email-err">Enter a valid email</div>
+            </div>
+            <div class="field">
+              <label for="phone">Business Phone Number *</label>
+              <input type="tel" id="phone" placeholder="(555) 000-0000" autocomplete="tel">
+              <div class="field-error" id="phone-err">I need this to run the call test</div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="type">Trade / Service Type</label>
+                <select id="type">
+                  <option value="" disabled selected>Select…</option>
+                  <option>HVAC</option>
+                  <option>Roofing</option>
+                  <option>Plumbing</option>
+                  <option>Electrical</option>
+                  <option>Painting</option>
+                  <option>General Contracting</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="website">Website</label>
+                <input type="text" id="website" placeholder="yourbusiness.com">
+              </div>
+            </div>
+            <div class="field">
+              <label for="challenge">Anything I should know before I call?</label>
+              <textarea id="challenge" placeholder="e.g. Best number is the cell, the office line forwards after 5…"></textarea>
+            </div>
+            <div class="hp-field" aria-hidden="true">
+              <label for="fax">Fax Number</label>
+              <input type="text" id="fax" name="fax_number" tabindex="-1" autocomplete="off">
+            </div>
+          </div>
+
+          <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
+            <div class="btn-inner">
+              <div class="spinner"></div>
+              <span id="btn-label">Send My Invoice</span>
+            </div>
+          </button>
+          <p class="trust-line">No spam · I'll never share your information.</p>
+        </div>
+
+        <div class="success-wrap" id="success-panel">
+          <div class="success-check">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="success-badge">Request received</span>
+          <h3>Your invoice is on its way.</h3>
+          <p>I'll email you a $97 invoice within one business day. Once it's paid I'll start the tests, and your report lands within three business days after that. If you don't see the invoice, check your spam folder and then email me at hello@alignmentautomations.com.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect-paper" id="faq">
+  <div class="wrap">
+    <div class="section-label">
+      <h2>Audit Questions</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>What if you don't find anything?</summary>
+        <p>Then you get a short report that says so, with the timestamps to prove it, and you'll know your intake is solid. That's worth knowing too. In fairness, I haven't run this on a contractor yet where nothing turned up.</p>
+      </details>
+      <details>
+        <summary>How do I pay?</summary>
+        <p>I email you an invoice you can pay by card. The audit starts once it clears. There's no subscription attached to it and nothing recurring.</p>
+      </details>
+      <details>
+        <summary>Are you going to call my customers or mess with my phone line?</summary>
+        <p>No. It's one call, one voicemail, and one form submission, all from me. Nothing touches your customers, your phone system, or your website.</p>
+      </details>
+      <details>
+        <summary>Do I have to buy anything else afterward?</summary>
+        <p>No. The $97 covers the audit, the report, and the walkthrough call. If you want me to fix what I found, I'll tell you what that costs, but that's a separate decision you make later.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>Three business days from payment. I run the tests on a normal workday, because the whole point is to see what happens on a normal workday.</p>
+      </details>
+      <details>
+        <summary>What if I just want you to fix it for me?</summary>
+        <p>Then say so on the walkthrough call and I'll walk you through what that looks like. You can also skip the audit entirely and <a href="/pricing.html" style="color:var(--blue-deep);font-weight:600">book a call about the full intake system</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Find out what your phone is actually doing when you're on the job.</h2>
+    <p>Ninety-seven dollars and three business days for a straight answer, with the timestamps to back it up.</p>
+    <div class="cta-actions">
+      <a class="btn btn-amber" href="#request" style="font-size:15px;padding:15px 28px;">Get My Audit</a>
+      <a class="btn btn-ghost" href="/calculator.html">Run the free calculator first</a>
+    </div>
+    <div class="reassure">$97 one time · Report in 3 business days · Yours to keep</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© <span id="year"></span> Alignment Automations · San Luis Obispo County, CA</span>
+    <ul class="foot-links">
+      <li><a href="/how-it-works.html">How it works</a></li>
+      <li><a href="/calculator.html">Calculator</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // ─── CONFIGURATION ───────────────────────────────────────────────
+  // No secret here by design. Anything in this file is public — the endpoint
+  // guards itself with an origin allowlist, a honeypot, and a rate limit.
+  const WEBHOOK_URL = 'https://app.alignmentautomations.com/api/webhook/form-inquiry';
+  // ─────────────────────────────────────────────────────────────────
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.textContent = open ? '✕' : '☰';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.textContent = '☰';
+  }));
+
+  function validate() {
+    let valid = true;
+    const fields = [
+      { id: 'fname',  errId: 'fname-err',  check: v => v.length > 0 },
+      { id: 'lname',  errId: 'lname-err',  check: v => v.length > 0 },
+      { id: 'clinic', errId: 'clinic-err', check: v => v.length > 0 },
+      { id: 'email',  errId: 'email-err',  check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+      { id: 'phone',  errId: 'phone-err',  check: v => v.replace(/\D/g, '').length >= 10 },
+    ];
+    fields.forEach(({ id, errId, check }) => {
+      const el  = document.getElementById(id);
+      const err = document.getElementById(errId);
+      const val = el.value.trim();
+      if (!check(val)) {
+        el.classList.add('error');
+        err.classList.add('show');
+        valid = false;
+      } else {
+        el.classList.remove('error');
+        err.classList.remove('show');
+      }
+    });
+    return valid;
+  }
+
+  // Clear error on input
+  ['fname','lname','clinic','email','phone'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      document.getElementById(id).classList.remove('error');
+      const err = document.getElementById(id + '-err');
+      if (err) err.classList.remove('show');
+    });
+  });
+
+  async function handleSubmit() {
+    const banner = document.getElementById('error-banner');
+    banner.classList.remove('show');
+
+    if (!validate()) {
+      const btn = document.getElementById('submit-btn');
+      btn.style.animation = 'none'; btn.offsetHeight;
+      btn.style.animation = 'shake 0.35s ease';
+      setTimeout(() => btn.style.animation = '', 400);
+      return;
+    }
+
+    const btn   = document.getElementById('submit-btn');
+    const label = document.getElementById('btn-label');
+    btn.disabled = true;
+    btn.classList.add('loading');
+    label.textContent = 'Submitting…';
+
+    // The website field isn't part of the webhook contract, so it rides along
+    // inside the message where it still reaches the CRM record.
+    const site = document.getElementById('website').value.trim();
+    const note = document.getElementById('challenge').value.trim();
+    const message = [site ? 'Website: ' + site : '', note].filter(Boolean).join('\n');
+
+    const payload = {
+      first_name:  document.getElementById('fname').value.trim(),
+      last_name:   document.getElementById('lname').value.trim(),
+      clinic_name: document.getElementById('clinic').value.trim(),
+      email:       document.getElementById('email').value.trim(),
+      phone:       document.getElementById('phone').value.trim(),
+      clinic_type: document.getElementById('type').value || '',
+      package:     'Intake Audit',
+      message:     message,
+      fax_number:  document.getElementById('fax').value.trim(),
+    };
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Webhook error');
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('success-panel').classList.add('show');
+    } catch (err) {
+      btn.disabled = false;
+      btn.classList.remove('loading');
+      label.textContent = 'Send My Invoice';
+      banner.classList.add('show');
+    }
+  }
+</script>
+</body>
+</html>
