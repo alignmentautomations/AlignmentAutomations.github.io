@@ -18,7 +18,7 @@
   --line-dark:rgba(255,255,255,.08);
   --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
   --slate:#46536b;--slate-2:#6b7790;
-  --blue:#3a7bfd;--blue-deep:#0066CC;--blue-light:#5aa3ff;
+  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
   --green:#34c98e;--radius:14px;
   --display:'Inter',sans-serif;--body:'Inter',sans-serif;
   --mono:'JetBrains Mono',monospace;
@@ -58,7 +58,7 @@ p:last-child{margin-bottom:0}
 .nav-links a:hover,.nav-links a.active{color:#fff}
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;border-radius:10px;padding:12px 22px;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:none;white-space:nowrap}
 .btn-amber{background:var(--blue);color:#fff}
-.btn-amber:hover{background:#5b8ffd;transform:translateY(-1px);box-shadow:0 8px 24px rgba(58,123,253,.35);color:#fff}
+.btn-amber:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,102,204,.35);color:#fff}
 .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
 .btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
 .btn-full{width:100%;justify-content:center}
@@ -124,9 +124,9 @@ p:last-child{margin-bottom:0}
 .form-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.5}
 .fields{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.field label{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:7px;font-family:var(--mono)}
+.field label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.78);margin-bottom:7px;font-family:var(--body)}
 .field input,.field select,.field textarea{width:100%;background:#1a2540;border:1px solid rgba(255,255,255,.10);border-radius:10px;padding:13px 14px;font-family:var(--body);font-size:15px;color:#fff;outline:none;transition:border-color .18s,box-shadow .18s;-webkit-appearance:none}
-.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.18)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.50)}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(58,123,253,.30)}
 .field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
 .field select option{background:#1a2540}
@@ -140,10 +140,10 @@ p:last-child{margin-bottom:0}
 .hp-field{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
 
 .btn-primary{display:block;width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:16px 20px;font-family:var(--body);font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.005em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 22px rgba(58,123,253,.38);min-height:54px}
-.btn-primary:hover{background:#5089ff;transform:translateY(-1px);box-shadow:0 8px 28px rgba(58,123,253,.48)}
+.btn-primary:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,102,204,.48)}
 .btn-primary:active{transform:translateY(0)}
 .btn-primary:disabled{opacity:.6;pointer-events:none}
-.trust-line{margin-top:12px;font-size:12px;color:rgba(255,255,255,.32);text-align:center;line-height:1.6;font-family:var(--mono)}
+.trust-line{margin-top:12px;font-size:12px;color:rgba(255,255,255,.55);text-align:center;line-height:1.6;font-family:var(--mono)}
 
 .btn-inner{display:flex;align-items:center;justify-content:center;gap:10px}
 .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
@@ -405,7 +405,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
 
         <div class="success-wrap" id="success-panel">
           <div class="success-check">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <span class="success-badge">Request received</span>
           <h3>Your invoice is on its way.</h3>

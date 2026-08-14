@@ -17,7 +17,7 @@
   --line-dark:rgba(255,255,255,.08);
   --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
   --slate:#46536b;--slate-2:#6b7790;
-  --blue:#3a7bfd;--blue-deep:#0066CC;--blue-light:#5aa3ff;
+  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
   --green:#34c98e;--radius:14px;
   --display:'Inter',sans-serif;--body:'Inter',sans-serif;
   --mono:'JetBrains Mono',monospace;
@@ -61,13 +61,13 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 .form-card h2{font-family:var(--display);font-size:21px;font-weight:800;letter-spacing:-.015em;color:#fff;margin-bottom:5px}
 .form-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.5}
 .fields{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
-.field label{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:7px;font-family:var(--mono)}
+.field label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.78);margin-bottom:7px;font-family:var(--body)}
 .field .input-wrap{position:relative}
 .field input{width:100%;background:#1a2540;border:1px solid rgba(255,255,255,.10);border-radius:10px;padding:13px 14px;font-family:var(--body);font-size:15px;color:#fff;outline:none;transition:border-color .18s,box-shadow .18s;-webkit-appearance:none}
-.field input::placeholder{color:rgba(255,255,255,.18)}
+.field input::placeholder{color:rgba(255,255,255,.50)}
 .field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(58,123,253,.30)}
 .field input.error{border-color:#e05555;box-shadow:0 0 0 3px rgba(224,85,85,.20)}
-.field .prefix,.field .suffix{position:absolute;top:0;bottom:0;display:flex;align-items:center;color:rgba(255,255,255,.35);font-size:15px;pointer-events:none}
+.field .prefix,.field .suffix{position:absolute;top:0;bottom:0;display:flex;align-items:center;color:rgba(255,255,255,.55);font-size:15px;pointer-events:none}
 .field .prefix{left:14px}
 .field .suffix{right:14px}
 .field input.has-prefix{padding-left:26px}
@@ -81,10 +81,10 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 
 /* Submit button */
 .btn-primary{display:block;width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:16px 20px;font-family:var(--body);font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.005em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 22px rgba(58,123,253,.38);min-height:54px}
-.btn-primary:hover{background:#5089ff;transform:translateY(-1px);box-shadow:0 8px 28px rgba(58,123,253,.48)}
+.btn-primary:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,102,204,.48)}
 .btn-primary:active{transform:translateY(0)}
 .btn-primary:disabled{opacity:.6;pointer-events:none}
-.trust-line{margin-top:12px;font-size:12px;color:rgba(255,255,255,.32);text-align:center;line-height:1.6;font-family:var(--mono)}
+.trust-line{margin-top:12px;font-size:12px;color:rgba(255,255,255,.55);text-align:center;line-height:1.6;font-family:var(--mono)}
 
 /* Spinner */
 .btn-inner{display:flex;align-items:center;justify-content:center;gap:10px}
@@ -95,7 +95,7 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 .result-wrap{display:none;flex-direction:column;gap:22px;animation:fadeUp .35s ease}
 .result-wrap.show{display:flex}
 .result-figure{background:#0b1220;border:1px solid var(--line-dark);border-radius:14px;padding:22px 20px;text-align:center}
-.result-label{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.result-label{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
 .result-number{font-family:var(--display);font-size:clamp(34px,5vw,48px);font-weight:900;letter-spacing:-.02em;color:var(--blue-light)}
 .result-sub{font-size:13px;color:rgba(255,255,255,.45);margin-top:8px;line-height:1.5}
 .result-divider{border-top:1px solid var(--line-dark);padding-top:20px}
@@ -230,7 +230,7 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 
         <div class="success-wrap" id="success-panel">
           <div class="success-check">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <span class="success-badge">Got it!</span>
           <h3 id="success-heading">Check your inbox.</h3>

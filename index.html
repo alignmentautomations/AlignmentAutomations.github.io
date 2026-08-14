@@ -18,7 +18,7 @@
   --line-dark:rgba(255,255,255,.08);
   --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
   --slate:#46536b;--slate-2:#6b7790;
-  --blue:#3a7bfd;--blue-deep:#0066CC;--blue-light:#5aa3ff;
+  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
   --green:#34c98e;--radius:14px;
   --display:'Inter',sans-serif;--body:'Inter',sans-serif;
   --mono:'JetBrains Mono',monospace;
@@ -54,12 +54,12 @@ p:last-child{margin-bottom:0}
 .logo-name{font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
 .logo-tag{font-size:11px;font-weight:500;letter-spacing:.01em;color:#7f8aa3;margin-top:1px;white-space:nowrap}
 @media(max-width:980px){.logo-tag{display:none}}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{color:#c4ccdc;text-decoration:none;font-size:15px;font-weight:500;transition:color .15s;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:20px;list-style:none}
+.nav-links a{color:#c4ccdc;text-decoration:none;font-size:14px;font-weight:500;transition:color .15s;white-space:nowrap}
 .nav-links a:hover{color:#fff}
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;border-radius:10px;padding:12px 22px;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:none;white-space:nowrap}
-.btn-amber{background:var(--blue);color:#fff;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.18)}
-.btn-amber:hover{background:#5b8ffd;transform:translateY(-1px);box-shadow:0 8px 24px rgba(58,123,253,.35);color:#fff}
+.btn-amber{background:var(--blue);color:#fff;font-weight:700}
+.btn-amber:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,102,204,.35);color:#fff}
 .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
 .btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
 .btn-dark{background:var(--ink);color:#fff}
@@ -199,7 +199,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
   .hero h1{font-size:clamp(32px,9vw,50px)}
   .stat-num{min-width:80px;font-size:28px}
 }
-@media(max-width:980px){
+@media(max-width:1120px){
   .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--ink);flex-direction:column;align-items:stretch;padding:14px 24px 22px;gap:4px;border-bottom:1px solid var(--line-dark)}
   .nav-links.open{display:flex}
   .nav-links a{padding:12px 4px;font-size:16px}
@@ -258,28 +258,28 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
       <div class="pipeline" id="pipeline">
         <div class="node" data-node>
           <span class="node-time">t = 0s</span>
-          <div class="node-icn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round"><path d="M4 5h16v14H4z"/><path d="M8 10h8M8 14h5"/></svg></div>
+          <div class="node-icn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round"><path d="M4 5h16v14H4z"/><path d="M8 10h8M8 14h5"/></svg></div>
           <h4>Lead comes in</h4>
           <p>A call you miss or a quote form on your site — even at 9pm on a Sunday.</p>
         </div>
         <div class="connector" data-conn><span class="pulse"></span></div>
         <div class="node" data-node>
           <span class="node-time">+ 0.8s</span>
-          <div class="node-icn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round"><path d="M21 12c0 4-4 7-9 7-1.2 0-2.3-.2-3.3-.5L3 20l1.6-3.8C3.6 15 3 13.6 3 12c0-4 4-7 9-7s9 3 9 7z"/></svg></div>
+          <div class="node-icn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round"><path d="M21 12c0 4-4 7-9 7-1.2 0-2.3-.2-3.3-.5L3 20l1.6-3.8C3.6 15 3 13.6 3 12c0-4 4-7 9-7s9 3 9 7z"/></svg></div>
           <h4>Instant reply</h4>
           <p>They get a text and email back before they can call your competitor.</p>
         </div>
         <div class="connector" data-conn><span class="pulse"></span></div>
         <div class="node" data-node>
           <span class="node-time">+ 30s</span>
-          <div class="node-icn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+          <div class="node-icn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
           <h4>Booked on your calendar</h4>
           <p>They pick an estimate slot that actually fits your schedule.</p>
         </div>
         <div class="connector" data-conn><span class="pulse"></span></div>
         <div class="node" data-node>
           <span class="node-time">+ 31s</span>
-          <div class="node-icn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M9 12l2 2 4-5"/></svg></div>
+          <div class="node-icn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M9 12l2 2 4-5"/></svg></div>
           <h4>Logged &amp; followed up</h4>
           <p>Contact saved, reminder set, no-show follow-ups handled for you.</p>
         </div>
@@ -338,19 +338,19 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
     <p class="lede">No logins, no accounts, no tech to learn. I set up your domain, build and host your site, turn on missed-call text-back and automatic follow-ups, make sure the leads you're already getting actually reach you, and run it all day to day — so you can stay on the job. And there's no lock-in: cancel anytime and it's yours.</p>
     <div class="own-grid">
       <div class="own-card">
-        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Domain, setup &amp; Google Business Profile</h3>
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Domain, setup &amp; Google Business Profile</h3>
         <p>I register and configure your domain, hosting, and tools — and set up or fix your Google Business Profile so your listing actually works for you. Nothing for you to set up, install, or log into — ever.</p>
       </div>
       <div class="own-card">
-        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round"><path d="M21 12c0 4-4 7-9 7-1.2 0-2.3-.2-3.3-.5L3 20l1.6-3.8C3.6 15 3 13.6 3 12c0-4 4-7 9-7s9 3 9 7z"/></svg>Missed a call? Auto text-back</h3>
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round"><path d="M21 12c0 4-4 7-9 7-1.2 0-2.3-.2-3.3-.5L3 20l1.6-3.8C3.6 15 3 13.6 3 12c0-4 4-7 9-7s9 3 9 7z"/></svg>Missed a call? Auto text-back</h3>
         <p>When you can't pick up, the caller instantly gets a text — so the lead stays with you instead of calling the next contractor.</p>
       </div>
       <div class="own-card">
-        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round"><path d="M4 5h16v14H4z"/><path d="M8 10h8M8 14h5"/></svg>Website, forms &amp; follow-up</h3>
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round"><path d="M4 5h16v14H4z"/><path d="M8 10h8M8 14h5"/></svg>Website, forms &amp; follow-up</h3>
         <p>A fast site with quote forms that convert, plus automatic email follow-ups and booking links. I build it and keep it running.</p>
       </div>
       <div class="own-card">
-        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7bfd" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M9 12l2 2 4-5"/></svg>Run &amp; monitored for you</h3>
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M9 12l2 2 4-5"/></svg>Run &amp; monitored for you</h3>
         <p>I watch the system, make edits as needed, and keep it running. No dashboards to check, no upkeep on your plate.</p>
       </div>
     </div>

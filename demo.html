@@ -18,7 +18,7 @@
   --line-dark:rgba(255,255,255,.08);
   --paper:#F7F8FB;--white:#fff;--line:#E4E8F0;
   --slate:#46536b;--slate-2:#6b7790;
-  --blue:#3a7bfd;--blue-deep:#0066CC;--blue-light:#5aa3ff;--green:#34c98e;
+  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;--green:#34c98e;
   --display:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -90,7 +90,7 @@ img,svg{max-width:100%}
 
 /* Messages app header */
 .msg-head{background:#fafafa;border-bottom:1px solid #e3e3e6;padding:8px 14px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;flex:none}
-.msg-head .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#5aa3ff,#3a7bfd);display:grid;place-items:center}
+.msg-head .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#5aa3ff,#0066CC);display:grid;place-items:center}
 .msg-head .av svg{width:26px;height:26px}
 .msg-head .nm{font-size:12.5px;font-weight:700;color:#111}
 .msg-thread{flex:1;padding:16px 13px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
@@ -129,7 +129,7 @@ img,svg{max-width:100%}
 .notif{background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:11px 13px;display:flex;gap:10px;margin-bottom:9px;animation:pop .4s ease}
 @keyframes pop{from{opacity:0;transform:scale(.95) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .notif .nic{width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;font-size:15px}
-.notif .nic.aa{background:linear-gradient(135deg,#5aa3ff,#3a7bfd)}
+.notif .nic.aa{background:linear-gradient(135deg,#5aa3ff,#0066CC)}
 .notif .nic.aa svg{width:18px;height:18px}
 .notif .nic.phone{background:#34c98e}
 .notif .nic.cal{background:#e5484d}
@@ -141,7 +141,7 @@ img,svg{max-width:100%}
 
 /* Lead card (your side app) */
 .app-head{background:rgba(255,255,255,.04);border-bottom:1px solid var(--line-dark);padding:13px 16px;display:flex;align-items:center;gap:9px;flex:none}
-.app-head .av{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#5aa3ff,#3a7bfd);display:grid;place-items:center}
+.app-head .av{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#5aa3ff,#0066CC);display:grid;place-items:center}
 .app-head .av svg{width:15px;height:15px}
 .app-head .nm{font-size:12px;font-weight:700}
 .app-head .nm small{display:block;font-size:9.5px;color:#8b96ae;font-weight:500;font-family:var(--mono)}
@@ -171,7 +171,7 @@ img,svg{max-width:100%}
 .ff{margin-bottom:9px}
 .ff label{display:block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#8a8a8e;margin-bottom:4px;font-family:var(--mono)}
 .ff .inp{background:#fff;border:1px solid #d9d9de;border-radius:9px;padding:9px 11px;font-size:12.5px;color:#111}
-.ff .inp.filled{border-color:#3a7bfd;box-shadow:0 0 0 3px rgba(58,123,253,.12)}
+.ff .inp.filled{border-color:#0066CC;box-shadow:0 0 0 3px rgba(0,102,204,.12)}
 .fbtn{margin-top:6px;background:linear-gradient(180deg,#3a8bfd,#2f7bf6);color:#fff;border-radius:10px;padding:11px;text-align:center;font-size:13px;font-weight:700}
 
 /* Narrate (single phone layouts) */
@@ -213,7 +213,7 @@ img,svg{max-width:100%}
 /* Buttons + controls */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:700;font-size:15px;border-radius:11px;padding:13px 24px;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s,background .15s;white-space:nowrap}
 .btn-blue{background:var(--blue);color:#fff;box-shadow:0 6px 22px rgba(58,123,253,.38)}
-.btn-blue:hover{background:#5089ff;transform:translateY(-1px)}
+.btn-blue:hover{background:var(--blue-hover);transform:translateY(-1px)}
 .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.18)}
 .btn-ghost:hover{border-color:rgba(255,255,255,.4)}
 .btn-green{background:linear-gradient(180deg,#34c98e,#1f9d6b);color:#06231a;box-shadow:0 6px 22px rgba(52,201,142,.3)}
@@ -249,10 +249,10 @@ img,svg{max-width:100%}
 </main>
 
 <!-- inline brand mark for avatars -->
-<template id="aaMark"><svg viewBox="-140 -140 280 280" xmlns="http://www.w3.org/2000/svg"><polygon points="0,-120 104,-60 104,60 0,120 -104,60 -104,-60" fill="none"/><rect x="-5" y="-70" width="10" height="140" rx="5" fill="#fff"/><circle cx="0" cy="0" r="26" fill="#fff"/><path d="M -10 0 L -2 8 L 14 -10" stroke="#3a7bfd" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></template>
+<template id="aaMark"><svg viewBox="-140 -140 280 280" xmlns="http://www.w3.org/2000/svg"><polygon points="0,-120 104,-60 104,60 0,120 -104,60 -104,-60" fill="none"/><rect x="-5" y="-70" width="10" height="140" rx="5" fill="#fff"/><circle cx="0" cy="0" r="26" fill="#fff"/><path d="M -10 0 L -2 8 L 14 -10" stroke="#0066CC" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></template>
 
 <script>
-const AA = '<svg viewBox="-140 -140 280 280"><rect x="-5" y="-70" width="10" height="140" rx="5" fill="#fff"/><circle cx="0" cy="0" r="26" fill="#fff"/><path d="M -10 0 L -2 8 L 14 -10" stroke="#3a7bfd" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const AA = '<svg viewBox="-140 -140 280 280"><rect x="-5" y="-70" width="10" height="140" rx="5" fill="#fff"/><circle cx="0" cy="0" r="26" fill="#fff"/><path d="M -10 0 L -2 8 L 14 -10" stroke="#0066CC" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 const state = { biz: 'Your Business', path: null, i: 0, flow: [] };
 
