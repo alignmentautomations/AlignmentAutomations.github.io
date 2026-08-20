@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starter Site — $950 | Alignment Automations</title>
+  <meta name="description" content="A real, mobile-first website for your home service business — live in 5-7 days for $950 one-time. No monthly commitment required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Website and lead intake automation for home service contractors",
+    "provider": { "@type": "Organization", "name": "Alignment Automations", "url": "https://alignmentautomations.com" },
+    "areaServed": "US",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Starter Site",
+        "price": "950",
+        "priceCurrency": "USD",
+        "description": "A 3-5 page mobile-first website with contact form and online booking, built and live in 5-7 days. One-time price, no monthly commitment required."
+      }
+    ]
+  }
+  </script>
+  <style>
+:root{
+  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
+  --line-dark:rgba(255,255,255,.08);
+  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
+  --slate:#46536b;--slate-2:#6b7790;
+  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
+  --green:#34c98e;--radius:14px;
+  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--blue-deep);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);display:inline-block}
+
+h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.015em}
+h1{font-size:clamp(30px,3.4vw,46px);font-weight:800;margin-bottom:18px}
+h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:16px}
+h3{font-size:17.5px;font-weight:600;margin-bottom:8px}
+.lede{font-size:clamp(16px,1.8vw,18px);color:var(--slate);max-width:680px;margin-bottom:14px}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:32px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo-img{height:42px;width:auto;flex:none}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-name{font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.logo-tag{font-size:11px;font-weight:500;letter-spacing:.01em;color:#7f8aa3;margin-top:1px;white-space:nowrap}
+@media(max-width:980px){.logo-tag{display:none}}
+.nav-links{display:flex;align-items:center;gap:20px;list-style:none}
+.nav-links a{color:#c4ccdc;text-decoration:none;font-size:14px;font-weight:500;transition:color .15s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;border-radius:10px;padding:12px 22px;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:none;white-space:nowrap}
+.btn-amber{background:var(--blue);color:#fff}
+.btn-amber:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,102,204,.35);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-full{width:100%;justify-content:center}
+.nav .btn{padding:10px 18px;font-size:14px}
+.nav-links a.btn{color:#fff}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);border-radius:8px;width:42px;height:42px;color:#fff;font-size:18px;cursor:pointer;padding:0}
+
+/* Page hero */
+.page-hero{background:var(--ink);color:#fff;padding:72px 0 64px;position:relative;overflow:hidden}
+.page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(0,102,204,.12),transparent 60%);pointer-events:none}
+.page-hero .wrap{position:relative}
+.page-hero .pill{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:rgba(0,102,204,.15);border:1px solid rgba(0,102,204,.32);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:22px}
+.page-hero h1{color:#fff;max-width:700px}
+.page-hero .lede{color:#aab4c8;max-width:680px}
+.page-hero .small-note{font-family:var(--mono);font-size:12.5px;color:#7f8aa3;margin-top:4px}
+
+/* Section rhythm */
+.sect-paper{background:var(--paper)}
+.sect-white{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sect-dark{background:var(--ink);color:#fff}
+
+/* Section label */
+.section-label{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+.section-label h2{margin:0;white-space:nowrap}
+.section-label-line{flex:1;height:1px;background:var(--line)}
+
+/* Pricing card */
+.price-panel{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.price-tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:inline-block;padding:4px 10px;border-radius:6px}
+.tag-core{color:var(--blue-deep);background:rgba(0,102,204,.10);border:1px solid rgba(0,102,204,.22)}
+.price-amount{margin:12px 0 6px}
+.price-number{font-family:var(--display);font-size:40px;font-weight:900;letter-spacing:-.04em;color:var(--ink)}
+.price-period{font-size:14px;color:var(--slate-2);font-weight:600}
+.price-desc{font-size:14.5px;color:var(--slate);margin-bottom:22px;line-height:1.55}
+.feature-list{list-style:none;display:grid;gap:0}
+.feature-list li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14.5px;color:var(--slate);border-bottom:1px solid rgba(0,0,0,.05)}
+.feature-list li:last-child{border-bottom:none}
+.check{color:var(--green);font-size:14px;flex-shrink:0;margin-top:2px}
+.cross{color:var(--slate-2);font-size:14px;flex-shrink:0;margin-top:2px}
+.card-cta{margin-top:24px}
+.tier-note{font-size:13.5px;color:var(--slate-2);line-height:1.5;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+
+/* Timeline */
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.tl-step{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.tl-step .num{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--blue-deep);display:block;margin-bottom:12px}
+
+/* Scope terms */
+.scope-list{list-style:none;display:grid;gap:14px;margin-top:28px;max-width:760px}
+.scope-list li{display:flex;align-items:flex-start;gap:14px;font-size:15.5px;color:var(--slate);line-height:1.5}
+.scope-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);flex:none;margin-top:9px}
+.scope-list strong{color:var(--ink)}
+
+/* Ownership note */
+.own-note{margin-top:40px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;display:flex;align-items:flex-start;gap:14px}
+.own-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.own-note p{font-size:14.5px;color:var(--slate);margin:0}
+.own-note strong{color:var(--ink)}
+
+/* FAQ */
+.faq-list{max-width:760px;margin-top:32px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 4px;font-family:var(--display);font-weight:600;font-size:17px;color:var(--ink)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);font-size:20px;color:var(--blue-deep);flex:none;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 4px 24px;color:var(--slate);font-size:15.5px;max-width:660px;margin:0}
+
+/* Final CTA */
+.final{background:var(--ink);color:#fff;text-align:center;padding:96px 0}
+.final h2{font-size:clamp(28px,4vw,42px);max-width:680px;margin:0 auto 16px;color:#fff;font-weight:700}
+.final p{color:#aab4c8;max-width:540px;margin:0 auto 32px}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.reassure{margin-top:14px;font-family:var(--mono);font-size:12.5px;color:#7f8aa3}
+
+/* Footer */
+footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 0;color:#7f8aa3;font-size:14px}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+
+/* Responsive */
+@media(max-width:900px){
+  .price-panel{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr}
+  .section-label{flex-direction:column;align-items:flex-start;gap:8px}
+  .section-label-line{display:none}
+}
+@media(max-width:680px){
+  section{padding:68px 0}
+  .final{padding:68px 0}
+  .btn-full,.cta-actions .btn{width:100%}
+  .cta-actions{flex-direction:column;align-items:stretch}
+  .price-panel{padding:22px}
+}
+@media(max-width:1120px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--ink);flex-direction:column;align-items:stretch;padding:14px 24px 22px;gap:4px;border-bottom:1px solid var(--line-dark)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;font-size:16px}
+  .nav-links .btn{justify-content:center;margin-top:8px}
+  .menu-btn{display:block}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap nav-in">
+    <a class="logo" href="/" aria-label="Alignment Automations Home">
+      <img src="alignment_automations_icon.svg" class="logo-img" alt="">
+      <span class="logo-text"><span class="logo-name">Alignment Automations</span><span class="logo-tag">Done-for-you lead intake</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/starter.html" class="active">Starter Site</a></li>
+      <li><a href="/audit.html">Intake Audit</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="btn btn-amber" href="contact.html">Book a Demo</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="pill">Starter Site</div>
+    <h1>A real website, live in about a week.</h1>
+    <p class="lede">
+      Just need to get online — a real, mobile-first site with your own domain, a working contact form, and online booking. One price, no monthly commitment required.
+    </p>
+    <p class="small-note">$950 one-time · 5&ndash;7 days to live · No EIN, no carrier registration, no waiting period</p>
+  </div>
+</div>
+
+<section class="sect-white" id="core">
+  <div class="wrap">
+    <div class="price-panel" style="max-width:820px;margin:0 auto;">
+      <div>
+        <span class="price-tag tag-core">Starter Site</span>
+        <h2>What's included</h2>
+        <div class="price-amount">
+          <span class="price-number">$950</span>
+          <span class="price-period"> one-time</span>
+        </div>
+        <p class="price-desc">A real website built for your business, live in 5&ndash;7 days. Own your domain, own your content, no monthly commitment required.</p>
+        <div class="card-cta">
+          <a class="btn btn-amber btn-full" href="contact.html">Book a Demo</a>
+        </div>
+        <p class="tier-note">Optional $49/mo care plan for hosting, edits, and updates &mdash; never required. Ready for more? You can <a href="/pricing.html" style="color:var(--blue-deep);font-weight:600">upgrade to the Intake System</a> later and only pay the difference.</p>
+      </div>
+      <div>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> 3&ndash;5 page website, built &amp; live in 5&ndash;7 days</li>
+          <li><span class="check">✓</span> Mobile-first design, your own domain</li>
+          <li><span class="check">✓</span> Working contact form</li>
+          <li><span class="check">✓</span> Online booking</li>
+          <li><span class="check">✓</span> CSLB-compliant license &amp; insurance display</li>
+          <li><span class="check">✓</span> Includes our Google Business Profile Setup Guide</li>
+          <li><span class="check">✓</span> You own the domain and the site, no lock-in</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="own-note" style="max-width:820px;margin-left:auto;margin-right:auto;">
+      <div class="own-icon">ℹ️</div>
+      <p><strong>What's not in Starter Site:</strong> missed-call text-back, automatic follow-up sequences, and lead logging run on the Done-for-You Intake System. Starter gets you a real site fast; upgrade when you're ready for the system that answers for you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sect-paper">
+  <div class="wrap">
+    <div class="section-label">
+      <h2>Timeline</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="tl">
+      <div class="tl-step">
+        <span class="num">01</span>
+        <h3>Kickoff</h3>
+        <p style="color:var(--slate);font-size:14.5px;margin:0;">A short call to get your content, photos, and domain details.</p>
+      </div>
+      <div class="tl-step">
+        <span class="num">02</span>
+        <h3>Build &amp; review</h3>
+        <p style="color:var(--slate);font-size:14.5px;margin:0;">I build the site and send you a live preview to review.</p>
+      </div>
+      <div class="tl-step">
+        <span class="num">03</span>
+        <h3>Live</h3>
+        <p style="color:var(--slate);font-size:14.5px;margin:0;">One round of revisions, then it goes live &mdash; 5&ndash;7 days from kickoff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect-white">
+  <div class="wrap">
+    <div class="section-label">
+      <h2>Scope terms</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <ul class="scope-list">
+      <li><strong>50% deposit to start,</strong> balance due before launch.</li>
+      <li><strong>One round of revisions is included;</strong> additional revisions are billed hourly.</li>
+      <li><strong>Client content is due within 14 days</strong> of kickoff &mdash; photos and copy. If it doesn't arrive, the project pauses until it does.</li>
+      <li><strong>Page count is fixed at 3&ndash;5 pages;</strong> additional pages are quoted separately.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sect-paper" id="faq">
+  <div class="wrap">
+    <div class="section-label">
+      <h2>Starter Site Questions</h2>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Do I need an EIN or carrier registration for this?</summary>
+        <p>No. Those requirements are specific to missed-call text-back on the Done-for-You Intake System. Starter Site is just a website &mdash; no EIN, no carrier registration, no waiting period.</p>
+      </details>
+      <details>
+        <summary>What about my Google listing?</summary>
+        <p>Starter Site includes our Google Business Profile Setup Guide &mdash; a step-by-step walkthrough so you can claim and complete your own listing in about an hour. You keep full ownership and control of your profile.</p>
+      </details>
+      <details>
+        <summary>Can I upgrade to the Intake System later?</summary>
+        <p>Yes. Your Starter site becomes the foundation &mdash; I add missed-call text-back, follow-ups, and lead logging on top of it rather than rebuilding from scratch. You only pay the difference in setup.</p>
+      </details>
+      <details>
+        <summary>Is the $49/mo care plan required?</summary>
+        <p>No, never. It's there if you want me to keep handling hosting, edits, and updates. If you skip it, the site is still yours, live, and working &mdash; you'd just make any future changes yourself or find your own developer.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Get a real website live this week.</h2>
+    <p>Book a 20-minute demo and I'll walk you through exactly what I'd build for your business.</p>
+    <div class="cta-actions">
+      <a class="btn btn-amber" href="contact.html" style="font-size:15px;padding:15px 28px;">Book Your Demo</a>
+      <a class="btn btn-ghost" href="/pricing.html">Compare Both Plans</a>
+    </div>
+    <div class="reassure">20 minutes · No pressure · $950 one-time</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© <span id="year"></span> Alignment Automations. All rights reserved.</span>
+    <div class="small"><a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; <a href="mailto:hello@alignmentautomations.com">hello@alignmentautomations.com</a></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+  menuBtn.textContent = open ? '✕' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn.textContent = '☰';
+}));
+</script>
+</body>
+</html>
