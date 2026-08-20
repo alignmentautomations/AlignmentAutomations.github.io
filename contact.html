@@ -198,6 +198,7 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
               <label>Interested In</label>
               <select id="package">
                 <option value="" disabled selected>Select…</option>
+                <option value="Starter Site">Starter Site ($950)</option>
                 <option value="Done-for-You Intake System">Done-for-You Intake System</option>
                 <option value="Not sure yet">Not sure yet / just exploring</option>
               </select>
@@ -251,6 +252,16 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
   const CALENDLY_URL    = 'https://calendly.com/alignment-automations/new-meeting';
   const REDIRECT_DELAY  = 4; // seconds before redirect
   // ─────────────────────────────────────────────────────────────────
+
+  // Preselect "Interested In" from a ?interest= link, e.g. contact.html?interest=starter
+  (function preselectInterest() {
+    const interest = new URLSearchParams(window.location.search).get('interest');
+    const map = { starter: 'Starter Site', intake: 'Done-for-You Intake System' };
+    const value = map[interest];
+    if (!value) return;
+    const select = document.getElementById('package');
+    if ([...select.options].some(o => o.value === value)) select.value = value;
+  })();
 
   function validate() {
     let valid = true;
