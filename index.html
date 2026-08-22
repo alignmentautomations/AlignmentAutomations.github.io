@@ -101,7 +101,10 @@ p:last-child{margin-bottom:0}
 .hero h1{font-size:clamp(36px,5.6vw,62px);font-weight:800;max-width:780px;margin-bottom:22px}
 .hero h1 em{font-style:normal;color:var(--blue)}
 .hero .lede{color:#aab4c8;margin-bottom:34px}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.hero-sublink{margin-bottom:26px}
+.hero-sublink a{font-family:var(--mono);font-size:13.5px;color:var(--blue-light);font-weight:500;border-bottom:1px solid rgba(90,163,255,.3);padding-bottom:1px}
+.hero-sublink a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.5)}
 .hero-note{font-family:var(--mono);font-size:12.5px;color:#7f8aa3;display:flex;align-items:center;gap:8px;margin-bottom:26px}
 .hero-note .ndot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(52,201,142,.8);flex:none}
 
@@ -227,12 +230,19 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
   @keyframes firepulsev{0%{top:-40%;opacity:1}100%{top:100%;opacity:1}}
   .split{grid-template-columns:1fr;gap:40px}
   .own-grid{grid-template-columns:1fr}
-  .proc-steps{grid-template-columns:1fr 1fr}
+  /* 3+2 by design, so the 5th step never orphans on a row of its own */
+  .proc-steps{grid-template-columns:repeat(6,1fr)}
+  .proc-steps .proc-step{grid-column:span 2}
+  .proc-steps .proc-step:nth-child(4){grid-column:2/4}
+  .proc-steps .proc-step:nth-child(5){grid-column:4/6}
 }
 @media(max-width:680px){
   section{padding:68px 0}
   .final{padding:68px 0}
   .proc-steps{grid-template-columns:1fr}
+  .proc-steps .proc-step,
+  .proc-steps .proc-step:nth-child(4),
+  .proc-steps .proc-step:nth-child(5){grid-column:auto}
   .hero h1{font-size:clamp(32px,9vw,50px)}
   .stat-num{min-width:80px;font-size:28px}
   .mini-tier-grid{grid-template-columns:1fr}
@@ -284,8 +294,8 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
     <div class="hero-ctas">
       <a class="btn btn-amber" href="#tiers">See Pricing &amp; Plans</a>
       <a class="btn btn-ghost" href="/how-it-works.html">See how it works</a>
-      <a class="btn btn-ghost" href="/calculator.html">Calculate Your Missed Call Cost</a>
     </div>
+    <p class="hero-sublink"><a href="/calculator.html">Calculate what missed calls are costing you &rarr;</a></p>
     <p class="hero-note"><span class="ndot" aria-hidden="true"></span>Built by someone who's actually done the work — 15+ years in the family business, not just a keyboard.</p>
 
     <div class="pipeline-shell" role="img" aria-label="Diagram: a new lead is captured, gets an instant reply, books on your calendar, and is logged in your records — all automatically.">
