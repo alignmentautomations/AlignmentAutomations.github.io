@@ -160,7 +160,7 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 
           <div class="fields">
             <div class="field">
-              <label>Average Job Value *</label>
+              <label for="job-value">Average Job Value *</label>
               <div class="input-wrap">
                 <span class="prefix">$</span>
                 <input type="number" id="job-value" class="has-prefix" placeholder="450" min="0" inputmode="decimal">
@@ -168,12 +168,12 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
               <div class="field-error" id="job-value-err">Enter a value greater than 0</div>
             </div>
             <div class="field">
-              <label>Missed Calls Per Week *</label>
+              <label for="missed-calls">Missed Calls Per Week *</label>
               <input type="number" id="missed-calls" placeholder="5" min="0" inputmode="decimal">
               <div class="field-error" id="missed-calls-err">Enter a value greater than 0</div>
             </div>
             <div class="field">
-              <label>% Who Call a Competitor Instead *</label>
+              <label for="competitor-pct">% Who Call a Competitor Instead *</label>
               <div class="input-wrap">
                 <input type="number" id="competitor-pct" class="has-suffix" placeholder="50" min="0" max="100" inputmode="decimal">
                 <span class="suffix">%</span>
@@ -203,12 +203,12 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 
             <div class="fields">
               <div class="field">
-                <label>First Name *</label>
+                <label for="fname">First Name *</label>
                 <input type="text" id="fname" placeholder="Jane" autocomplete="given-name">
                 <div class="field-error" id="fname-err">Required</div>
               </div>
               <div class="field">
-                <label>Email Address *</label>
+                <label for="email">Email Address *</label>
                 <input type="email" id="email" placeholder="jane@yourbusiness.com" autocomplete="email">
                 <div class="field-error" id="email-err">Enter a valid email</div>
               </div>
