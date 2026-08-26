@@ -1,0 +1,107 @@
+/* ============================================================
+   Alignment Automations — dark form-page shell
+   ------------------------------------------------------------
+   Shared by contact.html, calculator.html, and email-sales.html:
+   the three pages built on a full-dark background with a hero
+   column beside a form card. They deliberately do NOT use
+   styles.css — that file is the light marketing shell, and
+   forcing these pages onto it would mean writing more override
+   CSS than the extraction saves (audit 11.6).
+
+   Load order per page:  tokens.css → forms.css → inline <style>
+   The inline block still wins, and each page keeps only what is
+   genuinely its own (the calculator's result panel and input
+   affixes, the contact page's select chevron and Cal.com redirect
+   note, the email page's back link).
+
+   Input rules use the union selector `input, select, textarea`
+   even though no single page has all three, so a page that later
+   grows a field type inherits the right styling instead of
+   drifting. The extra selectors are inert where the element
+   does not exist.
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:var(--body);background:var(--ink);color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+/* ---------- Nav (logo only on these pages) ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.90);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1140px;margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo-img{height:42px;width:auto;flex:none}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-name{font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.logo-tag{font-size:11px;font-weight:500;letter-spacing:.01em;color:#7f8aa3;margin-top:1px;white-space:nowrap}
+@media(max-width:980px){.logo-tag{display:none}}
+
+/* ---------- Page layout ---------- */
+.page{padding:60px 24px 80px}
+.inner{max-width:1140px;margin:0 auto}
+@media(min-width:860px){
+  .inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .page{padding:72px 40px 88px}
+  .hero-copy{margin-bottom:0}
+}
+
+/* ---------- Hero copy ---------- */
+/* Stacked (mobile) the grid gap is gone, so the hero needs its own bottom
+   margin to keep the trust pills off the top of the card beside it. */
+.hero-copy{margin-bottom:40px}
+.hero-pill{display:inline-flex;align-items:center;padding:6px 16px;border-radius:999px;background:rgba(var(--blue-rgb),.15);border:1px solid rgba(var(--blue-rgb),.32);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:22px}
+h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.1;letter-spacing:-.025em;color:#fff;margin-bottom:20px}
+.hero-desc{font-size:16px;line-height:1.65;color:rgba(255,255,255,.55);margin-bottom:30px}
+.trust-pills{display:flex;flex-wrap:wrap;gap:8px}
+.tp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:rgba(255,255,255,.65)}
+
+/* ---------- Form card ---------- */
+.form-card{background:#111d30;border:1px solid var(--line-dark);border-radius:18px;padding:28px 24px}
+.form-card h2{font-family:var(--display);font-size:21px;font-weight:800;letter-spacing:-.015em;color:#fff;margin-bottom:5px}
+.form-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.5}
+.fields{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.78);margin-bottom:7px;font-family:var(--body)}
+.field input,.field select,.field textarea{width:100%;background:#1a2540;border:1px solid rgba(255,255,255,.10);border-radius:10px;padding:13px 14px;font-family:var(--body);font-size:15px;color:#fff;outline:none;transition:border-color .18s,box-shadow .18s;-webkit-appearance:none}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.50)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(var(--blue-rgb),.30)}
+.field textarea{resize:vertical;min-height:86px;line-height:1.55;font-size:14px}
+.field input.error,.field select.error,.field textarea.error{border-color:#e05555;box-shadow:0 0 0 3px rgba(224,85,85,.20)}
+.field-error{font-size:11px;color:#e05555;margin-top:5px;font-weight:600;display:none;font-family:var(--mono)}
+.field-error.show{display:block}
+
+/* Honeypot: positioned off-screen rather than display:none, so bots that skip
+   hidden fields still fill it in. No human ever sees or tabs into this. */
+.hp-field{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+
+/* ---------- Submit button ---------- */
+.btn-primary{display:block;width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:16px 20px;font-family:var(--body);font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.005em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 22px rgba(var(--blue-rgb),.38);min-height:54px}
+.btn-primary:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 28px rgba(var(--blue-rgb),.48)}
+.btn-primary:active{transform:translateY(0)}
+.btn-primary:disabled{opacity:.6;pointer-events:none}
+.trust-line{margin-top:12px;font-size:12px;color:rgba(255,255,255,.55);text-align:center;line-height:1.6;font-family:var(--mono)}
+
+/* ---------- Spinner ---------- */
+.btn-inner{display:flex;align-items:center;justify-content:center;gap:10px}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+.btn-primary.loading .spinner{display:block}
+
+/* ---------- Success panel ---------- */
+.success-wrap{display:none;flex-direction:column;align-items:flex-start;gap:14px;animation:fadeUp .35s ease}
+.success-wrap.show{display:flex}
+.success-check{width:54px;height:54px;background:rgba(var(--blue-rgb),.14);border:1px solid rgba(var(--blue-rgb),.32);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.success-wrap h3{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;color:#fff}
+.success-wrap p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.65}
+.success-badge{background:rgba(var(--blue-rgb),.15);border:1px solid rgba(var(--blue-rgb),.40);border-radius:999px;padding:5px 16px;font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light)}
+
+/* ---------- Error banner ---------- */
+.error-banner{display:none;align-items:center;gap:10px;background:rgba(224,85,85,.10);border:1px solid rgba(224,85,85,.30);border-radius:10px;padding:12px 16px;font-size:13px;color:#f07070;margin-bottom:16px;line-height:1.5}
+.error-banner.show{display:flex}
+.error-banner a{color:#f07070}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001s!important}}

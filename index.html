@@ -66,18 +66,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
-:root{
-  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
-  --line-dark:rgba(255,255,255,.08);
-  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
-  --slate:#46536b;--slate-2:#6b7790;
-  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
-  --green:#34c98e;--radius:14px;
-  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
-  --mono:'JetBrains Mono',monospace;
-}
 /* Eyebrow */
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--blue-deep);display:flex;align-items:center;gap:10px;margin-bottom:18px}
 /* Typography */
@@ -91,7 +82,7 @@ h2{font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:16px}
 .btn-amber:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,102,204,.35);color:#fff}
 /* Hero */
 .hero{background:var(--ink);color:#fff;padding:88px 0 0;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 75% 10%,rgba(90,163,255,.10),transparent 60%),radial-gradient(ellipse 60% 45% at 15% 90%,rgba(58,123,253,.08),transparent 60%);pointer-events:none}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 75% 10%,rgba(90,163,255,.10),transparent 60%),radial-gradient(ellipse 60% 45% at 15% 90%,rgba(var(--blue-rgb),.08),transparent 60%);pointer-events:none}
 .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black 40%,transparent 95%);pointer-events:none}
 .hero .wrap{position:relative}
 .hero h1{font-size:clamp(36px,5.6vw,62px);font-weight:800;max-width:780px;margin-bottom:22px}
@@ -112,10 +103,10 @@ h2{font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:16px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 .pipeline{display:grid;grid-template-columns:1fr 38px 1fr 38px 1fr 38px 1fr;align-items:stretch;gap:0}
 .node{background:rgba(255,255,255,.035);border:1px solid var(--line-dark);border-radius:12px;padding:18px 16px;position:relative;transition:border-color .4s,background .4s,box-shadow .4s}
-.node.active{border-color:rgba(58,123,253,.65);background:rgba(58,123,253,.07);box-shadow:0 0 28px rgba(58,123,253,.12)}
+.node.active{border-color:rgba(var(--blue-rgb),.65);background:rgba(var(--blue-rgb),.07);box-shadow:0 0 28px rgba(var(--blue-rgb),.12)}
 .node.done{border-color:rgba(52,201,142,.45)}
 .node-icn{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.06);display:grid;place-items:center;margin-bottom:12px}
-.node.active .node-icn{background:rgba(58,123,253,.18)}
+.node.active .node-icn{background:rgba(var(--blue-rgb),.18)}
 .node.done .node-icn{background:rgba(52,201,142,.14)}
 .node h4{font-family:var(--display);font-size:14.5px;font-weight:600;color:#fff;margin-bottom:4px}
 .node p{font-size:13px;color:#8b96ae;line-height:1.45;margin:0}
@@ -142,7 +133,7 @@ h2{font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:16px}
 .tiers{padding:56px 0}
 .mini-tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:820px;margin:28px auto 0}
 .mini-tier{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;position:relative}
-.mini-tier.featured{border-color:rgba(58,123,253,.30);background:linear-gradient(160deg,rgba(58,123,253,.05),var(--white))}
+.mini-tier.featured{border-color:rgba(var(--blue-rgb),.30);background:linear-gradient(160deg,rgba(var(--blue-rgb),.05),var(--white))}
 .mini-tier .mt-badge{position:absolute;top:-1px;right:20px;background:var(--blue);color:#fff;font-family:var(--mono);font-size:11px;font-weight:600;padding:4px 12px;border-radius:0 0 10px 10px;letter-spacing:.06em;text-transform:uppercase}
 .mini-tier h3{font-size:16px;margin-bottom:4px}
 .mini-tier .mt-price{font-family:var(--display);font-size:28px;font-weight:900;letter-spacing:-.02em;color:var(--ink);margin-bottom:10px}

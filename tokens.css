@@ -1,0 +1,41 @@
+/* ============================================================
+   Alignment Automations — design tokens
+   ------------------------------------------------------------
+   THE single definition of the brand's colors, radii, and type
+   families. Every page on the site links this file first, then
+   its own shell:
+
+     tokens.css + styles.css  → marketing pages
+     tokens.css + forms.css   → contact / calculator / email-sales
+     tokens.css + doc.css     → privacy / terms
+     tokens.css               → demo.html (standalone shell, inline)
+
+   Before this file existed the token block was copy-pasted into
+   eleven pages, which is exactly how --blue drifted away from the
+   brand in the first place (audit 9.1) and how --blue-rgb ended up
+   defined on five pages and missing from six.
+
+   Source of truth for the values: Brand Assets in the vault.
+   ============================================================ */
+
+:root{
+  /* Neutrals */
+  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
+  --line-dark:rgba(255,255,255,.08);
+  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
+  --slate:#46536b;--slate-2:#6b7790;
+
+  /* Brand blue. --blue-deep is a retired alias kept only so older
+     rules keep resolving; it is identical to --blue. */
+  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
+  /* channel form of the brand blue, so tints can be written as
+     rgba(var(--blue-rgb),.12) instead of hardcoding a hex */
+  --blue-rgb:0,102,204;
+
+  --green:#34c98e;
+
+  --radius:14px;
+
+  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}

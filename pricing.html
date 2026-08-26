@@ -50,18 +50,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/styles.css" />
   <style>
-:root{
-  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
-  --line-dark:rgba(255,255,255,.08);
-  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
-  --slate:#46536b;--slate-2:#6b7790;
-  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
-  --green:#34c98e;--radius:14px;
-  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
-  --mono:'JetBrains Mono',monospace;
-}
 img,svg{max-width:100%}
 h1{font-size:clamp(30px,3.4vw,46px);font-weight:800;margin-bottom:18px}
 h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:16px}
@@ -71,8 +62,8 @@ h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:16px}
 .btn-amber:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,102,204,.35);color:#fff}
 /* Page hero */
 .page-hero{background:var(--ink);color:#fff;padding:72px 0 64px;position:relative;overflow:hidden}
-.page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(58,123,253,.12),transparent 60%);pointer-events:none}
-.page-hero .pill{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:rgba(58,123,253,.15);border:1px solid rgba(58,123,253,.32);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:22px}
+.page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(var(--blue-rgb),.12),transparent 60%);pointer-events:none}
+.page-hero .pill{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:rgba(var(--blue-rgb),.15);border:1px solid rgba(var(--blue-rgb),.32);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:22px}
 /* Section rhythm */
 .sect-paper{background:var(--paper)}
 /* Section label */
@@ -81,11 +72,11 @@ h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:16px}
 .tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;max-width:940px;margin:0 auto}
 .tier-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px;position:relative}
 .price-panel{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-.price-panel.featured,.tier-card.featured{border-color:rgba(58,123,253,.30);background:linear-gradient(160deg,rgba(58,123,253,.05),var(--white));position:relative}
+.price-panel.featured,.tier-card.featured{border-color:rgba(var(--blue-rgb),.30);background:linear-gradient(160deg,rgba(var(--blue-rgb),.05),var(--white));position:relative}
 .tier-note{font-size:13.5px;color:var(--slate-2);line-height:1.5;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
 .featured-badge{position:absolute;top:-1px;right:20px;background:var(--blue);color:#fff;font-family:var(--mono);font-size:11px;font-weight:600;padding:4px 12px;border-radius:0 0 10px 10px;letter-spacing:.06em;text-transform:uppercase}
 .price-tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:inline-block;padding:4px 10px;border-radius:6px}
-.tag-core{color:var(--blue-deep);background:rgba(58,123,253,.10);border:1px solid rgba(58,123,253,.22)}
+.tag-core{color:var(--blue-deep);background:rgba(var(--blue-rgb),.10);border:1px solid rgba(var(--blue-rgb),.22)}
 .price-amount{margin:12px 0 6px}
 .price-number{font-family:var(--display);font-size:40px;font-weight:900;letter-spacing:-.04em;color:var(--ink)}
 .price-period{font-size:14px;color:var(--slate-2);font-weight:600}

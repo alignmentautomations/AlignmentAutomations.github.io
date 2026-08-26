@@ -6,27 +6,17 @@
    each page's <style> block, which loads AFTER this file and
    therefore wins wherever a page genuinely needs to differ.
 
-   Two pages deliberately opt out of parts of this:
-   - privacy/terms use a slightly larger document type scale
-   - demo.html is a full-screen simulation with its own shell
-   Both override inline rather than fighting this file.
-   ============================================================ */
+   This is the LIGHT MARKETING shell only: index, pricing,
+   starter, how-it-works, audit. Three other families have their
+   own shells and deliberately do not link this file --
+   forms.css (the dark form pages), doc.css (privacy/terms), and
+   demo.html's own inline block. Forcing them onto this base
+   would cost more override CSS than it saves; `section{padding:
+   96px 0}` alone would wreck the legal pages (audit 11.6).
 
-/* ---------- Design tokens ---------- */
-:root{
-  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
-  --line-dark:rgba(255,255,255,.08);
-  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
-  --slate:#46536b;--slate-2:#6b7790;
-  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
-  /* channel form of the brand blue, so tints can be written as
-     rgba(var(--blue-rgb),.12) instead of hardcoding the old hex */
-  --blue-rgb:0,102,204;
-  --green:#34c98e;
-  --radius:14px;
-  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
-  --mono:'JetBrains Mono',monospace;
-}
+   Tokens are NOT defined here. They live in tokens.css, which
+   every page links first.
+   ============================================================ */
 
 /* ---------- Reset & base ---------- */
 *{margin:0;padding:0;box-sizing:border-box}
