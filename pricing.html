@@ -12,16 +12,16 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Alignment Automations" />
   <meta property="og:url" content="https://alignmentautomations.com/pricing.html" />
-  <meta property="og:title" content="Pricing — Two Ways to Get Started | Alignment Automations" />
-  <meta property="og:description" content="The $950 Starter Site, or the Done-for-You Intake System at $1,500 setup + $297/mo with missed-call text-back and automatic follow-up." />
+  <meta property="og:title" content="Pricing — The Done-for-You Intake System | Alignment Automations" />
+  <meta property="og:description" content="The Done-for-You Intake System: $1,500 setup + $297/mo for missed-call text-back, instant replies, booking, and follow-up, run for you. Website-only Starter Site from $950." />
   <meta property="og:image" content="https://alignmentautomations.com/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Pricing — Two Ways to Get Started | Alignment Automations" />
-  <meta name="twitter:description" content="The $950 Starter Site, or the Done-for-You Intake System at $1,500 setup + $297/mo with missed-call text-back and automatic follow-up." />
+  <meta name="twitter:title" content="Pricing — The Done-for-You Intake System | Alignment Automations" />
+  <meta name="twitter:description" content="The Done-for-You Intake System: $1,500 setup + $297/mo for missed-call text-back, instant replies, booking, and follow-up, run for you. Website-only Starter Site from $950." />
   <meta name="twitter:image" content="https://alignmentautomations.com/og-image.jpg" />
-  <meta name="description" content="Two ways to get started: the $950 Starter Site, or the Done-for-You Intake System at $1,500 setup + $297/mo with missed-call text-back and automatic follow-up." />
+  <meta name="description" content="The Done-for-You Intake System: $1,500 setup + $297/mo for missed-call text-back, instant replies, booking, and follow-up, run for you. Website-only Starter Site from $950." />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,7 +42,7 @@
         "name": "Done-for-You Intake System",
         "price": "1500",
         "priceCurrency": "USD",
-        "description": "Everything in Starter Site, plus missed-call text-back, automatic follow-up sequences, and lead logging, fully managed. $1,500 one-time setup, then $297 per month."
+        "description": "Missed-call text-back, instant replies, online booking, automatic follow-up, and lead logging, fully managed, on your current website or a new one. $1,500 one-time setup, then $297 per month."
       }
     ]
   }
@@ -69,7 +69,13 @@ h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:16px}
 /* Section label */
 .section-label{display:flex;align-items:center;gap:18px;margin-bottom:28px}
 /* Pricing cards */
-.tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;max-width:940px;margin:0 auto}
+.tier-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;max-width:940px;margin:0 auto}
+.tier-card.featured .feature-list{grid-template-columns:1fr 1fr;column-gap:28px}
+.tier-card.compact{padding:26px 32px}
+.tier-card.compact h2{font-size:clamp(20px,2.4vw,26px)}
+.tier-card.compact .price-number{font-size:30px}
+.tier-card.compact .feature-list{grid-template-columns:1fr 1fr 1fr;column-gap:24px}
+.alt-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-2);margin:20px 0 -8px}
 .tier-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px;position:relative}
 .price-panel{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
 .price-panel.featured,.tier-card.featured{border-color:rgba(var(--blue-rgb),.30);background:linear-gradient(160deg,rgba(var(--blue-rgb),.05),var(--white));position:relative}
@@ -92,6 +98,8 @@ h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:16px}
 .card-cta{margin-top:24px}
 .guarantee-line{margin-top:12px;font-size:13px;color:var(--slate);line-height:1.5;text-align:center}
 .guarantee-line strong{color:var(--ink)}
+.btn-outline-light{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-outline-light:hover{border-color:#aab4c8;color:var(--ink)}
 /* Ownership note */
 .own-note{margin-top:40px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;display:flex;align-items:flex-start;gap:14px}
 .own-icon{font-size:22px;flex-shrink:0;margin-top:2px}
@@ -111,6 +119,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
 @media(max-width:900px){
   .price-panel{grid-template-columns:1fr}
   .tier-grid{grid-template-columns:1fr}
+  .tier-card.featured .feature-list,.tier-card.compact .feature-list{grid-template-columns:1fr}
   .section-label{flex-direction:column;align-items:flex-start;gap:8px}
   .section-label-line{display:none}
 }
@@ -139,7 +148,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
       <li><a href="/audit.html">Intake Audit</a></li>
       <li><a href="/pricing.html" class="active">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a class="btn btn-amber" href="contact.html">Book a Demo</a></li>
+      <li><a class="btn btn-amber" href="contact.html">Book a Call</a></li>
     </ul>
   </div>
 </nav>
@@ -147,18 +156,47 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
 <div class="page-hero">
   <div class="wrap">
     <div class="pill">Pricing</div>
-    <h1>Two Ways to Get Started.</h1>
+    <h1>One System. Run for You.</h1>
     <p class="lede">
-      Just need a real website live fast? Start with the $950 Starter Site. Ready for missed-call text-back and automatic follow-up too? The Done-for-You Intake System runs the whole thing for you. Compare them below.
+      The Done-for-You Intake System answers every missed call and quote request in seconds, books the estimate on your calendar, and follows up for you. One price, everything included. Just need a website? There's a Starter Site below.
     </p>
-    <p class="small-note">No pressure either way · Upgrade from Starter anytime · Fully managed once you're on the Intake System</p>
+    <p class="small-note">Works with your current website · 30-day guarantee · No lock-in</p>
   </div>
 </div>
 
 <section class="sect-white" id="core">
   <div class="wrap">
     <div class="tier-grid">
-      <div class="tier-card">
+      <div class="tier-card featured">
+        <div class="featured-badge">Done for you</div>
+        <span class="price-tag tag-core">Done-for-You Intake System</span>
+        <h2>Done-for-You Intake System</h2>
+        <div class="price-amount">
+          <span class="price-number">$1,500</span>
+          <span class="price-period"> setup</span>
+        </div>
+        <p class="price-mo">$297 <span>/ mo</span></p>
+        <p class="price-first">First payment: <strong>$1,797</strong> (setup + first month)</p>
+        <p class="price-desc">Works with your current website, or includes a new one. The system answers for you when you can't, and I run all of it.</p>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> Missed-call text-back from your business line, with two-way texting</li>
+          <li><span class="check">✓</span> An instant reply to every website quote request</li>
+          <li><span class="check">✓</span> Online booking that drops estimates on your calendar</li>
+          <li><span class="check">✓</span> Automatic follow-ups, and you step in when a lead replies</li>
+          <li><span class="check">✓</span> Every lead logged, with a notification on your phone</li>
+          <li><span class="check">✓</span> Carrier registration for texting, handled for you</li>
+          <li><span class="check">✓</span> Monitoring, edits &amp; maintenance</li>
+          <li><span class="check">✓</span> All software &amp; tool costs included</li>
+        </ul>
+        <div class="card-cta">
+          <a class="btn btn-amber btn-full" href="contact.html?interest=intake">Get My Intake System &rarr;</a>
+          <p class="guarantee-line"><strong>30-day guarantee</strong> — if it isn't answering and following up on your leads in the first month, cancel and keep the website and your domain.</p>
+        </div>
+        <p class="tier-note">Requires an EIN and a business (non-cell) line, plus a 10&ndash;15 business day carrier registration before text-back goes live.</p>
+      </div>
+
+      <p class="alt-label">Just need a website?</p>
+      <div class="tier-card compact">
         <span class="price-tag tag-core">Starter Site</span>
         <h2>Starter Site</h2>
         <div class="price-amount">
@@ -175,36 +213,10 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
           <li><span class="check">✓</span> You own everything, no lock-in</li>
         </ul>
         <div class="card-cta">
-          <a class="btn btn-amber btn-full" href="contact.html?interest=starter">Book a Demo</a>
+          <a class="btn btn-outline-light btn-full" href="contact.html?interest=starter">Book a Free 20-Min Call</a>
           <p class="guarantee-line">No monthly commitment required · <a href="/starter.html" style="color:var(--blue-deep);font-weight:600;">See what's included →</a></p>
         </div>
         <p class="tier-note">Optional $49/mo care plan for hosting, edits, and updates — never required.</p>
-      </div>
-
-      <div class="tier-card featured">
-        <div class="featured-badge">Most complete</div>
-        <span class="price-tag tag-core">Done-for-You Intake System</span>
-        <h2>Done-for-You Intake System</h2>
-        <div class="price-amount">
-          <span class="price-number">$1,500</span>
-          <span class="price-period"> setup</span>
-        </div>
-        <p class="price-mo">$297 <span>/ mo</span></p>
-        <p class="price-first">First payment: <strong>$1,797</strong> (setup + first month)</p>
-        <p class="price-desc">Everything in Starter, plus the system that answers for you: missed-call text-back, automatic follow-ups, and lead logging, fully managed.</p>
-        <ul class="feature-list">
-          <li><span class="check">✓</span> Everything in Starter Site</li>
-          <li><span class="check">✓</span> Missed-call text-back with two-way SMS</li>
-          <li><span class="check">✓</span> Smart follow-up sequences &amp; human handoff</li>
-          <li><span class="check">✓</span> Lead logging &amp; internal notifications</li>
-          <li><span class="check">✓</span> All software &amp; tool costs included</li>
-          <li><span class="check">✓</span> Ongoing monitoring, edits &amp; maintenance</li>
-        </ul>
-        <div class="card-cta">
-          <a class="btn btn-amber btn-full" href="contact.html?interest=intake">Book a Demo</a>
-          <p class="guarantee-line"><strong>30-day guarantee</strong> — if it isn't answering and following up on your leads in the first month, cancel and keep the website and your domain.</p>
-        </div>
-        <p class="tier-note">Requires an EIN and a business (non-cell) line, plus a 10&ndash;15 business day carrier registration before text-back goes live.</p>
       </div>
     </div>
 
@@ -277,9 +289,9 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:34px 
 <section class="final">
   <div class="wrap">
     <h2>See exactly what I'd set up and run.</h2>
-    <p>Book a 20-minute demo and I'll walk you through the whole system built for your business — no pressure, no guesswork.</p>
+    <p>Book a free 20-minute call and I'll walk you through the system I'd build for your business. No pressure, no guesswork.</p>
     <div class="cta-actions">
-      <a class="btn btn-amber" href="contact.html" style="font-size:15px;padding:15px 28px;">Book Your Intake System Demo</a>
+      <a class="btn btn-amber" href="contact.html" style="font-size:15px;padding:15px 28px;">Book a Free 20-Min Call</a>
       <a class="btn btn-ghost" href="/">Back to Home</a>
     </div>
     <div class="reassure">20 minutes · No pressure · Cancel anytime</div>

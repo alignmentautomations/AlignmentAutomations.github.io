@@ -308,18 +308,18 @@ const STEPS = {
     narr:[['1',`<strong>They hit submit.</strong> That’s the only thing that has to happen.`],['2',`No app for them to download, no account to make — just a simple request from your site.`],['3',`The instant it’s sent, your system takes over. Watch what happens next.`]]};
   },
   text(){return{stage:1,
-    head:{t:'Within seconds, your system texts them back.',ts:'+ 8 seconds · automatic',p:`Before they can look up another contractor, ${cust.first} gets a friendly text from your business — with a link to book.`},
+    head:{t:'Within seconds, your system texts them back.',ts:'within seconds · automatic',p:`Before they can look up another contractor, ${cust.first} gets a friendly text from your business — with a link to book.`},
     solo:{screen:'light',inner:`<div class="msg-head"><div class="av">${AA}</div><div class="nm">${biz()}</div></div><div class="msg-thread"><div class="msg-time">Text Message · now</div><div class="bub in reveal">Hi, this is ${biz()} 👋 Sorry we missed your call — we’re out on a job right now.</div><div class="bub in reveal">Want ${cust.reason}? Grab a time that works for you here: <span class="lnk">book.${biz().toLowerCase().replace(/[^a-z0-9]+/g,'')}.com</span></div><div class="bub typing" id="smsTyping"><span></span><span></span><span></span></div><div class="delivered reveal">Delivered</div></div>`},
-    narr:[['1',`<strong>You didn’t send this.</strong> Your system did — in about 8 seconds.`],['2',`A text gets read in minutes. A voicemail usually doesn’t. This is how you win the job before a competitor calls back.`],['3',`Next: what landed on <strong>your</strong> phone at the same moment.`]]};
+    narr:[['1',`<strong>You didn’t send this.</strong> Your system did, within seconds.`],['2',`A text gets read in minutes. A voicemail usually doesn’t. This is how you win the job before a competitor calls back.`],['3',`Next: what landed on <strong>your</strong> phone at the same moment.`]]};
   },
   confirm(){return{stage:1,
-    head:{t:'They get an instant reply with a booking link.',ts:'+ 8 seconds · automatic',p:`${cust.first} immediately knows you got the request — and exactly how to lock in a time.`},
+    head:{t:'They get an instant reply with a booking link.',ts:'within seconds · automatic',p:`${cust.first} immediately knows you got the request — and exactly how to lock in a time.`},
     solo:{screen:'light',inner:`<div class="msg-head"><div class="av">${AA}</div><div class="nm">${biz()} · Email</div></div><div class="msg-thread"><div class="msg-time">Inbox · now</div><div class="bub in" style="max-width:92%">Hi ${cust.first}, thanks for reaching out to ${biz()}! We’ve got your request for ${cust.reason} and we’ll be in touch shortly.</div><div class="bub in" style="max-width:92%">Want to lock it in now? Pick a time that works for you:</div><div class="bub out cta">📅 Book my free estimate →</div><div class="delivered">Delivered · now</div></div>`},
     narr:[['1',`<strong>Automatic.</strong> The confirmation and booking link go out the instant they submit.`],['2',`No "we’ll call you back." They get a clear next step while they’re still interested.`],['3',`Next: what landed on <strong>your</strong> phone at the same moment.`]]};
   },
   logged(){const src = state.path==='call' ? 'Missed call' : 'Website form';
     return{stage:1,
-    head:{t:'Here’s your side — the lead is already captured.',ts:'+ 8 seconds · automatic',p:`At the same moment, your phone buzzes. The lead’s details are logged for you — nothing to write down, nothing to remember.`},
+    head:{t:'Here’s your side — the lead is already captured.',ts:'within seconds · automatic',p:`At the same moment, your phone buzzes. The lead’s details are logged for you — nothing to write down, nothing to remember.`},
     phones:[
       {label:['you',`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg> Your phone — notifications`],screen:'dark',inner:`<div class="lock"><div class="clock"><div class="t">9:41</div><div class="d">${BDATE.split(',')[0]}</div></div><div class="notif"><div class="nic aa">${AA}</div><div class="nbody"><div class="nrow"><span class="ntitle">${biz()} · New Lead</span><span class="nwhen">now</span></div><div class="ntext">${cust.name} — ${cust.phone}. Wants ${cust.reason}. Logged ✅</div></div></div>${state.path==='call'?`<div class="notif"><div class="nic phone">📞</div><div class="nbody"><div class="nrow"><span class="ntitle">Auto text-back sent</span><span class="nwhen">now</span></div><div class="ntext">Replied to ${cust.first} before they called anyone else.</div></div></div>`:`<div class="notif"><div class="nic phone">✉️</div><div class="nbody"><div class="nrow"><span class="ntitle">Auto-reply sent</span><span class="nwhen">now</span></div><div class="ntext">Confirmation + booking link delivered to ${cust.first}.</div></div></div>`}</div>`},
       {label:['you',`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 12h6M9 16h4"/></svg> In your lead list`],screen:'dark',inner:`<div class="app-head"><div class="av">${AA}</div><div class="nm">${biz()}<small>Leads</small></div></div><div class="lead"><span class="badge"><span class="liv"></span> New · captured</span><div class="lead-row"><span class="k">Name</span><span class="v">${cust.name}</span></div><div class="lead-row"><span class="k">Phone</span><span class="v">${cust.phone}</span></div><div class="lead-row"><span class="k">Wants</span><span class="v">${cust.reason}</span></div><div class="lead-row"><span class="k">Source</span><span class="v">${src}</span></div><div class="lead-row"><span class="k">Status</span><span class="v" style="color:var(--green)">Replied ✓</span></div><div class="lead-foot">✅ Captured &amp; logged automatically — you did nothing.</div></div>`}
@@ -337,8 +337,8 @@ const STEPS = {
     head:null,
     recapData:[
       ['1',src,state.path==='call'?`${cust.name} called while you were on the job.`:`${cust.name} asked for a quote at 9pm.`,'T + 0:00'],
-      ['2',state.path==='call'?'Instant text-back sent':'Instant reply sent',`A friendly message + booking link went out automatically.`,'T + 0:08'],
-      ['3','Lead captured &amp; you were notified',`Name, number, and request logged — nothing for you to do.`,'T + 0:08'],
+      ['2',state.path==='call'?'Instant text-back sent':'Instant reply sent',`A friendly message + booking link went out automatically.`,'T + seconds'],
+      ['3','Lead captured &amp; you were notified',`Name, number, and request logged — nothing for you to do.`,'T + seconds'],
       ['4','Estimate booked',`${cust.first} picked a time. It synced to your calendar.`,'T + 4 min']
     ]};
   }
@@ -431,7 +431,7 @@ function render(){
   const last = state.i === state.flow.length-1;
   const ctr = document.getElementById('controls');
   if(step.recap){
-    ctr.innerHTML = `<div class="controls" style="flex-direction:column;gap:18px"><div class="cta-row"><a class="btn btn-green" href="contact.html">Book a real demo for my business</a><a class="btn btn-ghost" href="/pricing.html">See pricing</a></div><button class="back" onclick="replay()">↺ Watch the other path</button></div>`;
+    ctr.innerHTML = `<div class="controls" style="flex-direction:column;gap:18px"><div class="cta-row"><a class="btn btn-green" href="contact.html">Book a Free 20-Min Call</a><a class="btn btn-ghost" href="/pricing.html">See pricing</a></div><button class="back" onclick="replay()">↺ Watch the other path</button></div>`;
   } else {
     ctr.innerHTML = `<div class="controls"><button class="back" onclick="goBack()">← Back</button><button class="btn btn-blue" onclick="goNext()">Continue →</button></div>`;
   }
