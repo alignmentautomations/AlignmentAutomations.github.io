@@ -3,22 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alignment Automations — Missed Call Cost Calculator</title>
+<title>Missed Call Cost Calculator | Primed &amp; Booked</title>
   <meta name="description" content="Find out what missed calls are costing your business each year, in about 30 seconds." />
-  <link rel="canonical" href="https://alignmentautomations.com/calculator.html" />
+  <link rel="canonical" href="https://primedandbooked.com/calculator.html" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Alignment Automations" />
-  <meta property="og:url" content="https://alignmentautomations.com/calculator.html" />
-  <meta property="og:title" content="Missed Call Calculator | Alignment Automations" />
+  <meta property="og:site_name" content="Primed &amp; Booked" />
+  <meta property="og:url" content="https://primedandbooked.com/calculator.html" />
+  <meta property="og:title" content="Missed Call Calculator | Primed &amp; Booked" />
   <meta property="og:description" content="Find out what missed calls are costing your business each year, in about 30 seconds." />
-  <meta property="og:image" content="https://alignmentautomations.com/og-image.jpg" />
+  <meta property="og:image" content="https://primedandbooked.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Missed Call Calculator | Alignment Automations" />
+  <meta name="twitter:title" content="Missed Call Calculator | Primed &amp; Booked" />
   <meta name="twitter:description" content="Find out what missed calls are costing your business each year, in about 30 seconds." />
-  <meta name="twitter:image" content="https://alignmentautomations.com/og-image.jpg" />
+  <meta name="twitter:image" content="https://primedandbooked.com/og-image.png" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -26,12 +27,12 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://alignmentautomations.com/#business",
-    "name": "Alignment Automations",
-    "url": "https://alignmentautomations.com",
-    "image": "https://alignmentautomations.com/og-image.jpg",
+    "@id": "https://primedandbooked.com/#business",
+    "name": "Primed & Booked",
+    "url": "https://primedandbooked.com",
+    "image": "https://primedandbooked.com/og-image.png",
     "email": "hello@alignmentautomations.com",
-    "description": "Websites and lead-intake automation for home service contractors.",
+    "description": "Websites and lead-intake automation for painting contractors.",
     "priceRange": "$97-$1500",
     "areaServed": { "@type": "AdministrativeArea", "name": "San Luis Obispo County, California" },
     "address": { "@type": "PostalAddress", "addressRegion": "CA", "addressCountry": "US" },
@@ -40,7 +41,7 @@
   </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css" />
 <link rel="stylesheet" href="/forms.css" />
 <style>
@@ -57,7 +58,7 @@
 /* Result panel */
 .result-wrap{display:none;flex-direction:column;gap:22px;animation:fadeUp .35s ease}
 .result-wrap.show{display:flex}
-.result-figure{background:#0b1220;border:1px solid var(--line-dark);border-radius:14px;padding:22px 20px;text-align:center}
+.result-figure{background:#17191C;border:1px solid var(--line-dark);border-radius:14px;padding:22px 20px;text-align:center}
 .result-label{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
 .result-number{font-family:var(--display);font-size:clamp(34px,5vw,48px);font-weight:900;letter-spacing:-.02em;color:var(--blue-light)}
 .result-sub{font-size:13px;color:rgba(255,255,255,.45);margin-top:8px;line-height:1.5}
@@ -76,9 +77,9 @@
 
 <nav class="nav" aria-label="Main">
   <div class="nav-in">
-    <a class="logo" href="/" aria-label="Alignment Automations Home">
-      <img src="alignment_automations_icon.svg" class="logo-img" alt="">
-      <span class="logo-text"><span class="logo-name">Alignment Automations</span><span class="logo-tag">Done-for-you lead intake</span></span>
+    <a class="logo" href="/" aria-label="Primed &amp; Booked Home">
+      <img src="primed_and_booked_mark_dark.svg" class="logo-img" alt="">
+      <span class="logo-text"><span class="logo-name">PRIMED &amp; <b>BOOKED</b></span><span class="logo-tag">Lead intake for painting contractors</span></span>
     </a>
   </div>
 </nav>
@@ -92,7 +93,7 @@
       <p class="hero-desc">Enter three numbers and I'll show you exactly what missed calls are costing your business every year.</p>
       <div class="trust-pills">
         <span class="tp">No email required to see your number</span>
-        <span class="tp">Built for contractors</span>
+        <span class="tp">Built for painting contractors</span>
         <span class="tp">Real math, not a guess</span>
       </div>
     </div>
@@ -176,7 +177,7 @@
 
         <div class="success-wrap" id="success-panel">
           <div class="success-check">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <span class="success-badge">Got it!</span>
           <h3 id="success-heading">Check your inbox.</h3>

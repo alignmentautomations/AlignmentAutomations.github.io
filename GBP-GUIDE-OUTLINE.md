@@ -1,7 +1,7 @@
 # Google Business Profile Setup Guide — Outline
 
 Bonus item included with both Starter Site and the Done-for-You Intake System.
-The client completes this themselves; it is not a service Alignment Automations
+The client completes this themselves; it is not a service Primed & Booked
 performs. This file is an outline for the guide content — the guide itself
 (PDF or page) is not built yet.
 

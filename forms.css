@@ -1,5 +1,5 @@
 /* ============================================================
-   Alignment Automations — dark form-page shell
+   Primed & Booked — dark form-page shell
    ------------------------------------------------------------
    Shared by contact.html, calculator.html, and email-sales.html:
    the three pages built on a full-dark background with a hero
@@ -27,12 +27,13 @@ a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
 
 /* ---------- Nav (logo only on these pages) ---------- */
-.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.90);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(17,18,20,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1140px;margin:0 auto;padding:0 24px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
 .logo-img{height:42px;width:auto;flex:none}
 .logo-text{display:flex;flex-direction:column;line-height:1.15}
-.logo-name{font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.logo-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;letter-spacing:0;white-space:nowrap;color:#F2EFE9}
+.logo-name b{color:var(--blue);font-weight:900}
 .logo-tag{font-size:11px;font-weight:500;letter-spacing:.01em;color:#7f8aa3;margin-top:1px;white-space:nowrap}
 @media(max-width:980px){.logo-tag{display:none}}
 
@@ -56,13 +57,13 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 .tp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:rgba(255,255,255,.65)}
 
 /* ---------- Form card ---------- */
-.form-card{background:#111d30;border:1px solid var(--line-dark);border-radius:18px;padding:28px 24px}
+.form-card{background:#1D2024;border:1px solid var(--line-dark);border-radius:18px;padding:28px 24px}
 .form-card h2{font-family:var(--display);font-size:21px;font-weight:800;letter-spacing:-.015em;color:#fff;margin-bottom:5px}
 .form-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.5}
 .fields{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .field label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.78);margin-bottom:7px;font-family:var(--body)}
-.field input,.field select,.field textarea{width:100%;background:#1a2540;border:1px solid rgba(255,255,255,.10);border-radius:10px;padding:13px 14px;font-family:var(--body);font-size:15px;color:#fff;outline:none;transition:border-color .18s,box-shadow .18s;-webkit-appearance:none}
+.field input,.field select,.field textarea{width:100%;background:#26292E;border:1px solid rgba(255,255,255,.10);border-radius:10px;padding:13px 14px;font-family:var(--body);font-size:15px;color:#fff;outline:none;transition:border-color .18s,box-shadow .18s;-webkit-appearance:none}
 .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.50)}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(var(--blue-rgb),.30)}
 .field textarea{resize:vertical;min-height:86px;line-height:1.55;font-size:14px}
@@ -75,7 +76,7 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 .hp-field{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
 
 /* ---------- Submit button ---------- */
-.btn-primary{display:block;width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:16px 20px;font-family:var(--body);font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.005em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 22px rgba(var(--blue-rgb),.38);min-height:54px}
+.btn-primary{display:block;width:100%;background:var(--blue);color:var(--on-accent);border:none;border-radius:12px;padding:16px 20px;font-family:var(--body);font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.005em;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 22px rgba(var(--blue-rgb),.38);min-height:54px}
 .btn-primary:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 8px 28px rgba(var(--blue-rgb),.48)}
 .btn-primary:active{transform:translateY(0)}
 .btn-primary:disabled{opacity:.6;pointer-events:none}
@@ -83,7 +84,7 @@ h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:900;lin
 
 /* ---------- Spinner ---------- */
 .btn-inner{display:flex;align-items:center;justify-content:center;gap:10px}
-.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+.spinner{width:16px;height:16px;border:2px solid rgba(17,18,20,.3);border-top-color:#111214;border-radius:50%;animation:spin .7s linear infinite;display:none}
 .btn-primary.loading .spinner{display:block}
 
 /* ---------- Success panel ---------- */

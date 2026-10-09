@@ -1,5 +1,5 @@
 /* ============================================================
-   Alignment Automations — design tokens
+   Primed & Booked — design tokens
    ------------------------------------------------------------
    THE single definition of the brand's colors, radii, and type
    families. Every page on the site links this file first, then
@@ -10,32 +10,37 @@
      tokens.css + doc.css     → privacy / terms
      tokens.css               → demo.html (standalone shell, inline)
 
-   Before this file existed the token block was copy-pasted into
-   eleven pages, which is exactly how --blue drifted away from the
-   brand in the first place (audit 9.1) and how --blue-rgb ended up
-   defined on five pages and missing from six.
+   The accent variables keep their old --blue names from the
+   Alignment Automations build so nothing had to be renamed in
+   eleven pages at once; they hold the orange now.
 
    Source of truth for the values: Brand Assets in the vault.
    ============================================================ */
 
 :root{
-  /* Neutrals */
-  --ink:#0b111e;--ink-2:#0f1829;--ink-3:#111d30;
+  /* Neutrals: brand black #111214 and two raised tones */
+  --ink:#111214;--ink-2:#17191C;--ink-3:#1D2024;
   --line-dark:rgba(255,255,255,.08);
-  --paper:#F7F8FB;--white:#ffffff;--line:#E4E8F0;
-  --slate:#46536b;--slate-2:#6b7790;
+  --paper:#F6F4EF;--white:#ffffff;--line:#E6E2DA;
+  --slate:#4A4D52;--slate-2:#6E7177;
 
-  /* Brand blue. --blue-deep is a retired alias kept only so older
-     rules keep resolving; it is identical to --blue. */
-  --blue:#0066CC;--blue-hover:#003D7A;--blue-deep:#0066CC;--blue-light:#5aa3ff;
-  /* channel form of the brand blue, so tints can be written as
-     rgba(var(--blue-rgb),.12) instead of hardcoding a hex */
-  --blue-rgb:0,102,204;
+  /* Brand orange, under the old variable names.
+     --blue        Safety Orange, for fills (buttons, bars, icons)
+     --blue-hover  darker orange for hover
+     --blue-deep   burnt orange for TEXT on light backgrounds:
+                   #FF6B1A on white is only 2.9:1, #B8460F is 5.3:1
+     --blue-light  lighter orange for text and links on black */
+  --blue:#FF6B1A;--blue-hover:#E85A0C;--blue-deep:#B8460F;--blue-light:#FF9A5C;
+  --blue-rgb:255,107,26;
+
+  /* Text that sits ON an orange fill: black, never white.
+     White on #FF6B1A is 2.8:1 and fails; #111214 is 7.4:1. */
+  --on-accent:#111214;
 
   --green:#34c98e;
 
   --radius:14px;
 
-  --display:'Inter',sans-serif;--body:'Inter',sans-serif;
+  --display:'Montserrat',sans-serif;--body:'Inter',sans-serif;
   --mono:'JetBrains Mono',monospace;
 }
